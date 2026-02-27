@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Route;
 |--------------------------------------------------------------------------
 */
 
+Route::get('/v1/health', fn() => response()->json(['status' => 'ok']));
+
 Route::prefix('v1')->group(function () {
 
     // ── Auth ─────────────────────────────────────────
