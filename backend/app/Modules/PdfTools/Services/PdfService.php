@@ -53,6 +53,8 @@ PYTHON;
         $pyScript = str_replace('INPUT_PATH', $safeInput, $pyScript);
         $pyScript = str_replace('OUTPUT_PATH', $outputFile, $pyScript);
 
+        file_put_contents($scriptFile, $pyScript);
+
         $result = Process::run(
             escapeshellarg($this->python) . ' ' . escapeshellarg($scriptFile)
         );
