@@ -1,10 +1,10 @@
 [phases.setup]
-nixPkgs = ["php84", "php84Packages.composer", "ffmpeg", "python312", "python312Packages.pip", "stdenv.cc.cc.lib", "zlib", "glib", "libgcc"]
+nixPkgs = ["php84", "php84Packages.composer", "ffmpeg", "python312", "python312Packages.pip"]
 
 [phases.install]
 cmds = [
     "composer install --no-dev --optimize-autoloader --no-interaction",
-    "pip install pymupdf==1.23.8 pdf2docx pypdf reportlab pillow python-docx --break-system-packages --no-cache-dir"
+    "pip install pypdf python-docx reportlab pillow pdfplumber openpyxl --break-system-packages --no-cache-dir"
 ]
 
 [phases.build]

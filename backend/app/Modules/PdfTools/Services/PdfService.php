@@ -14,25 +14,40 @@ class PdfService
 
 
     /**
-     * Convert PDF to Word (DOCX) using pdf2docx (Python library).
-     * We write a temp .py script file to avoid json_encode() escaping
-     * forward slashes ("/") into "\/", which breaks Python path strings.
+     * Convert PDF to Word (DOCX) using pypdf + python-docx (pure Python, no C++ deps).
+     * Extracts text page by page and writes to a styled DOCX file.
      */
     public function pdfToWord(string $inputPath, string $outputDir): string
     {
-        // Safe paths: copy input with no spaces in name
         $safeInput  = $outputDir . '/convert_in_'  . uniqid() . '.pdf';
         $outputFile = $outputDir . '/convert_out_' . uniqid() . '.docx';
         $scriptFile = $outputDir . '/convert_'     . uniqid() . '.py';
 
         copy($inputPath, $safeInput);
 
-        // Write the Python script — no shell quoting of paths at all
+        // Pure Python: pypdf for reading, python-docx for writing — no PyMuPDF needed
         $pyScript = <<<PYTHON
-from pdf2docx import Converter
-cv = Converter(r'{$safeInput}')
-cv.convert(r'{$outputFile}', start=0, end=None)
-cv.close()
+import sys
+from pypdf import PdfReader
+from docx import Document
+from docx.shared import Pt
+
+reader = PdfReader(r'{$safeInput}')
+doc = Document()
+doc.add_heading('Converted Document', 0)
+
+for i, page in enumerate(reader.pages):
+    text = page.extract_text()
+    if text:
+        doc.add_heading(f'Page {i + 1}', level=2)
+        for line in text.split('\n'):
+            line = line.strip()
+            if line:
+                p = doc.add_paragraph(line)
+                p.style.font.size = Pt(11)
+
+doc.save(r'{$outputFile}')
+print('done')
 PYTHON;
 
         file_put_contents($scriptFile, $pyScript);
@@ -41,7 +56,6 @@ PYTHON;
             escapeshellarg($this->python) . ' ' . escapeshellarg($scriptFile)
         );
 
-        // Cleanup temp files
         @unlink($safeInput);
         @unlink($scriptFile);
 
@@ -49,7 +63,6 @@ PYTHON;
             Log::error('PDF to Word failed', [
                 'error'  => $result->errorOutput(),
                 'stdout' => $result->output(),
-                'script' => $pyScript,
             ]);
             throw new \RuntimeException('PDF to Word conversion failed: ' . $result->errorOutput());
         }
