@@ -16,6 +16,23 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/v1/health', fn() => response()->json(['status' => 'ok']));
 
+Route::get('/v1/debug-logs', function () {
+    $logs = '';
+    if (file_exists(storage_path('logs/laravel.log'))) {
+        $logs = shell_exec('tail -n 100 ' . escapeshellarg(storage_path('logs/laravel.log')));
+    }
+    
+    $failed = \App\Models\Conversion::where('status', 'failed')
+        ->orderBy('id', 'desc')
+        ->take(10)
+        ->get();
+        
+    return response()->json([
+        'failed_conversions' => $failed,
+        'logs' => $logs
+    ]);
+});
+
 Route::prefix('v1')->group(function () {
 
     // ── Auth ─────────────────────────────────────────
