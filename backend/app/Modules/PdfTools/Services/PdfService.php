@@ -26,31 +26,32 @@ class PdfService
         copy($inputPath, $safeInput);
 
         // Pure Python: pypdf for reading, python-docx for writing — no PyMuPDF needed
-        $pyScript = <<<PYTHON
+        $pyScript = <<<'PYTHON'
 import sys
 from pypdf import PdfReader
 from docx import Document
 from docx.shared import Pt
 
-reader = PdfReader(r'{$safeInput}')
+reader = PdfReader(r'INPUT_PATH')
 doc = Document()
 doc.add_heading('Converted Document', 0)
 
 for i, page in enumerate(reader.pages):
     text = page.extract_text()
     if text:
-        doc.add_heading(f'Page {i + 1}', level=2)
-        for line in text.split('\n'):
+        doc.add_heading('Page ' + str(i + 1), level=2)
+        for line in text.split(chr(10)):
             line = line.strip()
             if line:
                 p = doc.add_paragraph(line)
                 p.style.font.size = Pt(11)
 
-doc.save(r'{$outputFile}')
+doc.save(r'OUTPUT_PATH')
 print('done')
 PYTHON;
 
-        file_put_contents($scriptFile, $pyScript);
+        $pyScript = str_replace('INPUT_PATH', $safeInput, $pyScript);
+        $pyScript = str_replace('OUTPUT_PATH', $outputFile, $pyScript);
 
         $result = Process::run(
             escapeshellarg($this->python) . ' ' . escapeshellarg($scriptFile)
