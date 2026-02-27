@@ -1,0 +1,60 @@
+<?php
+
+namespace App\Modules\ImageTools\Requests;
+
+use Illuminate\Foundation\Http\FormRequest;
+
+class ImageRequest extends FormRequest
+{
+    public function authorize(): bool
+    {
+        return true;
+    }
+
+    public function rules(): array
+    {
+        $action = $this->route('action');
+
+        // Accept all common image types — browsers report inconsistent MIME types
+        // (e.g. macOS reports PNG as image/x-png, which strict mimes:png rejects)
+        $anyImage = 'mimetypes:image/jpeg,image/jpg,image/pjpeg,image/png,image/x-png,image/gif,image/bmp,image/x-bmp,image/webp,image/tiff,image/x-tiff';
+
+        $rules = [
+            'file' => ['required', 'file', 'max:102400', $anyImage],
+        ];
+
+        switch ($action) {
+            case 'resize':
+                $rules['width']  = ['required', 'integer', 'min:1', 'max:10000'];
+                $rules['height'] = ['required', 'integer', 'min:1', 'max:10000'];
+                break;
+
+            case 'compress':
+                $rules['quality'] = ['sometimes', 'integer', 'min:1', 'max:100'];
+                break;
+
+            case 'crop':
+                $rules['width']  = ['required', 'integer', 'min:1'];
+                $rules['height'] = ['required', 'integer', 'min:1'];
+                $rules['x']      = ['sometimes', 'integer', 'min:0'];
+                $rules['y']      = ['sometimes', 'integer', 'min:0'];
+                break;
+
+            case 'rotate':
+                $rules['degrees'] = ['required', 'numeric'];
+                break;
+        }
+
+        return $rules;
+    }
+
+    public function messages(): array
+    {
+        return [
+            'file.required' => 'Please select a file to upload.',
+            'file.file' => 'The uploaded file is not valid.',
+            'file.mimes' => 'Invalid file type. Please check the accepted formats for this tool.',
+            'file.max' => 'File is too large. Maximum size is 100MB.',
+        ];
+    }
+}

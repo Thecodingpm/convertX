@@ -1,0 +1,341 @@
+.page {
+  overflow: hidden;
+}
+
+/* ── Compact Hero ── */
+.hero {
+  padding: 2.5rem 0 2rem;
+  background: var(--color-surface-raised);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.heroInner {
+  max-width: 600px;
+}
+
+.heroBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  background: var(--color-primary-light);
+  padding: 0.3rem 0.8rem;
+  border-radius: 999px;
+  margin-bottom: 1rem;
+}
+
+.heroTitle {
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 900;
+  line-height: 1.1;
+  margin: 0 0 0.75rem;
+  color: var(--color-text-primary);
+}
+
+.heroAccent {
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.heroSub {
+  font-size: 1rem;
+  color: var(--color-text-secondary);
+  margin: 0 0 1.25rem;
+}
+
+.featureRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.featurePill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  padding: 0.3rem 0.7rem;
+  border-radius: 999px;
+}
+
+.featurePill strong {
+  color: var(--color-text-primary);
+}
+
+/* ── Popular Tools ── */
+.toolsSection {
+  padding: 2rem 0;
+}
+
+.sectionHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.sectionHead h2 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin: 0;
+  color: var(--color-text-primary);
+}
+
+.viewAll {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: gap 0.15s;
+}
+
+.viewAll:hover {
+  gap: 0.5rem;
+}
+
+.toolsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 0.75rem;
+}
+
+.toolCard {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.875rem 1rem;
+  background: var(--color-surface);
+  border: 1.5px solid var(--color-border);
+  border-radius: 12px;
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.18s;
+}
+
+.toolCard:hover {
+  border-color: var(--color-primary);
+  box-shadow: 0 4px 16px rgba(99, 102, 241, 0.1);
+  transform: translateY(-2px);
+}
+
+.toolIcon {
+  flex-shrink: 0;
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.toolBody {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.toolName {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.toolDesc {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.toolArrow {
+  flex-shrink: 0;
+  color: var(--color-text-muted);
+  transition: transform 0.15s, color 0.15s;
+}
+
+.toolCard:hover .toolArrow {
+  transform: translateX(3px);
+  color: var(--color-primary);
+}
+
+/* ── Categories ── */
+.categorySection {
+  padding: 1.5rem 0 2.5rem;
+  border-top: 1px solid var(--color-border);
+}
+
+.catTitle {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin: 0 0 1rem;
+  color: var(--color-text-primary);
+}
+
+.categoryRow {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.75rem;
+}
+
+.catCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1.25rem 1rem;
+  background: var(--color-surface);
+  border: 1.5px solid var(--color-border);
+  border-radius: 14px;
+  text-decoration: none;
+  color: inherit;
+  text-align: center;
+  transition: all 0.18s;
+  position: relative;
+}
+
+.catCard:hover {
+  border-color: var(--color-primary);
+  box-shadow: 0 4px 16px rgba(99, 102, 241, 0.1);
+  transform: translateY(-2px);
+}
+
+.catIcon {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.catName {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+}
+
+.catCount {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+}
+
+.catSoon {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  font-size: 0.6rem;
+  font-weight: 700;
+  padding: 0.15rem 0.45rem;
+  border-radius: 999px;
+  background: var(--color-primary-light);
+  color: var(--color-primary);
+  text-transform: uppercase;
+}
+
+.catDisabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.catDisabled:hover {
+  transform: none;
+  box-shadow: none;
+  border-color: var(--color-border);
+}
+
+/* ── CTA ── */
+.cta {
+  padding: 2rem 0 3.5rem;
+}
+
+.ctaCard {
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  border-radius: 20px;
+  padding: 2.5rem;
+  text-align: center;
+  color: #fff;
+}
+
+.ctaCard h2 {
+  font-size: 1.6rem;
+  font-weight: 800;
+  margin: 0 0 0.5rem;
+}
+
+.ctaCard p {
+  opacity: 0.85;
+  margin: 0 0 1.5rem;
+  font-size: 0.95rem;
+}
+
+.ctaBtns {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.ctaBtn {
+  background: #fff !important;
+  color: #6366f1 !important;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-weight: 700;
+}
+
+.ctaBtnGhost {
+  color: rgba(255, 255, 255, 0.9) !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.4) !important;
+}
+
+.ctaBtnGhost:hover {
+  background: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Color token bridge */
+.heroTitle,
+.sectionHead h2,
+.catTitle {
+  color: var(--color-text);
+}
+
+.heroSub,
+.toolDesc,
+.catCount,
+.featurePill {
+  color: var(--color-text-secondary);
+}
+
+.toolName,
+.catName {
+  color: var(--color-text);
+}
+
+@media (max-width: 768px) {
+  .categoryRow {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .toolsGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .categoryRow {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

@@ -1,0 +1,132 @@
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    height: var(--header-height);
+    background: var(--color-bg);
+    border-bottom: 1px solid var(--color-border-light);
+    backdrop-filter: blur(12px);
+    background: rgba(var(--color-bg), 0.85);
+}
+
+[data-theme='light'] .header {
+    background: rgba(255, 255, 255, 0.85);
+}
+
+[data-theme='dark'] .header {
+    background: rgba(15, 17, 23, 0.85);
+}
+
+.container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 var(--space-lg);
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    text-decoration: none;
+    color: var(--color-text);
+}
+
+.logoIcon {
+    font-size: 1.5rem;
+}
+
+.logoText {
+    font-size: 1.25rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xl);
+}
+
+.navLink {
+    font-size: 0.9375rem;
+    font-weight: 500;
+    color: var(--color-text-secondary);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+    position: relative;
+}
+
+.navLink:hover {
+    color: var(--color-text);
+}
+
+.navLink::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--color-primary);
+    border-radius: var(--radius-full);
+    transition: width var(--transition-fast);
+}
+
+.navLink:hover::after {
+    width: 100%;
+}
+
+.actions {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+}
+
+.themeToggle {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-md);
+    font-size: 1.1rem;
+    transition: background-color var(--transition-fast), color var(--transition-fast);
+    /* Always visible: use contrasting color per theme */
+    color: var(--color-text);
+}
+
+/* In dark mode: icon is light/warm so it pops against dark bg */
+[data-theme='dark'] .themeToggle {
+    color: #f0c040;
+}
+
+/* In light mode: icon is dark so it pops against light bg */
+[data-theme='light'] .themeToggle {
+    color: #374151;
+}
+
+.themeToggle:hover {
+    background-color: var(--color-bg-tertiary);
+}
+
+.loginBtn {
+    font-size: 0.9375rem;
+}
+
+.signupBtn {
+    font-size: 0.875rem;
+}
+
+@media (max-width: 768px) {
+    .nav {
+        display: none;
+    }
+
+    .loginBtn {
+        display: none;
+    }
+}
