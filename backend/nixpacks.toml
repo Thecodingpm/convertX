@@ -1,10 +1,10 @@
 [phases.setup]
-nixPkgs = ["php84", "php84Packages.composer", "ffmpeg", "python312", "python312Packages.pip", "stdenv.cc.cc.lib", "zlib", "glib"]
+nixPkgs = ["php84", "php84Packages.composer", "ffmpeg", "python312", "python312Packages.pip", "stdenv.cc.cc.lib", "zlib", "glib", "libgcc"]
 
 [phases.install]
 cmds = [
     "composer install --no-dev --optimize-autoloader --no-interaction",
-    "pip install pdf2docx pypdf reportlab pillow python-docx --break-system-packages"
+    "pip install pymupdf==1.23.8 pdf2docx pypdf reportlab pillow python-docx --break-system-packages --no-cache-dir"
 ]
 
 [phases.build]
@@ -20,4 +20,4 @@ cmds = [
 ]
 
 [start]
-cmd = "php artisan serve --host=0.0.0.0 --port=$PORT"
+cmd = "export LD_LIBRARY_PATH=$(find /nix/store -name 'libstdc++.so.6' 2>/dev/null | head -1 | xargs dirname):$LD_LIBRARY_PATH && php artisan serve --host=0.0.0.0 --port=$PORT"
