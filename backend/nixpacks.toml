@@ -2,7 +2,10 @@
 nixPkgs = ["php84", "php84Packages.composer", "ffmpeg", "python312", "python312Packages.pip"]
 
 [phases.install]
-cmds = ["composer install --no-dev --optimize-autoloader --no-interaction"]
+cmds = [
+    "composer install --no-dev --optimize-autoloader --no-interaction",
+    "pip install pdf2docx pypdf reportlab pillow python-docx --break-system-packages"
+]
 
 [phases.build]
 cmds = [
