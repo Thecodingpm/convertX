@@ -8,9 +8,9 @@ use Illuminate\Support\Facades\Process;
 class PdfService
 {
     // Full absolute paths — Laravel Process doesn't inherit shell PATH
-    private string $gs = '/opt/homebrew/bin/gs';
-    private string $libreOffice = '/Applications/LibreOffice.app/Contents/MacOS/soffice';
-    private string $python = '/opt/homebrew/opt/python@3.14/bin/python3.14';
+    private string $gs = 'gs';
+    private string $libreOffice = 'soffice';
+    private string $python = 'python3';
 
 
     /**

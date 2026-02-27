@@ -8,8 +8,8 @@ use Illuminate\Support\Facades\Process;
 class MediaService
 {
     // Full absolute paths — Laravel Process doesn't inherit shell PATH
-    private string $ffmpeg  = '/opt/homebrew/bin/ffmpeg';
-    private string $ffprobe = '/opt/homebrew/bin/ffprobe';
+    private string $ffmpeg  = 'ffmpeg';
+    private string $ffprobe = 'ffprobe';
 
     public function mp3ToWav(string $inputPath, string $outputPath): string
     {

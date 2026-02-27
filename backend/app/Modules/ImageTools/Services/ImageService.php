@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Process;
 class ImageService
 {
     // Full absolute paths — Laravel Process doesn't inherit shell PATH
-    private string $magick = '/opt/homebrew/bin/magick';
+    private string $magick = 'magick';
 
     /**
      * Run an ImageMagick command safely.
@@ -21,7 +21,7 @@ class ImageService
 
         if ($result->failed()) {
             // Try legacy 'convert' binary as fallback
-            $cmd2    = escapeshellarg('/opt/homebrew/bin/convert') . " {$args}";
+            $cmd2    = escapeshellarg('convert') . " {$args}";
             $result2 = Process::run($cmd2);
 
             if ($result2->failed()) {
