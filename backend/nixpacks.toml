@@ -1,5 +1,5 @@
 [phases.setup]
-nixPkgs = ["php84", "php84Packages.composer", "ffmpeg", "python312", "python312Packages.pip"]
+nixPkgs = ["php84", "php84Packages.composer", "ffmpeg", "python312", "python312Packages.pip", "stdenv.cc.cc.lib", "zlib", "glib"]
 
 [phases.install]
 cmds = [
