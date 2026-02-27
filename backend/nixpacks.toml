@@ -8,6 +8,9 @@ cmds = ["composer install --no-dev --optimize-autoloader --no-interaction"]
 cmds = [
     "cp .env.example .env",
     "php artisan key:generate --force",
+    "mkdir -p database",
+    "touch database/database.sqlite",
+    "php artisan migrate --force",
     "php artisan config:clear",
     "php artisan route:clear",
     "php artisan storage:link || true"
