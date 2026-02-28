@@ -9,17 +9,14 @@ export default function Footer() {
                 <div className={styles.grid}>
                     <div className={styles.brand}>
                         <div className={styles.logo}>
-                            <div className={styles.logoMark}>
-                                <Zap size={14} strokeWidth={2.5} />
-                            </div>
-                            <span className={styles.logoText}>ConvertX</span>
+                            <span className={styles.logoText}>pdfconvertx</span>
                         </div>
                         <p className={styles.tagline}>
                             40+ free file tools — PDF, image, audio &amp; video.
                             No signup, no watermarks, files auto-deleted after 1 hour.
                         </p>
                         <p className={styles.copyright}>
-                            © {new Date().getFullYear()} ConvertX. All rights reserved.
+                            © {new Date().getFullYear()} pdfconvertx. All rights reserved.
                         </p>
                     </div>
 

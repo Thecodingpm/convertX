@@ -22,28 +22,15 @@
 .logo {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
     text-decoration: none;
     color: var(--color-text);
 }
 
-.logoMark {
-    width: 32px;
-    height: 32px;
-    border-radius: 9px;
-    background: linear-gradient(135deg, #5b5bd6, #7c3aed);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #fff;
-    flex-shrink: 0;
-    box-shadow: 0 2px 8px rgba(91, 91, 214, 0.35);
-}
-
 .logoText {
-    font-size: 1.15rem;
-    font-weight: 800;
-    letter-spacing: -0.03em;
+    font-size: 1.35rem;
+    font-family: 'Georgia', serif;
+    font-weight: 500;
+    letter-spacing: -0.01em;
     color: var(--color-text-primary);
 }
 

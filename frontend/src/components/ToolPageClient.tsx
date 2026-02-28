@@ -423,11 +423,11 @@ export default function ToolPageClient({ slug: propSlug, content }: { slug?: str
 
             {/* ── SEO Content Sections ─────────────────────────────────── */}
             {content && (
-                <div style={{ maxWidth: "var(--max-width)", margin: "0 auto", padding: "0 var(--space-lg) var(--space-3xl)" }}>
+                <div style={{ maxWidth: "var(--max-width)", margin: "6rem auto 0 auto", padding: "0 var(--space-lg) var(--space-3xl)" }}>
 
                     {/* H1 + Intro */}
-                    <div style={{ marginBottom: "2.5rem", paddingTop: "2rem" }}>
-                        <h1 style={{ fontSize: "1.875rem", fontWeight: 800, letterSpacing: "-0.02em", marginBottom: "0.75rem" }}>
+                    <div style={{ marginBottom: "3rem" }}>
+                        <h1 style={{ fontSize: "2.25rem", fontWeight: 800, letterSpacing: "-0.02em", marginBottom: "1rem" }}>
                             {content.h1}
                         </h1>
                         <p style={{ fontSize: "1.0625rem", color: "var(--color-text-secondary)", lineHeight: 1.7 }}>

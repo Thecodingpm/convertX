@@ -13,10 +13,10 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
     const { slug } = await params;
     const post = getBlogPost(slug);
-    if (!post) return { title: "Post Not Found | ConvertX Blog" };
+    if (!post) return { title: "Post Not Found | pdfconvertx Blog" };
     const canonical = `${BASE_URL}/blog/${slug}`;
     return {
-        title: `${post.title} | ConvertX Blog`,
+        title: `${post.title} | pdfconvertx Blog`,
         description: post.excerpt,
         alternates: { canonical },
         openGraph: {
@@ -25,7 +25,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
             url: canonical,
             type: "article",
             publishedTime: post.date,
-            siteName: "ConvertX",
+            siteName: "pdfconvertx",
         },
         twitter: { card: "summary_large_image", title: post.title, description: post.excerpt },
     };
@@ -44,7 +44,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         headline: post.title,
         description: post.excerpt,
         datePublished: post.date,
-        publisher: { "@type": "Organization", name: "ConvertX", url: BASE_URL },
+        publisher: { "@type": "Organization", name: "pdfconvertx", url: BASE_URL },
         url: `${BASE_URL}/blog/${slug}`,
     };
 

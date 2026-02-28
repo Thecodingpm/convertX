@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-    title: "Disclaimer – ConvertX",
-    description: "Read the ConvertX Disclaimer. Information about the accuracy of conversion results, affiliate relationships, external links, and professional advice.",
+    title: "Disclaimer – pdfconvertx",
+    description: "Read the pdfconvertx Disclaimer. Information about the accuracy of conversion results, affiliate relationships, external links, and professional advice.",
     alternates: { canonical: "https://convertx.app/disclaimer" },
 };
 
@@ -22,13 +22,13 @@ export default function DisclaimerPage() {
             </p>
 
             <p style={{ lineHeight: 1.8, color: "var(--color-text-secondary)", marginBottom: "2rem" }}>
-                The information and services provided on ConvertX (convertx.app) are for general informational and utility purposes only.
-                By using our services, you accept this disclaimer in full. If you disagree with any part of this disclaimer, please do not use ConvertX.
+                The information and services provided on pdfconvertx (convertx.app) are for general informational and utility purposes only.
+                By using our services, you accept this disclaimer in full. If you disagree with any part of this disclaimer, please do not use pdfconvertx.
             </p>
 
             <Section title="No Guarantee of Accuracy">
                 <p>
-                    While we strive to provide high-quality file conversion results, ConvertX does not guarantee that conversion outputs will be
+                    While we strive to provide high-quality file conversion results, pdfconvertx does not guarantee that conversion outputs will be
                     100% accurate, complete, or suitable for your specific purpose. Conversion results may vary depending on the complexity,
                     encoding, or formatting of the input file.
                 </p>
@@ -40,7 +40,7 @@ export default function DisclaimerPage() {
 
             <Section title="Professional Advice">
                 <p>
-                    ConvertX is a file utility tool and does not provide legal, medical, financial, or any other form of professional advice.
+                    pdfconvertx is a file utility tool and does not provide legal, medical, financial, or any other form of professional advice.
                     The blog articles and informational content on this website are for general educational purposes only and should not be relied upon
                     as professional or expert advice. For important matters, please consult a qualified professional.
                 </p>
@@ -49,7 +49,7 @@ export default function DisclaimerPage() {
             <Section title="External Links">
                 <p>
                     Our website and blog may contain links to external websites. These links are provided for reference and convenience only.
-                    ConvertX does not endorse, control, or verify the content of external sites and is not responsible for:
+                    pdfconvertx does not endorse, control, or verify the content of external sites and is not responsible for:
                 </p>
                 <ul>
                     <li>The accuracy or reliability of information on external websites</li>
@@ -60,9 +60,9 @@ export default function DisclaimerPage() {
 
             <Section title="Advertising Disclaimer">
                 <p>
-                    ConvertX displays third-party advertisements through Google AdSense to help support the free service.
+                    pdfconvertx displays third-party advertisements through Google AdSense to help support the free service.
                     These advertisements are selected by Google based on your browsing behaviour and our website content.
-                    ConvertX does not endorse any products or services advertised through these third-party networks.
+                    pdfconvertx does not endorse any products or services advertised through these third-party networks.
                 </p>
                 <p>
                     We are not responsible for the accuracy, legality, or appropriateness of any advertisement displayed on our website.
@@ -72,14 +72,14 @@ export default function DisclaimerPage() {
 
             <Section title="Affiliate Disclaimer">
                 <p>
-                    ConvertX does not currently participate in affiliate marketing programmes. If this changes in the future,
+                    pdfconvertx does not currently participate in affiliate marketing programmes. If this changes in the future,
                     we will clearly disclose any affiliate relationships on the relevant pages in compliance with applicable regulations.
                 </p>
             </Section>
 
             <Section title="File Processing Disclaimer">
                 <p>
-                    Files uploaded to ConvertX are processed automatically without any human review.
+                    Files uploaded to pdfconvertx are processed automatically without any human review.
                     We process files solely to perform the requested conversion. While we implement technical safeguards,
                     you upload files at your own risk. Do not upload files containing highly sensitive or confidential information
                     beyond what is strictly necessary.
@@ -89,7 +89,7 @@ export default function DisclaimerPage() {
             <Section title="Changes to This Disclaimer">
                 <p>
                     We may update this Disclaimer from time to time. Changes will be reflected by updating the &quot;Last updated&quot;
-                    date at the top of this page. Your continued use of ConvertX after any changes constitutes your acceptance of the updated Disclaimer.
+                    date at the top of this page. Your continued use of pdfconvertx after any changes constitutes your acceptance of the updated Disclaimer.
                 </p>
             </Section>
 

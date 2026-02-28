@@ -4,7 +4,7 @@ import { blogPosts } from "@/lib/blogPosts";
 import styles from "./page.module.css";
 
 export const metadata: Metadata = {
-    title: "Blog – File Conversion Tips, Guides & Tutorials | ConvertX",
+    title: "Blog – File Conversion Tips, Guides & Tutorials | pdfconvertx",
     description: "Free guides on compressing PDFs, resizing images for government portals, converting videos to GIF, and more. Tips for students and professionals in Pakistan and India.",
     alternates: { canonical: "https://convertx.app/blog" },
 };
@@ -26,7 +26,7 @@ export default function BlogPage() {
                 </nav>
 
                 <div className={styles.header}>
-                    <h1>ConvertX Blog</h1>
+                    <h1>pdfconvertx Blog</h1>
                     <p>Free guides, tutorials, and best practices for file conversion — written for students, job applicants, and professionals.</p>
                 </div>
 

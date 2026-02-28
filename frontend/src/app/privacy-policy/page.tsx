@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-    title: "Privacy Policy – ConvertX",
-    description: "Read ConvertX's Privacy Policy. Learn how we handle your files, what data we collect, and how we protect your privacy when using our free online tools.",
+    title: "Privacy Policy – pdfconvertx",
+    description: "Read pdfconvertx's Privacy Policy. Learn how we handle your files, what data we collect, and how we protect your privacy when using our free online tools.",
     alternates: { canonical: "https://convertx.app/privacy-policy" },
 };
 
@@ -24,9 +24,9 @@ export default function PrivacyPolicyPage() {
             </p>
 
             <p style={{ lineHeight: 1.8, color: "var(--color-text-secondary)", marginBottom: "2rem" }}>
-                ConvertX (&quot;we&quot;, &quot;us&quot;, or &quot;our&quot;) operates the website at <strong>convertx.app</strong>.
+                pdfconvertx (&quot;we&quot;, &quot;us&quot;, or &quot;our&quot;) operates the website at <strong>convertx.app</strong>.
                 This Privacy Policy explains how we collect, use, and protect information when you use our free online file conversion services.
-                By using ConvertX, you agree to the practices described in this policy.
+                By using pdfconvertx, you agree to the practices described in this policy.
             </p>
 
             <Section title="1. Information We Collect">
@@ -58,7 +58,7 @@ export default function PrivacyPolicyPage() {
             </Section>
 
             <Section title="4. Cookies">
-                <p>ConvertX uses cookies for the following purposes:</p>
+                <p>pdfconvertx uses cookies for the following purposes:</p>
                 <ul>
                     <li><strong>Essential cookies:</strong> Required for the website to function correctly (e.g. theme preference)</li>
                     <li><strong>Analytics cookies:</strong> Google Analytics uses cookies to collect anonymised data about how visitors use our site</li>
@@ -78,7 +78,7 @@ export default function PrivacyPolicyPage() {
 
             <Section title="6. Children's Privacy">
                 <p>
-                    ConvertX does not knowingly collect personal information from children under 13 years of age.
+                    pdfconvertx does not knowingly collect personal information from children under 13 years of age.
                     If you believe a child has provided us with personal information, please contact us so we can delete it.
                 </p>
             </Section>
