@@ -83,10 +83,10 @@ export default function HomePage() {
                                 <input
                                     type="text"
                                     className={styles.searchInput}
-                                    placeholder="Search tools… e.g. " PDF to Word", "compress image""
-                                value={query}
-                                onChange={e => setQuery(e.target.value)}
-                                autoComplete="off"
+                                    placeholder='Search tools… e.g. "PDF to Word", "compress image"'
+                                    value={query}
+                                    onChange={e => setQuery(e.target.value)}
+                                    autoComplete="off"
                                 />
                                 {query && (
                                     <button
