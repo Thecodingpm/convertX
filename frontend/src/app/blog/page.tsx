@@ -1,64 +1,55 @@
 import Link from "next/link";
+import type { Metadata } from "next";
+import { blogPosts } from "@/lib/blogPosts";
 import styles from "./page.module.css";
 
-export const metadata = {
-    title: "Blog – FileForge",
-    description: "Tips, tutorials, and updates about file conversion, productivity, and digital tools.",
+export const metadata: Metadata = {
+    title: "Blog – File Conversion Tips, Guides & Tutorials | ConvertX",
+    description: "Free guides on compressing PDFs, resizing images for government portals, converting videos to GIF, and more. Tips for students and professionals in Pakistan and India.",
+    alternates: { canonical: "https://convertx.app/blog" },
 };
 
-const posts = [
-    {
-        slug: "how-to-compress-pdf-without-losing-quality",
-        title: "How to Compress PDF Without Losing Quality",
-        excerpt: "Learn the best techniques to reduce PDF file size while maintaining document quality for sharing and storage.",
-        date: "Feb 20, 2026",
-        category: "PDF Tools",
-        readTime: "5 min read",
-    },
-    {
-        slug: "webp-vs-jpg-vs-png-which-image-format-to-use",
-        title: "WebP vs JPG vs PNG: Which Image Format Should You Use?",
-        excerpt: "Understand the differences between popular image formats and when to use each one for optimal performance.",
-        date: "Feb 18, 2026",
-        category: "Image Tools",
-        readTime: "7 min read",
-    },
-    {
-        slug: "convert-video-to-gif-ultimate-guide",
-        title: "The Ultimate Guide to Converting Video to GIF",
-        excerpt: "Everything you need to know about creating high-quality GIFs from video files for social media and presentations.",
-        date: "Feb 15, 2026",
-        category: "Media Tools",
-        readTime: "6 min read",
-    },
-    {
-        slug: "batch-file-conversion-tips",
-        title: "5 Tips for Efficient Batch File Conversion",
-        excerpt: "Save time with these proven strategies for converting multiple files at once using FileForge's batch tools.",
-        date: "Feb 12, 2026",
-        category: "Tips & Tricks",
-        readTime: "4 min read",
-    },
-];
+const categoryColors: Record<string, string> = {
+    "PDF Tools": "#ef4444",
+    "Image Tools": "#8b5cf6",
+    "Media Tools": "#3b82f6",
+    "Tips & Tricks": "#22c55e",
+    "Utility Tools": "#f59e0b",
+};
 
 export default function BlogPage() {
     return (
         <div className={styles.page}>
             <div className="container">
+                <nav style={{ fontSize: "0.8125rem", color: "var(--color-text-muted)", marginBottom: "1.5rem" }}>
+                    <Link href="/">Home</Link> &rsaquo; Blog
+                </nav>
+
                 <div className={styles.header}>
-                    <h1>Blog</h1>
-                    <p>Tips, tutorials, and updates from the FileForge team</p>
+                    <h1>ConvertX Blog</h1>
+                    <p>Free guides, tutorials, and best practices for file conversion — written for students, job applicants, and professionals.</p>
                 </div>
 
                 <div className={styles.grid}>
-                    {posts.map((post) => (
+                    {blogPosts.map((post) => (
                         <Link
                             key={post.slug}
                             href={`/blog/${post.slug}`}
                             className={styles.card}
                         >
                             <div className={styles.cardMeta}>
-                                <span className="badge badge-primary">{post.category}</span>
+                                <span
+                                    style={{
+                                        fontSize: "0.75rem",
+                                        fontWeight: 600,
+                                        color: categoryColors[post.category] ?? "var(--color-primary)",
+                                        background: `${categoryColors[post.category] ?? "var(--color-primary)"}15`,
+                                        padding: "2px 10px",
+                                        borderRadius: "99px",
+                                    }}
+                                >
+                                    {post.category}
+                                </span>
                                 <span className={styles.readTime}>{post.readTime}</span>
                             </div>
                             <h2>{post.title}</h2>

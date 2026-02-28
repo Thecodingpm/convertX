@@ -12,8 +12,8 @@
 
 .grid {
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr 1fr;
-    gap: var(--space-2xl);
+    grid-template-columns: 2fr 1fr 1fr 1fr 1fr 1fr;
+    gap: var(--space-xl);
     margin-bottom: var(--space-2xl);
 }
 
@@ -25,10 +25,29 @@
     display: flex;
     align-items: center;
     gap: var(--space-sm);
-    font-size: 1.25rem;
+    font-size: 1.1rem;
     font-weight: 700;
     color: var(--color-text);
     margin-bottom: var(--space-md);
+    text-decoration: none;
+}
+
+.logoMark {
+    width: 26px;
+    height: 26px;
+    border-radius: 7px;
+    background: linear-gradient(135deg, #5b5bd6, #7c3aed);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    flex-shrink: 0;
+}
+
+.logoText {
+    font-size: 1.0625rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
 }
 
 .tagline {
@@ -63,10 +82,19 @@
     color: var(--color-primary);
 }
 
+.copyright {
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+    margin-top: var(--space-sm);
+}
+
 .bottom {
     padding-top: var(--space-xl);
     border-top: 1px solid var(--color-border-light);
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
 }
 
 .bottom p {
@@ -74,10 +102,48 @@
     color: var(--color-text-muted);
 }
 
+.bottomLinks {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.bottomLinks a {
+    font-size: 0.8125rem;
+    color: var(--color-text-muted);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+}
+
+.bottomLinks a:hover {
+    color: var(--color-primary);
+}
+
+.bottomLinks span {
+    color: var(--color-border);
+}
+
+@media (max-width: 1024px) {
+    .grid {
+        grid-template-columns: 2fr 1fr 1fr 1fr;
+        gap: var(--space-xl);
+    }
+
+    .column:nth-child(n+5) {
+        display: none;
+    }
+}
+
 @media (max-width: 768px) {
     .grid {
         grid-template-columns: 1fr 1fr;
         gap: var(--space-xl);
+    }
+
+    .column:nth-child(n+5) {
+        display: flex;
     }
 
     .brand {

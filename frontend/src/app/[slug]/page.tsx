@@ -1,8 +1,10 @@
 // Root-level tool pages: /pdf-to-word, /resize-image, /qr-code etc.
-// Server component — handles SEO, then delegates to shared ToolPageClient
+// Server component — handles SEO, schemas, then delegates to shared ToolPageClient
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import Link from "next/link";
 import { getToolBySlug, tools } from "@/lib/tools";
+import { getToolContent } from "@/lib/toolContent";
 import ToolPageClient from "@/components/ToolPageClient";
 
 const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://convertx.app";
@@ -25,10 +27,15 @@ export async function generateMetadata({
 }): Promise<Metadata> {
     const { slug } = await params;
     const tool = getToolBySlug(slug);
-    if (!tool) return { title: "Tool Not Found | FileForge" };
+    if (!tool) return { title: "Tool Not Found | ConvertX" };
 
-    const title = `${tool.name} – Free Online, No Signup Required`;
-    const description = toolDesc(tool.name, tool.description, tool.category);
+    const content = getToolContent(slug);
+    const title = content
+        ? content.h1.slice(0, 60)
+        : `${tool.name} – Free Online, No Signup Required`;
+    const description = content
+        ? `${content.intro} Part of ConvertX's free ${tool.category}.`.slice(0, 160)
+        : toolDesc(tool.name, tool.description, tool.category);
     const canonical = `${BASE_URL}/${slug}`;
 
     return {
@@ -41,8 +48,8 @@ export async function generateMetadata({
             `${tool.name.toLowerCase()} no signup`,
             `free ${tool.name.toLowerCase()}`,
             tool.category.toLowerCase(),
-            "fileforge",
             "convertx",
+            "file converter",
         ],
         alternates: { canonical },
         openGraph: {
@@ -51,11 +58,13 @@ export async function generateMetadata({
             url: canonical,
             type: "website",
             siteName: "ConvertX",
+            images: [{ url: "/og-image.png", width: 1200, height: 630, alt: `${tool.name} – ConvertX` }],
         },
         twitter: {
-            card: "summary",
+            card: "summary_large_image",
             title,
             description,
+            images: ["/og-image.png"],
         },
     };
 }
@@ -71,7 +80,10 @@ export default async function RootToolPage({
     // Only 404 if the slug truly doesn't match any tool
     if (!tool) notFound();
 
-    const jsonLd = {
+    const content = getToolContent(slug);
+
+    // ── JSON-LD: WebApplication ───────────────────────────────────────────────
+    const webAppJsonLd = {
         "@context": "https://schema.org",
         "@type": "WebApplication",
         name: tool.name,
@@ -92,13 +104,83 @@ export default async function RootToolPage({
         ],
     };
 
+    // ── JSON-LD: BreadcrumbList ───────────────────────────────────────────────
+    const breadcrumbJsonLd = {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        itemListElement: [
+            { "@type": "ListItem", position: 1, name: "Home", item: BASE_URL },
+            { "@type": "ListItem", position: 2, name: "Tools", item: `${BASE_URL}/tools` },
+            {
+                "@type": "ListItem",
+                position: 3,
+                name: content?.breadcrumbCategory ?? tool.category,
+                item: `${BASE_URL}/${content?.breadcrumbCategorySlug ?? "tools"}`,
+            },
+            { "@type": "ListItem", position: 4, name: tool.name, item: `${BASE_URL}/${slug}` },
+        ],
+    };
+
+    // ── JSON-LD: FAQPage ──────────────────────────────────────────────────────
+    const faqJsonLd = content?.faqs
+        ? {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: content.faqs.map((faq) => ({
+                "@type": "Question",
+                name: faq.question,
+                acceptedAnswer: { "@type": "Answer", text: faq.answer },
+            })),
+        }
+        : null;
+
     return (
         <>
             <script
                 type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(webAppJsonLd) }}
             />
-            <ToolPageClient slug={slug} />
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+            />
+            {faqJsonLd && (
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+                />
+            )}
+
+            {/* Breadcrumb nav (visible) */}
+            <nav
+                aria-label="Breadcrumb"
+                style={{
+                    maxWidth: "var(--max-width)",
+                    margin: "0 auto",
+                    padding: "0.75rem var(--space-lg) 0",
+                    fontSize: "0.8125rem",
+                    color: "var(--color-text-muted)",
+                    display: "flex",
+                    gap: "0.35rem",
+                    alignItems: "center",
+                    flexWrap: "wrap",
+                }}
+            >
+                <Link href="/" style={{ color: "var(--color-text-muted)", textDecoration: "none" }}>Home</Link>
+                <span>›</span>
+                <Link href="/tools" style={{ color: "var(--color-text-muted)", textDecoration: "none" }}>Tools</Link>
+                <span>›</span>
+                <Link
+                    href={`/${content?.breadcrumbCategorySlug ?? "tools"}`}
+                    style={{ color: "var(--color-text-muted)", textDecoration: "none" }}
+                >
+                    {content?.breadcrumbCategory ?? tool.category}
+                </Link>
+                <span>›</span>
+                <span style={{ color: "var(--color-text-secondary)" }}>{tool.name}</span>
+            </nav>
+
+            <ToolPageClient slug={slug} content={content} />
         </>
     );
 }

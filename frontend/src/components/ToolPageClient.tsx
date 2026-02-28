@@ -4,10 +4,11 @@ import { useParams } from "next/navigation";
 import Link from "next/link";
 import {
     Upload, X, CheckCircle, AlertCircle, Download,
-    ArrowLeft, FileText, Loader2, CloudUpload
+    ArrowLeft, FileText, Loader2, CloudUpload, ChevronDown
 } from "lucide-react";
-import { getToolBySlug } from "@/lib/tools";
+import { getToolBySlug, tools } from "@/lib/tools";
 import { api } from "@/lib/api";
+import type { ToolContent } from "@/lib/toolContent";
 import styles from "@/app/tools/[slug]/page.module.css";
 
 // ── QR Code UI (client-side, no backend) ────────────────────────────────────
@@ -114,7 +115,7 @@ function formatBytes(bytes: number) {
 }
 
 // ── Main Component ───────────────────────────────────────────────────────────
-export default function ToolPageClient({ slug: propSlug }: { slug?: string }) {
+export default function ToolPageClient({ slug: propSlug, content }: { slug?: string; content?: ToolContent }) {
     const params = useParams();
     const slug = propSlug ?? (params?.slug as string);
     const tool = getToolBySlug(slug);
@@ -255,9 +256,7 @@ export default function ToolPageClient({ slug: propSlug }: { slug?: string }) {
     return (
         <div className={styles.page}>
             <div className={styles.container}>
-                <Link href="/tools" className={styles.back}>
-                    <ArrowLeft size={16} /> All Tools
-                </Link>
+
                 <div className={styles.toolHeader}>
                     <div className={styles.toolIconWrap} style={{ background: `${tool.color}18`, color: tool.color }}>
                         <Icon size={32} />
@@ -421,6 +420,159 @@ export default function ToolPageClient({ slug: propSlug }: { slug?: string }) {
                     ))}
                 </div>
             </div>
+
+            {/* ── SEO Content Sections ─────────────────────────────────── */}
+            {content && (
+                <div style={{ maxWidth: "var(--max-width)", margin: "0 auto", padding: "0 var(--space-lg) var(--space-3xl)" }}>
+
+                    {/* H1 + Intro */}
+                    <div style={{ marginBottom: "2.5rem", paddingTop: "2rem" }}>
+                        <h1 style={{ fontSize: "1.875rem", fontWeight: 800, letterSpacing: "-0.02em", marginBottom: "0.75rem" }}>
+                            {content.h1}
+                        </h1>
+                        <p style={{ fontSize: "1.0625rem", color: "var(--color-text-secondary)", lineHeight: 1.7 }}>
+                            {content.intro}
+                        </p>
+                    </div>
+
+                    {/* Content sections */}
+                    <div style={{ display: "grid", gap: "2rem", marginBottom: "3rem" }}>
+                        {content.sections.map((section) => (
+                            <section key={section.heading}>
+                                <h2 style={{ fontSize: "1.25rem", fontWeight: 700, marginBottom: "0.625rem" }}>
+                                    {section.heading}
+                                </h2>
+                                <p style={{ lineHeight: 1.8, color: "var(--color-text-secondary)" }}>
+                                    {section.body}
+                                </p>
+                            </section>
+                        ))}
+                    </div>
+
+                    {/* FAQ section */}
+                    <section style={{ marginBottom: "3rem" }}>
+                        <h2 style={{ fontSize: "1.375rem", fontWeight: 700, marginBottom: "1.25rem" }}>
+                            Frequently Asked Questions
+                        </h2>
+                        <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
+                            {content.faqs.map((faq) => (
+                                <FaqItem key={faq.question} question={faq.question} answer={faq.answer} />
+                            ))}
+                        </div>
+                    </section>
+
+                    {/* Related tools */}
+                    {content.relatedSlugs.length > 0 && (
+                        <section>
+                            <h2 style={{ fontSize: "1.375rem", fontWeight: 700, marginBottom: "1.25rem" }}>
+                                Related Tools
+                            </h2>
+                            <div style={{
+                                display: "grid",
+                                gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))",
+                                gap: "0.75rem",
+                            }}>
+                                {content.relatedSlugs.map((rSlug) => {
+                                    const relTool = tools.find(t => t.slug === rSlug);
+                                    if (!relTool) return null;
+                                    const RelIcon = relTool.icon;
+                                    return (
+                                        <Link
+                                            key={rSlug}
+                                            href={`/${rSlug}`}
+                                            style={{
+                                                display: "flex",
+                                                alignItems: "center",
+                                                gap: "0.75rem",
+                                                padding: "0.75rem 1rem",
+                                                borderRadius: "var(--radius-lg)",
+                                                border: "1.5px solid var(--color-border-light)",
+                                                background: "var(--color-surface)",
+                                                textDecoration: "none",
+                                                color: "var(--color-text)",
+                                                transition: "border-color 0.15s, box-shadow 0.15s",
+                                            }}
+                                        >
+                                            <div style={{
+                                                width: 36, height: 36, borderRadius: "var(--radius-md)",
+                                                background: `${relTool.color}18`, color: relTool.color,
+                                                display: "flex", alignItems: "center", justifyContent: "center",
+                                                flexShrink: 0,
+                                            }}>
+                                                <RelIcon size={18} />
+                                            </div>
+                                            <div>
+                                                <div style={{ fontWeight: 600, fontSize: "0.9rem" }}>{relTool.name}</div>
+                                                <div style={{ fontSize: "0.78rem", color: "var(--color-text-muted)", lineClamp: 1 }}>{relTool.description}</div>
+                                            </div>
+                                        </Link>
+                                    );
+                                })}
+                            </div>
+                        </section>
+                    )}
+                </div>
+            )}
+        </div>
+    );
+}
+
+// ── FAQ Accordion Item ────────────────────────────────────────────────────────
+function FaqItem({ question, answer }: { question: string; answer: string }) {
+    const [open, setOpen] = useState(false);
+    return (
+        <div
+            style={{
+                border: "1.5px solid var(--color-border-light)",
+                borderRadius: "var(--radius-lg)",
+                background: "var(--color-surface)",
+                overflow: "hidden",
+            }}
+        >
+            <button
+                onClick={() => setOpen(o => !o)}
+                style={{
+                    width: "100%",
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                    padding: "1rem 1.25rem",
+                    background: "none",
+                    border: "none",
+                    cursor: "pointer",
+                    fontWeight: 600,
+                    fontSize: "0.9375rem",
+                    color: "var(--color-text)",
+                    textAlign: "left",
+                    gap: "1rem",
+                }}
+                aria-expanded={open}
+            >
+                <span>{question}</span>
+                <ChevronDown
+                    size={18}
+                    style={{
+                        flexShrink: 0,
+                        transition: "transform 0.2s",
+                        transform: open ? "rotate(180deg)" : "rotate(0deg)",
+                        color: "var(--color-text-muted)",
+                    }}
+                />
+            </button>
+            {open && (
+                <div
+                    style={{
+                        padding: "0 1.25rem 1rem",
+                        color: "var(--color-text-secondary)",
+                        lineHeight: 1.7,
+                        fontSize: "0.9375rem",
+                        borderTop: "1px solid var(--color-border-light)",
+                        paddingTop: "0.875rem",
+                    }}
+                >
+                    {answer}
+                </div>
+            )}
         </div>
     );
 }
