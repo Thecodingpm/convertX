@@ -324,7 +324,7 @@ PYTHON;
         $safeText   = addslashes($watermarkText);
         $safePages  = addslashes($pages);
 
-        $pyScript = <<<PYTHON
+        $pyScript = <<<'PYTHON'
 import io, re
 from reportlab.pdfgen import canvas
 from pypdf import PdfReader, PdfWriter
@@ -362,11 +362,11 @@ def make_wm_page(pw, ph, text, position, opacity, color_hex, font_size, rotation
     buf.seek(0)
     return PdfReader(buf).pages[0]
 
-reader = PdfReader(r'{$safeInput}')
+reader = PdfReader(r'INPUT_PATH')
 writer = PdfWriter()
 total  = len(reader.pages)
 
-pages_str = r'{$safePages}'
+pages_str = r'PAGES_STR'
 if pages_str == 'all':
     selected = list(range(total))
 elif pages_str == 'first':
@@ -383,16 +383,26 @@ for i, page in enumerate(reader.pages):
     if i in selected:
         pw = float(page.mediabox.width)
         ph = float(page.mediabox.height)
-        wm = make_wm_page(pw, ph, r'{$safeText}', '{$position}', {$opacity}, '{$color}', {$fontSize}, {$rotation})
+        wm = make_wm_page(pw, ph, r'TEXT_STR', 'POSITION_STR', OPACITY_VAL, 'COLOR_HEX', FONT_SIZE_VAL, ROTATION_VAL)
         # over=True stamps watermark ON TOP of existing page content
         page.merge_page(wm, over=True)
         writer.add_page(page)
     else:
         writer.add_page(page)
 
-with open(r'{$outputPath}', 'wb') as f:
+with open(r'OUTPUT_PATH', 'wb') as f:
     writer.write(f)
 PYTHON;
+
+        $pyScript = str_replace('INPUT_PATH', $safeInput, $pyScript);
+        $pyScript = str_replace('PAGES_STR', $safePages, $pyScript);
+        $pyScript = str_replace('TEXT_STR', $safeText, $pyScript);
+        $pyScript = str_replace('POSITION_STR', $position, $pyScript);
+        $pyScript = str_replace('OPACITY_VAL', (string)$opacity, $pyScript);
+        $pyScript = str_replace('COLOR_HEX', $color, $pyScript);
+        $pyScript = str_replace('FONT_SIZE_VAL', (string)$fontSize, $pyScript);
+        $pyScript = str_replace('ROTATION_VAL', (string)$rotation, $pyScript);
+        $pyScript = str_replace('OUTPUT_PATH', $outputPath, $pyScript);
 
         file_put_contents($scriptFile, $pyScript);
 
@@ -428,6 +438,129 @@ PYTHON;
 
         if ($result->failed()) {
             throw new \RuntimeException('Page extraction failed: ' . $result->errorOutput());
+        }
+
+        return $outputPath;
+    }
+
+    // ──────────────────────────────────────────────────────────────────────────
+    // PPTX Converters — LibreOffice handles PPTX natively
+    // ──────────────────────────────────────────────────────────────────────────
+
+    /**
+     * Internal helper: run LibreOffice headless conversion on a PPTX file.
+     * LibreOffice writes the output into $outDir with a predictable filename.
+     * Returns the full path to the generated file.
+     */
+    private function libreConvert(string $inputPath, string $filterName, string $expectedExt, string $outDir): string
+    {
+        // Copy input to a temp file with .pptx extension so LibreOffice recognises it
+        $safeInput = $outDir . '/pptx_in_' . uniqid() . '.pptx';
+        copy($inputPath, $safeInput);
+
+        $result = Process::run(
+            escapeshellarg($this->libreOffice) .
+            " --headless --norestore --convert-to " . escapeshellarg($filterName) .
+            " --outdir " . escapeshellarg($outDir) .
+            " " . escapeshellarg($safeInput)
+        );
+
+        @unlink($safeInput);
+
+        if ($result->failed()) {
+            Log::error('LibreOffice PPTX conversion failed', [
+                'filter' => $filterName,
+                'error'  => $result->errorOutput(),
+                'stdout' => $result->output(),
+            ]);
+            throw new \RuntimeException('PPTX conversion failed: ' . $result->errorOutput());
+        }
+
+        // LibreOffice names the output after the input file
+        $baseName   = pathinfo($safeInput, PATHINFO_FILENAME);
+        $outputFile = $outDir . '/' . $baseName . '.' . $expectedExt;
+
+        if (!file_exists($outputFile)) {
+            // Fallback: find any file with the expected extension created very recently
+            $files = glob($outDir . '/*.' . $expectedExt);
+            if (!empty($files)) {
+                usort($files, fn($a, $b) => filemtime($b) - filemtime($a));
+                $outputFile = $files[0];
+            } else {
+                throw new \RuntimeException("PPTX conversion output not found (expected: {$outputFile})");
+            }
+        }
+
+        return $outputFile;
+    }
+
+    /**
+     * Convert PPTX to PDF using LibreOffice
+     */
+    public function pptxToPdf(string $inputPath, string $outputPath): string
+    {
+        $outDir  = dirname($outputPath);
+        $tmpFile = $this->libreConvert($inputPath, 'pdf', 'pdf', $outDir);
+        rename($tmpFile, $outputPath);
+        return $outputPath;
+    }
+
+    /**
+     * Convert PPTX to Word (DOCX) using LibreOffice
+     */
+    public function pptxToWord(string $inputPath, string $outputPath): string
+    {
+        $outDir  = dirname($outputPath);
+        $tmpFile = $this->libreConvert($inputPath, 'docx', 'docx', $outDir);
+        rename($tmpFile, $outputPath);
+        return $outputPath;
+    }
+
+    /**
+     * Convert PPTX to JPG — via PDF intermediate then Ghostscript rasterisation
+     */
+    public function pptxToJpg(string $inputPath, string $outputPath): string
+    {
+        $outDir  = dirname($outputPath);
+        $pdfTmp  = $outDir . '/pptx_pdf_' . uniqid() . '.pdf';
+
+        $this->pptxToPdf($inputPath, $pdfTmp);
+
+        $result = Process::run(
+            escapeshellarg($this->gs) .
+            " -sDEVICE=jpeg -dNOPAUSE -dBATCH -dSAFER -r150 -sOutputFile=" .
+            escapeshellarg($outputPath) . " " . escapeshellarg($pdfTmp)
+        );
+
+        @unlink($pdfTmp);
+
+        if ($result->failed()) {
+            throw new \RuntimeException('PPTX to JPG rasterisation failed: ' . $result->errorOutput());
+        }
+
+        return $outputPath;
+    }
+
+    /**
+     * Convert PPTX to PNG — via PDF intermediate then Ghostscript rasterisation
+     */
+    public function pptxToPng(string $inputPath, string $outputPath): string
+    {
+        $outDir  = dirname($outputPath);
+        $pdfTmp  = $outDir . '/pptx_pdf_' . uniqid() . '.pdf';
+
+        $this->pptxToPdf($inputPath, $pdfTmp);
+
+        $result = Process::run(
+            escapeshellarg($this->gs) .
+            " -sDEVICE=png16m -dNOPAUSE -dBATCH -dSAFER -r150 -sOutputFile=" .
+            escapeshellarg($outputPath) . " " . escapeshellarg($pdfTmp)
+        );
+
+        @unlink($pdfTmp);
+
+        if ($result->failed()) {
+            throw new \RuntimeException('PPTX to PNG rasterisation failed: ' . $result->errorOutput());
         }
 
         return $outputPath;

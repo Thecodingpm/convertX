@@ -65,6 +65,8 @@ class MediaToolController extends Controller
             'trim-audio' => 'Trim Audio',
             'trim-video' => 'Trim Video',
             'video-to-gif' => 'Video to GIF',
+            'mp4-to-gif' => 'MP4 to GIF',
+            'mp4-to-mp3' => 'MP4 to MP3',
             default => ucfirst(str_replace('-', ' ', $action)),
         };
     }

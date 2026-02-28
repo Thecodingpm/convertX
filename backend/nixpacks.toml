@@ -3,7 +3,7 @@ nixPkgs = ["php84", "php84Packages.composer", "ffmpeg", "python312", "python312P
 
 [phases.install]
 cmds = [
-    "apt-get update && apt-get install -y ghostscript imagemagick libreoffice-writer libreoffice-calc",
+    "apt-get update && apt-get install -y ghostscript imagemagick libreoffice-writer libreoffice-calc libreoffice-impress",
     "composer install --no-dev --optimize-autoloader --no-interaction",
     "pip install pypdf python-docx reportlab pillow pdfplumber openpyxl --break-system-packages --no-cache-dir"
 ]

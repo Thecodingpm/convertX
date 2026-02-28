@@ -62,6 +62,15 @@ class PdfRequest extends FormRequest
                 $rules['rotation']       = ['sometimes', 'integer', 'min:0', 'max:360'];
                 $rules['pages']          = ['sometimes', 'string'];
                 break;
+            case 'pptx-to-pdf':
+            case 'pptx-to-word':
+            case 'pptx-to-jpg':
+            case 'pptx-to-png':
+                $rules['file'] = [
+                    'required', 'file', 'max:102400',
+                    'mimetypes:application/vnd.openxmlformats-officedocument.presentationml.presentation,application/vnd.ms-powerpoint,application/mspowerpoint,application/powerpoint,application/x-mspowerpoint',
+                ];
+                break;
         }
 
         return $rules;
@@ -70,10 +79,11 @@ class PdfRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'file.mimes' => 'Please upload a valid PDF file.',
-            'file.max' => 'File size must not exceed 100MB.',
-            'files.min' => 'At least 2 PDF files are required for merging.',
-            'password.required' => 'Password is required for this operation.',
+            'file.mimes'         => 'Please upload a valid PDF file.',
+            'file.mimetypes'     => 'Please upload a valid PowerPoint (.pptx) file.',
+            'file.max'           => 'File size must not exceed 100MB.',
+            'files.min'          => 'At least 2 PDF files are required for merging.',
+            'password.required'  => 'Password is required for this operation.',
         ];
     }
 }

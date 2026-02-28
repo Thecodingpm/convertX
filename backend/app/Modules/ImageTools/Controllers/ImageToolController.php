@@ -57,16 +57,19 @@ class ImageToolController extends Controller
     protected function getToolName(string $action): string
     {
         return match ($action) {
-            'jpg-to-png' => 'JPG to PNG',
-            'png-to-jpg' => 'PNG to JPG',
-            'to-webp' => 'WebP Converter',
-            'resize' => 'Resize Image',
-            'compress' => 'Compress Image',
-            'crop' => 'Crop Image',
-            'rotate' => 'Rotate Image',
-            'to-pdf' => 'Image to PDF',
+            'jpg-to-png'        => 'JPG to PNG',
+            'png-to-jpg'        => 'PNG to JPG',
+            'to-webp'           => 'WebP Converter',
+            'webp-to-jpg'       => 'WebP to JPG',
+            'resize-image'      => 'Resize Image',
+            'compress-image'    => 'Compress Image',
+            'crop-image'        => 'Crop Image',
+            'rotate-image'      => 'Rotate Image',
+            'to-pdf'            => 'Image to PDF',
             'remove-background' => 'Remove Background',
-            default => ucfirst(str_replace('-', ' ', $action)),
+            'flip'              => 'Flip Image',
+            'bmp-to-png'        => 'BMP to PNG',
+            default             => ucfirst(str_replace('-', ' ', $action)),
         };
     }
 }

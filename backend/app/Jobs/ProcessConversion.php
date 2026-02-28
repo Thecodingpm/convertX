@@ -108,42 +108,67 @@ class ProcessConversion implements ShouldQueue
                 $upload->getOutputPath('pdf'),
                 array_map('intval', explode(',', $this->params['pages']))
             ),
+            'pptx-to-pdf'  => $service->pptxToPdf($this->inputPath, $upload->getOutputPath('pdf')),
+            'pptx-to-word' => $service->pptxToWord($this->inputPath, $upload->getOutputPath('docx')),
+            'pptx-to-jpg'  => $service->pptxToJpg($this->inputPath, $upload->getOutputPath('jpg')),
+            'pptx-to-png'  => $service->pptxToPng($this->inputPath, $upload->getOutputPath('png')),
             default => throw new \RuntimeException("Unknown PDF action: {$this->action}"),
+        };
+    }
+
+    /**
+     * Determine a safe output extension from the conversion's stored mime type.
+     * Falls back to the input path extension if mime lookup fails.
+     */
+    protected function imageExt(): string
+    {
+        $mime = $this->conversion->original_mime ?? '';
+        return match (true) {
+            str_contains($mime, 'jpeg') => 'jpg',
+            str_contains($mime, 'png')  => 'png',
+            str_contains($mime, 'gif')  => 'gif',
+            str_contains($mime, 'webp') => 'webp',
+            str_contains($mime, 'bmp')  => 'bmp',
+            str_contains($mime, 'tiff') => 'tiff',
+            default => (pathinfo($this->inputPath, PATHINFO_EXTENSION) ?: 'jpg'),
         };
     }
 
     protected function processImage(ImageService $service, FileUploadService $upload): string
     {
+        // Safe extension derived from stored mime type (not from temp path which has no extension)
+        $ext = $this->imageExt();
+
         return match ($this->action) {
-            'jpg-to-png' => $service->jpgToPng($this->inputPath, $upload->getOutputPath('png')),
-            'png-to-jpg' => $service->pngToJpg($this->inputPath, $upload->getOutputPath('jpg')),
-            'webp-to-jpg' => $service->toWebp($this->inputPath, $upload->getOutputPath('jpg')),
-            'resize-image' => $service->resize(
-                $this->inputPath, $upload->getOutputPath(pathinfo($this->inputPath, PATHINFO_EXTENSION)),
+            'jpg-to-png'        => $service->jpgToPng($this->inputPath, $upload->getOutputPath('png')),
+            'png-to-jpg'        => $service->pngToJpg($this->inputPath, $upload->getOutputPath('jpg')),
+            'to-webp'           => $service->toWebp($this->inputPath, $upload->getOutputPath('webp')),
+            'webp-to-jpg'       => $service->webpToJpg($this->inputPath, $upload->getOutputPath('jpg')),
+            'resize-image'      => $service->resize(
+                $this->inputPath, $upload->getOutputPath($ext),
                 (int)$this->params['width'], (int)$this->params['height']
             ),
-            'compress-image' => $service->compress(
-                $this->inputPath, $upload->getOutputPath(pathinfo($this->inputPath, PATHINFO_EXTENSION)),
+            'compress-image'    => $service->compress(
+                $this->inputPath, $upload->getOutputPath($ext),
                 (int)($this->params['quality'] ?? 75)
             ),
-            'crop-image' => $service->crop(
-                $this->inputPath, $upload->getOutputPath(pathinfo($this->inputPath, PATHINFO_EXTENSION)),
+            'crop-image'        => $service->crop(
+                $this->inputPath, $upload->getOutputPath($ext),
                 (int)$this->params['width'], (int)$this->params['height'],
                 (int)($this->params['x'] ?? 0), (int)($this->params['y'] ?? 0)
             ),
-            'rotate-image' => $service->rotate(
-                $this->inputPath, $upload->getOutputPath(pathinfo($this->inputPath, PATHINFO_EXTENSION)),
+            'rotate-image'      => $service->rotate(
+                $this->inputPath, $upload->getOutputPath($ext),
                 (int)$this->params['degrees']
             ),
-            'image-to-pdf' => $service->toPdf($this->inputPath, $upload->getOutputPath('pdf')),
+            'to-pdf'            => $service->toPdf($this->inputPath, $upload->getOutputPath('pdf')),
             'remove-background' => $service->removeBackground($this->inputPath, $upload->getOutputPath('png')),
-            'flip'   => $service->flip(
-                $this->inputPath,
-                $upload->getOutputPath(pathinfo($this->inputPath, PATHINFO_EXTENSION)),
+            'flip'              => $service->flip(
+                $this->inputPath, $upload->getOutputPath($ext),
                 $this->params['direction'] ?? 'horizontal'
             ),
-            'bmp-to-png' => $service->bmpToPng($this->inputPath, $upload->getOutputPath('png')),
-            default => throw new \RuntimeException("Unknown image action: {$this->action}"),
+            'bmp-to-png'        => $service->bmpToPng($this->inputPath, $upload->getOutputPath('png')),
+            default             => throw new \RuntimeException("Unknown image action: {$this->action}"),
         };
     }
 

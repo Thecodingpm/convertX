@@ -7,7 +7,7 @@ import {
     Music, Music2, Headphones, Film, Video, Mic,
     Clapperboard, Tv, Layers,
     ScanText, Brain, BarChart3,
-    QrCode, RefreshCw, FileOutput, Gauge,
+    QrCode, RefreshCw, FileOutput, Gauge, Monitor,
 } from "lucide-react";
 
 export interface Tool {
@@ -126,6 +126,12 @@ export const tools: Tool[] = [
         slug: "extract-pages", name: "Extract Pages", module: "pdf", category: "PDF Tools", description: "Extract specific pages from a PDF", icon: BookOpen, color: "#f97316", endpoint: "/api/v1/pdf/extract-pages", acceptedTypes: ".pdf",
         extraFields: [{ name: "pages", label: "Pages (comma-separated)", type: "text", required: true, placeholder: "1,3,5" }],
     },
+
+    // ── Presentation / PPTX Tools ──
+    { slug: "pptx-to-pdf", name: "PPTX to PDF", module: "pdf", category: "PDF Tools", description: "Convert PowerPoint presentations to PDF", icon: Monitor, color: "#f97316", endpoint: "/api/v1/pdf/pptx-to-pdf", acceptedTypes: ".pptx,.ppt" },
+    { slug: "pptx-to-word", name: "PPTX to Word", module: "pdf", category: "PDF Tools", description: "Convert PowerPoint to an editable Word document", icon: Monitor, color: "#3b82f6", endpoint: "/api/v1/pdf/pptx-to-word", acceptedTypes: ".pptx,.ppt" },
+    { slug: "pptx-to-jpg", name: "PPTX to JPG", module: "pdf", category: "PDF Tools", description: "Convert PowerPoint slides to JPG images", icon: Monitor, color: "#f59e0b", endpoint: "/api/v1/pdf/pptx-to-jpg", acceptedTypes: ".pptx,.ppt" },
+    { slug: "pptx-to-png", name: "PPTX to PNG", module: "pdf", category: "PDF Tools", description: "Convert PowerPoint slides to PNG images", icon: Monitor, color: "#8b5cf6", endpoint: "/api/v1/pdf/pptx-to-png", acceptedTypes: ".pptx,.ppt" },
 
     // ── Image Tools ──
     { slug: "jpg-to-png", name: "JPG to PNG", module: "image", category: "Image Tools", description: "Convert JPG images to PNG format", icon: ImageIcon, color: "#3b82f6", endpoint: "/api/v1/image/jpg-to-png", acceptedTypes: ".jpg,.jpeg" },

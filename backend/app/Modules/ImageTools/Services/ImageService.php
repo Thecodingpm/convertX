@@ -52,6 +52,12 @@ class ImageService
         return $outputPath;
     }
 
+    public function webpToJpg(string $inputPath, string $outputPath): string
+    {
+        $this->run(escapeshellarg($inputPath) . ' -background white -flatten -quality 90 ' . escapeshellarg($outputPath));
+        return $outputPath;
+    }
+
     public function resize(string $inputPath, string $outputPath, int $width, int $height): string
     {
         $this->run(escapeshellarg($inputPath) . " -resize {$width}x{$height} " . escapeshellarg($outputPath));

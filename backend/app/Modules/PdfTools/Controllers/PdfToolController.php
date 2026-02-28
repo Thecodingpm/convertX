@@ -94,17 +94,21 @@ class PdfToolController extends Controller
     protected function getToolName(string $action): string
     {
         return match ($action) {
-            'pdf-to-word' => 'PDF to Word',
-            'pdf-to-excel' => 'PDF to Excel',
-            'pdf-to-jpg' => 'PDF to JPG',
-            'merge' => 'Merge PDFs',
-            'split' => 'Split PDF',
-            'compress' => 'Compress PDF',
-            'add-password' => 'Add Password',
-            'remove-password' => 'Remove Password',
-            'watermark' => 'Add Watermark',
-            'extract-pages' => 'Extract Pages',
-            default => ucfirst(str_replace('-', ' ', $action)),
+            'pdf-to-word'    => 'PDF to Word',
+            'pdf-to-excel'   => 'PDF to Excel',
+            'pdf-to-jpg'     => 'PDF to JPG',
+            'merge'          => 'Merge PDFs',
+            'split'          => 'Split PDF',
+            'compress'       => 'Compress PDF',
+            'add-password'   => 'Add Password',
+            'remove-password'=> 'Remove Password',
+            'watermark'      => 'Add Watermark',
+            'extract-pages'  => 'Extract Pages',
+            'pptx-to-pdf'    => 'PPTX to PDF',
+            'pptx-to-word'   => 'PPTX to Word',
+            'pptx-to-jpg'    => 'PPTX to JPG',
+            'pptx-to-png'    => 'PPTX to PNG',
+            default          => ucfirst(str_replace('-', ' ', $action)),
         };
     }
 }
