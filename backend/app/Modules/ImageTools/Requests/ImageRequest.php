@@ -24,23 +24,23 @@ class ImageRequest extends FormRequest
         ];
 
         switch ($action) {
-            case 'resize':
+            case 'resize-image':
                 $rules['width']  = ['required', 'integer', 'min:1', 'max:10000'];
                 $rules['height'] = ['required', 'integer', 'min:1', 'max:10000'];
                 break;
 
-            case 'compress':
+            case 'compress-image':
                 $rules['quality'] = ['sometimes', 'integer', 'min:1', 'max:100'];
                 break;
 
-            case 'crop':
+            case 'crop-image':
                 $rules['width']  = ['required', 'integer', 'min:1'];
                 $rules['height'] = ['required', 'integer', 'min:1'];
                 $rules['x']      = ['sometimes', 'integer', 'min:0'];
                 $rules['y']      = ['sometimes', 'integer', 'min:0'];
                 break;
 
-            case 'rotate':
+            case 'rotate-image':
                 $rules['degrees'] = ['required', 'numeric'];
                 break;
         }
