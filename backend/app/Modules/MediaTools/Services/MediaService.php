@@ -127,7 +127,9 @@ class MediaService
         $cmd = escapeshellarg($this->ffmpeg) . ' -y ' . implode(' ', array_map('escapeshellarg', $args));
         $result = Process::run($cmd);
 
-        if ($throwOnFail && $result->failed()) {
+        // FFmpeg writes standard output to stderr even on success. 
+        // We consider it a failure if the process truly failed or if the output file wasn't created.
+        if ($throwOnFail && ($result->failed() || !file_exists($outputPath))) {
             Log::error("{$operation} failed", ['error' => $result->errorOutput(), 'cmd' => $cmd]);
             throw new \RuntimeException("{$operation} failed: " . $result->errorOutput());
         }
