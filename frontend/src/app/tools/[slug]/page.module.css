@@ -361,14 +361,19 @@
     gap: var(--space-md);
     padding: var(--space-xl) 0;
     text-align: center;
-    opacity: 0;
-    transform: translateY(12px);
-    transition: opacity 0.4s ease, transform 0.4s ease;
+    animation: fadeUp 0.4s ease forwards;
 }
 
-.doneVisible {
-    opacity: 1;
-    transform: translateY(0);
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .doneState h2 {

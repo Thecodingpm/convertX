@@ -69,18 +69,7 @@ export default function ToolPageClient({ slug: propSlug }: { slug?: string }) {
     const [conversionId, setConversionId] = useState<number | null>(null);
     const [errorMsg, setErrorMsg] = useState("");
     const [extraFields, setExtraFields] = useState<Record<string, string>>({});
-    const [doneVisible, setDoneVisible] = useState(false);
     const fileInputRef = useRef<HTMLInputElement>(null);
-
-    // Trigger done animation after status changes to done
-    useEffect(() => {
-        if (status === "done") {
-            const t = setTimeout(() => setDoneVisible(true), 50);
-            return () => clearTimeout(t);
-        } else {
-            setDoneVisible(false);
-        }
-    }, [status]);
 
     if (!tool) {
         return (
@@ -245,7 +234,7 @@ export default function ToolPageClient({ slug: propSlug }: { slug?: string }) {
 
                     {/* State: Done */}
                     {status === "done" && conversionId && (
-                        <div className={`${styles.doneState} ${doneVisible ? styles.doneVisible : ""}`}>
+                        <div className={styles.doneState}>
                             <div className={styles.successIconWrap}>
                                 <ConfettiDots color={tool.color} />
                                 <div className={styles.successRing}>
