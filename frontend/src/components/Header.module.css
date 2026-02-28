@@ -3,18 +3,10 @@
     top: 0;
     z-index: 100;
     height: var(--header-height);
-    background: var(--color-bg);
+    background: rgba(255, 255, 255, 0.88);
     border-bottom: 1px solid var(--color-border-light);
-    backdrop-filter: blur(12px);
-    background: rgba(var(--color-bg), 0.85);
-}
-
-[data-theme='light'] .header {
-    background: rgba(255, 255, 255, 0.85);
-}
-
-[data-theme='dark'] .header {
-    background: rgba(15, 17, 23, 0.85);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
 }
 
 .container {
@@ -30,19 +22,29 @@
 .logo {
     display: flex;
     align-items: center;
-    gap: var(--space-sm);
+    gap: 0.5rem;
     text-decoration: none;
     color: var(--color-text);
 }
 
-.logoIcon {
-    font-size: 1.5rem;
+.logoMark {
+    width: 32px;
+    height: 32px;
+    border-radius: 9px;
+    background: linear-gradient(135deg, #5b5bd6, #7c3aed);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    flex-shrink: 0;
+    box-shadow: 0 2px 8px rgba(91, 91, 214, 0.35);
 }
 
 .logoText {
-    font-size: 1.25rem;
-    font-weight: 700;
-    letter-spacing: -0.02em;
+    font-size: 1.15rem;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    color: var(--color-text-primary);
 }
 
 .nav {
@@ -52,7 +54,7 @@
 }
 
 .navLink {
-    font-size: 0.9375rem;
+    font-size: 0.9rem;
     font-weight: 500;
     color: var(--color-text-secondary);
     text-decoration: none;
@@ -86,47 +88,8 @@
     gap: var(--space-sm);
 }
 
-.themeToggle {
-    width: 36px;
-    height: 36px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: var(--radius-md);
-    font-size: 1.1rem;
-    transition: background-color var(--transition-fast), color var(--transition-fast);
-    /* Always visible: use contrasting color per theme */
-    color: var(--color-text);
-}
-
-/* In dark mode: icon is light/warm so it pops against dark bg */
-[data-theme='dark'] .themeToggle {
-    color: #f0c040;
-}
-
-/* In light mode: icon is dark so it pops against light bg */
-[data-theme='light'] .themeToggle {
-    color: #374151;
-}
-
-.themeToggle:hover {
-    background-color: var(--color-bg-tertiary);
-}
-
-.loginBtn {
-    font-size: 0.9375rem;
-}
-
-.signupBtn {
-    font-size: 0.875rem;
-}
-
 @media (max-width: 768px) {
     .nav {
-        display: none;
-    }
-
-    .loginBtn {
         display: none;
     }
 }

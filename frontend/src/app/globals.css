@@ -1,26 +1,24 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300..900;1,14..32,300..900&display=swap');
 
-/* ── CSS Variables / Design Tokens ──────────────────── */
+/* ── Design Tokens ── */
 :root {
-  /* Colors – Soft Modern Palette */
   --color-bg: #ffffff;
-  --color-bg-secondary: #f8f9fb;
-  --color-bg-tertiary: #f1f3f5;
+  --color-bg-secondary: #f7f8fc;
+  --color-bg-tertiary: #f0f2f7;
   --color-surface: #ffffff;
-  --color-surface-raised: #f8f9fb;
-  --color-surface-hover: #f8f9fb;
-  --color-border: #e2e5e9;
-  --color-border-light: #eef0f2;
-  --color-text: #1a1d23;
-  /* Aliases used by module CSS files */
-  --color-text-primary: #1a1d23;
+  --color-surface-raised: #f7f8fc;
+  --color-surface-hover: #eef1f8;
+  --color-border: #e3e7ef;
+  --color-border-light: #edf0f6;
+  --color-text: #111827;
+  --color-text-primary: #111827;
   --color-text-secondary: #6b7280;
   --color-text-muted: #9ca3af;
 
-  --color-primary: #4f46e5;
-  --color-primary-hover: #4338ca;
-  --color-primary-light: #eef2ff;
-  --color-primary-bg: #f5f3ff;
+  --color-primary: #5b5bd6;
+  --color-primary-hover: #4c4ac4;
+  --color-primary-light: #ededfc;
+  --color-primary-bg: #f3f3fd;
 
   --color-accent: #06b6d4;
   --color-success: #10b981;
@@ -36,11 +34,8 @@
   --color-ai: #f59e0b;
   --color-ai-bg: #fffbeb;
 
-  /* Typography */
   --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
-  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
 
-  /* Spacing */
   --space-xs: 0.25rem;
   --space-sm: 0.5rem;
   --space-md: 1rem;
@@ -49,63 +44,26 @@
   --space-2xl: 3rem;
   --space-3xl: 4rem;
 
-  /* Radii */
   --radius-sm: 6px;
   --radius-md: 10px;
   --radius-lg: 14px;
   --radius-xl: 20px;
   --radius-full: 9999px;
 
-  /* Shadows */
-  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
-  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.06);
-  --shadow-lg: 0 8px 30px rgba(0, 0, 0, 0.08);
-  --shadow-xl: 0 20px 60px rgba(0, 0, 0, 0.1);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 4px 16px rgba(91, 91, 214, 0.08), 0 2px 6px rgba(0, 0, 0, 0.04);
+  --shadow-lg: 0 10px 36px rgba(91, 91, 214, 0.12), 0 4px 12px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 24px 64px rgba(91, 91, 214, 0.16), 0 8px 24px rgba(0, 0, 0, 0.06);
 
-  /* Transitions */
-  --transition-fast: 150ms ease;
-  --transition-base: 250ms ease;
-  --transition-slow: 400ms ease;
+  --transition-fast: 140ms cubic-bezier(.4, 0, .2, 1);
+  --transition-base: 240ms cubic-bezier(.4, 0, .2, 1);
+  --transition-slow: 380ms cubic-bezier(.4, 0, .2, 1);
 
-  /* Layout */
   --header-height: 64px;
-  --sidebar-width: 260px;
   --max-width: 1280px;
 }
 
-/* ── Dark Mode ──────────────────────────────────────── */
-[data-theme='dark'] {
-  --color-bg: #0d0f18;
-  --color-bg-secondary: #13151f;
-  --color-bg-tertiary: #1a1c28;
-  --color-surface: #13151f;
-  --color-surface-raised: #1a1c28;
-  --color-surface-hover: #1f2133;
-  --color-border: #252838;
-  --color-border-light: #1e2030;
-  --color-text: #e9eaf2;
-  /* Aliases used by module CSS files */
-  --color-text-primary: #e9eaf2;
-  --color-text-secondary: #8b8fa8;
-  --color-text-muted: #5c607a;
-
-  --color-primary: #818cf8;
-  --color-primary-hover: #6366f1;
-  --color-primary-light: rgba(99, 102, 241, 0.12);
-  --color-primary-bg: #1a183d;
-
-  --color-pdf-bg: #1f1015;
-  --color-image-bg: #170f2a;
-  --color-media-bg: #0a1e25;
-  --color-ai-bg: #1c1708;
-
-  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.4);
-  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.5);
-  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.55);
-  --shadow-xl: 0 20px 60px rgba(0, 0, 0, 0.6);
-}
-
-/* ── Reset & Base ───────────────────────────────────── */
+/* ── Reset ── */
 *,
 *::before,
 *::after {
@@ -123,11 +81,10 @@ html {
 
 body {
   font-family: var(--font-sans);
-  background-color: var(--color-bg);
+  background: var(--color-bg);
   color: var(--color-text);
   line-height: 1.6;
   min-height: 100vh;
-  transition: background-color var(--transition-base), color var(--transition-base);
 }
 
 a {
@@ -140,7 +97,6 @@ a:hover {
   color: var(--color-primary-hover);
 }
 
-/* Prevent a:hover from overriding button text colors */
 a.btn:hover {
   color: inherit;
 }
@@ -165,7 +121,7 @@ textarea {
   font-size: inherit;
 }
 
-/* ── Utility Classes ────────────────────────────────── */
+/* ── Layout ── */
 .container {
   max-width: var(--max-width);
   margin: 0 auto;
@@ -176,14 +132,7 @@ textarea {
   padding: var(--space-3xl) 0;
 }
 
-.text-center {
-  text-align: center;
-}
-
-.text-left {
-  text-align: left;
-}
-
+/* ── Flex helpers ── */
 .flex {
   display: flex;
 }
@@ -224,7 +173,11 @@ textarea {
   gap: var(--space-xl);
 }
 
-/* ── Buttons ────────────────────────────────────────── */
+.text-center {
+  text-align: center;
+}
+
+/* ── Buttons ── */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -232,48 +185,50 @@ textarea {
   gap: var(--space-sm);
   padding: 0.625rem 1.25rem;
   border-radius: var(--radius-md);
-  font-weight: 500;
+  font-weight: 600;
   font-size: 0.9375rem;
   line-height: 1.4;
   transition: all var(--transition-fast);
   white-space: nowrap;
+  letter-spacing: -0.01em;
 }
 
 .btn-primary {
-  background-color: var(--color-primary);
-  color: #ffffff !important;
+  background: linear-gradient(135deg, #5b5bd6, #7c3aed);
+  color: #fff !important;
+  box-shadow: 0 2px 8px rgba(91, 91, 214, 0.3);
 }
 
 .btn-primary:hover {
-  background-color: var(--color-primary-hover);
-  color: #ffffff !important;
+  background: linear-gradient(135deg, #4c4ac4, #6d28d9);
+  color: #fff !important;
   transform: translateY(-1px);
-  box-shadow: 0 4px 14px rgba(79, 70, 229, 0.35);
+  box-shadow: 0 6px 20px rgba(91, 91, 214, 0.4);
 }
 
 .btn-secondary {
-  background-color: var(--color-bg-tertiary);
+  background: var(--color-bg-tertiary);
   color: var(--color-text);
-  border: 1px solid var(--color-border);
+  border: 1.5px solid var(--color-border);
 }
 
 .btn-secondary:hover {
-  background-color: var(--color-surface-hover);
+  background: var(--color-surface-hover);
   border-color: var(--color-primary);
 }
 
 .btn-ghost {
-  background-color: transparent;
+  background: transparent;
   color: var(--color-text-secondary);
 }
 
 .btn-ghost:hover {
-  background-color: var(--color-bg-tertiary);
+  background: var(--color-bg-tertiary);
   color: var(--color-text);
 }
 
 .btn-lg {
-  padding: 0.8rem 1.75rem;
+  padding: 0.875rem 1.875rem;
   font-size: 1rem;
   border-radius: var(--radius-lg);
 }
@@ -283,10 +238,10 @@ textarea {
   font-size: 0.8125rem;
 }
 
-/* ── Cards ──────────────────────────────────────────── */
+/* ── Cards ── */
 .card {
-  background-color: var(--color-surface);
-  border: 1px solid var(--color-border-light);
+  background: var(--color-surface);
+  border: 1.5px solid var(--color-border-light);
   border-radius: var(--radius-lg);
   padding: var(--space-lg);
   transition: all var(--transition-base);
@@ -302,13 +257,13 @@ textarea {
   box-shadow: var(--shadow-lg);
 }
 
-/* ── Inputs ─────────────────────────────────────────── */
+/* ── Inputs ── */
 .input {
   width: 100%;
   padding: 0.625rem 0.875rem;
-  border: 1px solid var(--color-border);
+  border: 1.5px solid var(--color-border);
   border-radius: var(--radius-md);
-  background-color: var(--color-surface);
+  background: var(--color-surface);
   color: var(--color-text);
   font-size: 0.9375rem;
   transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
@@ -324,62 +279,57 @@ textarea {
   color: var(--color-text-muted);
 }
 
-/* ── Badges ─────────────────────────────────────────── */
+/* ── Badges ── */
 .badge {
   display: inline-flex;
   align-items: center;
   padding: 0.2rem 0.6rem;
   border-radius: var(--radius-full);
   font-size: 0.75rem;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .badge-primary {
-  background-color: var(--color-primary-light);
+  background: var(--color-primary-light);
   color: var(--color-primary);
 }
 
 .badge-success {
-  background-color: rgba(16, 185, 129, 0.1);
+  background: rgba(16, 185, 129, 0.1);
   color: var(--color-success);
 }
 
 .badge-warning {
-  background-color: rgba(245, 158, 11, 0.1);
+  background: rgba(245, 158, 11, 0.1);
   color: var(--color-warning);
 }
 
 .badge-danger {
-  background-color: rgba(239, 68, 68, 0.1);
+  background: rgba(239, 68, 68, 0.1);
   color: var(--color-danger);
 }
 
-.badge-coming-soon {
-  background-color: var(--color-ai-bg);
-  color: var(--color-warning);
-}
-
-/* ── Progress Bar ───────────────────────────────────── */
+/* ── Progress ── */
 .progress-bar {
   width: 100%;
   height: 6px;
-  background-color: var(--color-bg-tertiary);
+  background: var(--color-bg-tertiary);
   border-radius: var(--radius-full);
   overflow: hidden;
 }
 
 .progress-bar-fill {
   height: 100%;
-  background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+  background: linear-gradient(90deg, var(--color-primary), #7c3aed);
   border-radius: var(--radius-full);
   transition: width var(--transition-slow);
 }
 
-/* ── Animations ─────────────────────────────────────── */
+/* ── Animations ── */
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(8px);
+    transform: translateY(10px);
   }
 
   to {
@@ -391,7 +341,7 @@ textarea {
 @keyframes slideUp {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(24px);
   }
 
   to {
@@ -422,23 +372,95 @@ textarea {
   }
 }
 
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes downloadBounce {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  40% {
+    transform: translateY(6px);
+  }
+
+  70% {
+    transform: translateY(-3px);
+  }
+}
+
+@keyframes downloadPop {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+
+  60% {
+    transform: scale(1.08);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes successRing {
+  0% {
+    transform: scale(0.6);
+    opacity: 0;
+  }
+
+  60% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes progressGlow {
+
+  0%,
+  100% {
+    box-shadow: 0 0 8px rgba(91, 91, 214, 0.4);
+  }
+
+  50% {
+    box-shadow: 0 0 20px rgba(91, 91, 214, 0.7);
+  }
+}
+
 .animate-fade-in {
-  animation: fadeIn 0.5s ease forwards;
+  animation: fadeIn 0.4s ease forwards;
 }
 
 .animate-slide-up {
-  animation: slideUp 0.6s ease forwards;
+  animation: slideUp 0.5s ease forwards;
 }
 
 .animate-spin {
-  animation: spin 1s linear infinite;
+  animation: spin 0.9s linear infinite;
 }
 
 .animate-pulse {
   animation: pulse 2s ease-in-out infinite;
 }
 
-/* ── Loading Spinner ────────────────────────────────── */
+/* ── Spinner ── */
 .spinner {
   width: 24px;
   height: 24px;
@@ -448,7 +470,7 @@ textarea {
   animation: spin 0.8s linear infinite;
 }
 
-/* ── Responsive ─────────────────────────────────────── */
+/* ── Responsive ── */
 @media (max-width: 768px) {
   :root {
     --space-3xl: 2.5rem;
@@ -465,7 +487,7 @@ textarea {
 
 @media (max-width: 480px) {
   .btn-lg {
-    padding: 0.65rem 1.25rem;
+    padding: 0.7rem 1.25rem;
     font-size: 0.9375rem;
   }
 }

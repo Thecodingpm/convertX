@@ -1,18 +1,17 @@
 "use client";
 import Link from "next/link";
-import { useTheme } from "./ThemeProvider";
-import { Sun, Moon, Zap } from "lucide-react";
+import { Zap } from "lucide-react";
 import styles from "./Header.module.css";
 
 export default function Header() {
-    const { theme, toggleTheme } = useTheme();
-
     return (
         <header className={styles.header}>
             <div className={styles.container}>
                 <Link href="/" className={styles.logo}>
-                    <span className={styles.logoIcon}><Zap size={18} /></span>
-                    <span className={styles.logoText}>FileForge</span>
+                    <div className={styles.logoMark}>
+                        <Zap size={16} strokeWidth={2.5} />
+                    </div>
+                    <span className={styles.logoText}>ConvertX</span>
                 </Link>
 
                 <nav className={styles.nav}>
@@ -21,14 +20,9 @@ export default function Header() {
                 </nav>
 
                 <div className={styles.actions}>
-                    <button
-                        className={styles.themeToggle}
-                        onClick={toggleTheme}
-                        aria-label="Toggle theme"
-                        title={theme === "light" ? "Switch to dark mode" : "Switch to light mode"}
-                    >
-                        {theme === "light" ? <Moon size={18} /> : <Sun size={18} />}
-                    </button>
+                    <Link href="/tools" className="btn btn-primary btn-sm">
+                        Get Started
+                    </Link>
                 </div>
             </div>
         </header>

@@ -1,10 +1,10 @@
 "use client";
-import { useState, useCallback, useRef, FormEvent } from "react";
+import { useState, useCallback, useRef, FormEvent, useEffect } from "react";
 import { useParams, useRouter } from "next/navigation";
 import Link from "next/link";
 import {
     Upload, X, CheckCircle, AlertCircle, Download,
-    ArrowLeft, FileText, Loader2, CloudUpload
+    ArrowLeft, FileText, Loader2, CloudUpload, Sparkles
 } from "lucide-react";
 import { getToolBySlug } from "@/lib/tools";
 import { api } from "@/lib/api";
@@ -16,6 +16,44 @@ function formatBytes(bytes: number) {
     if (bytes < 1024) return bytes + " B";
     if (bytes < 1048576) return (bytes / 1024).toFixed(1) + " KB";
     return (bytes / 1048576).toFixed(1) + " MB";
+}
+
+/** Animated download arrow icon */
+function DownloadIcon() {
+    return (
+        <span className={styles.dlIconWrap}>
+            <Download size={20} />
+        </span>
+    );
+}
+
+/** Confetti dot */
+function ConfettiDots({ color }: { color: string }) {
+    const dots = [
+        { x: -40, y: -20, size: 8, delay: 0 },
+        { x: 35, y: -30, size: 6, delay: 0.06 },
+        { x: -25, y: 30, size: 10, delay: 0.1 },
+        { x: 45, y: 20, size: 7, delay: 0.04 },
+        { x: 10, y: -42, size: 5, delay: 0.15 },
+        { x: -50, y: 10, size: 6, delay: 0.08 },
+    ];
+    return (
+        <div className={styles.confettiWrap} aria-hidden>
+            {dots.map((d, i) => (
+                <span
+                    key={i}
+                    className={styles.confettiDot}
+                    style={{
+                        width: d.size,
+                        height: d.size,
+                        background: i % 2 === 0 ? color : "#10b981",
+                        transform: `translate(${d.x}px, ${d.y}px)`,
+                        animationDelay: `${d.delay}s`,
+                    }}
+                />
+            ))}
+        </div>
+    );
 }
 
 export default function ToolPageClient({ slug: propSlug }: { slug?: string }) {
@@ -31,7 +69,18 @@ export default function ToolPageClient({ slug: propSlug }: { slug?: string }) {
     const [conversionId, setConversionId] = useState<number | null>(null);
     const [errorMsg, setErrorMsg] = useState("");
     const [extraFields, setExtraFields] = useState<Record<string, string>>({});
+    const [doneVisible, setDoneVisible] = useState(false);
     const fileInputRef = useRef<HTMLInputElement>(null);
+
+    // Trigger done animation after status changes to done
+    useEffect(() => {
+        if (status === "done") {
+            const t = setTimeout(() => setDoneVisible(true), 50);
+            return () => clearTimeout(t);
+        } else {
+            setDoneVisible(false);
+        }
+    }, [status]);
 
     if (!tool) {
         return (
@@ -103,9 +152,8 @@ export default function ToolPageClient({ slug: propSlug }: { slug?: string }) {
         }, 2000);
     };
 
-    // Extract a human-friendly error from a backend error message
     const formatError = (raw: string) => {
-        if (raw.includes("mimes")) return "Invalid file type. Please check accepted formats above.";
+        if (raw.includes("mimes") || raw.includes("mimetypes")) return "Invalid file type. Please check accepted formats above.";
         if (raw.includes("max:")) return "File is too large. Maximum size is 50MB.";
         if (raw.includes("required")) return "Please fill in all required fields.";
         return raw;
@@ -140,7 +188,6 @@ export default function ToolPageClient({ slug: propSlug }: { slug?: string }) {
                 setConversionId(convId);
                 setProgress(75);
 
-                // With sync queue, conversion is already done — check immediately
                 const statusRes = await api.getStatus(convId);
                 if (statusRes.success) {
                     const sd = statusRes.data as { status: string };
@@ -154,7 +201,6 @@ export default function ToolPageClient({ slug: propSlug }: { slug?: string }) {
                         return;
                     }
                 }
-                // Fallback: still poll if for some reason not done yet
                 pollStatus(convId);
             } else {
                 setStatus("error");
@@ -199,13 +245,22 @@ export default function ToolPageClient({ slug: propSlug }: { slug?: string }) {
 
                     {/* State: Done */}
                     {status === "done" && conversionId && (
-                        <div className={styles.doneState}>
-                            <CheckCircle size={56} color="#22c55e" strokeWidth={1.5} />
+                        <div className={`${styles.doneState} ${doneVisible ? styles.doneVisible : ""}`}>
+                            <div className={styles.successIconWrap}>
+                                <ConfettiDots color={tool.color} />
+                                <div className={styles.successRing}>
+                                    <CheckCircle size={52} color="#10b981" strokeWidth={1.8} />
+                                </div>
+                            </div>
                             <h2>Conversion Complete!</h2>
-                            <p>Your file is ready to download.</p>
+                            <p>Your file is ready. Click below to download.</p>
                             <div className={styles.doneActions}>
-                                <a href={api.getDownloadUrl(conversionId)} download className="btn btn-primary btn-lg">
-                                    <Download size={18} /> Download File
+                                <a
+                                    href={api.getDownloadUrl(conversionId)}
+                                    download
+                                    className={`btn btn-primary btn-lg ${styles.downloadBtn}`}
+                                >
+                                    <DownloadIcon /> Download File
                                 </a>
                                 <button onClick={reset} className="btn btn-secondary btn-lg">
                                     Convert Another
@@ -217,7 +272,7 @@ export default function ToolPageClient({ slug: propSlug }: { slug?: string }) {
                     {/* State: Error */}
                     {status === "error" && (
                         <div className={styles.errorState}>
-                            <AlertCircle size={56} color="#ef4444" strokeWidth={1.5} />
+                            <AlertCircle size={52} color="#ef4444" strokeWidth={1.5} />
                             <h2>Conversion Failed</h2>
                             <p>{errorMsg}</p>
                             <button onClick={reset} className="btn btn-primary">Try Again</button>
@@ -227,11 +282,16 @@ export default function ToolPageClient({ slug: propSlug }: { slug?: string }) {
                     {/* State: Processing / Uploading */}
                     {(status === "uploading" || status === "processing") && (
                         <div className={styles.processingState}>
-                            <Loader2 size={48} className={styles.spinner} color={tool.color} />
-                            <h2>{status === "uploading" ? "Uploading..." : "Processing..."}</h2>
+                            <div className={styles.processingIconWrap} style={{ color: tool.color }}>
+                                <Loader2 size={44} className={styles.spinner} />
+                            </div>
+                            <h2>{status === "uploading" ? "Uploading…" : "Converting…"}</h2>
                             <p>Please wait, this may take a few seconds.</p>
                             <div className={styles.progressBar}>
-                                <div className={styles.progressFill} style={{ width: `${progress}%`, background: tool.color }} />
+                                <div
+                                    className={styles.progressFill}
+                                    style={{ width: `${progress}%`, background: `linear-gradient(90deg, ${tool.color}, #7c3aed)` }}
+                                />
                             </div>
                             <span className={styles.progressLabel}>{progress}%</span>
                         </div>
@@ -317,7 +377,7 @@ export default function ToolPageClient({ slug: propSlug }: { slug?: string }) {
                                                     onChange={(e) => setExtraFields(prev => ({ ...prev, [field.name]: e.target.value }))}
                                                     required={field.required}
                                                 >
-                                                    <option value="">Select...</option>
+                                                    <option value="">Select…</option>
                                                     {field.options?.map(o => (
                                                         <option key={o.value} value={o.value}>{o.label}</option>
                                                     ))}
@@ -343,9 +403,9 @@ export default function ToolPageClient({ slug: propSlug }: { slug?: string }) {
                                 type="submit"
                                 className={styles.convertBtn}
                                 disabled={files.length === 0}
-                                style={{ background: files.length > 0 ? tool.color : undefined }}
+                                style={files.length > 0 ? { background: `linear-gradient(135deg, ${tool.color}, #7c3aed)` } : {}}
                             >
-                                <Icon size={20} />
+                                <Sparkles size={18} />
                                 Convert {files.length > 1 ? `${files.length} Files` : "File"}
                             </button>
                         </form>
@@ -354,18 +414,9 @@ export default function ToolPageClient({ slug: propSlug }: { slug?: string }) {
 
                 {/* Info Footer */}
                 <div className={styles.infoRow}>
-                    <div className={styles.infoItem}>
-                        <CheckCircle size={16} color="#22c55e" />
-                        <span>Files deleted after 1 hour</span>
-                    </div>
-                    <div className={styles.infoItem}>
-                        <CheckCircle size={16} color="#22c55e" />
-                        <span>No registration required</span>
-                    </div>
-                    <div className={styles.infoItem}>
-                        <CheckCircle size={16} color="#22c55e" />
-                        <span>Free to use</span>
-                    </div>
+                    <div className={styles.infoItem}><CheckCircle size={14} color="#10b981" /><span>Files deleted after 1 hour</span></div>
+                    <div className={styles.infoItem}><CheckCircle size={14} color="#10b981" /><span>No registration required</span></div>
+                    <div className={styles.infoItem}><CheckCircle size={14} color="#10b981" /><span>100% free to use</span></div>
                 </div>
             </div>
         </div>
