@@ -6,6 +6,33 @@ interface ApiResponse<T = unknown> {
     data?: T;
 }
 
+/** Parse a Response safely — returns structured error if body is not JSON */
+async function safeJson<T>(res: Response): Promise<ApiResponse<T>> {
+    const contentType = res.headers.get("content-type") ?? "";
+    if (!contentType.includes("application/json")) {
+        const text = await res.text().catch(() => "");
+        return {
+            success: false,
+            message: res.ok
+                ? "Unexpected response from server."
+                : `Server error ${res.status}${res.statusText ? ": " + res.statusText : ""}. ${text.slice(0, 120)}`,
+        };
+    }
+    try {
+        const json = await res.json();
+        if (!res.ok) {
+            const errors = (json as { errors?: Record<string, string[]> }).errors;
+            const firstError = errors
+                ? Object.values(errors).flat()[0]
+                : (json as { message?: string }).message;
+            return { success: false, message: firstError ?? `Error ${res.status}` };
+        }
+        return json as ApiResponse<T>;
+    } catch {
+        return { success: false, message: "Could not parse server response." };
+    }
+}
+
 class ApiClient {
     private baseUrl: string;
     private token: string | null = null;
@@ -20,17 +47,12 @@ class ApiClient {
     setToken(token: string | null) {
         this.token = token;
         if (typeof window !== "undefined") {
-            if (token) {
-                localStorage.setItem("auth_token", token);
-            } else {
-                localStorage.removeItem("auth_token");
-            }
+            if (token) localStorage.setItem("auth_token", token);
+            else localStorage.removeItem("auth_token");
         }
     }
 
-    getToken(): string | null {
-        return this.token;
-    }
+    getToken(): string | null { return this.token; }
 
     private getHeaders(): Record<string, string> {
         const headers: Record<string, string> = { Accept: "application/json" };
@@ -39,33 +61,44 @@ class ApiClient {
     }
 
     async get<T>(path: string): Promise<ApiResponse<T>> {
-        const res = await fetch(`${this.baseUrl}${path}`, {
-            method: "GET",
-            headers: this.getHeaders(),
-        });
-        return res.json();
+        try {
+            const res = await fetch(`${this.baseUrl}${path}`, {
+                method: "GET",
+                headers: this.getHeaders(),
+            });
+            return safeJson<T>(res);
+        } catch (err) {
+            return { success: false, message: `Cannot reach server. Check your connection. (${(err as Error).message})` };
+        }
     }
 
     async post<T>(path: string, body?: Record<string, unknown>): Promise<ApiResponse<T>> {
-        const res = await fetch(`${this.baseUrl}${path}`, {
-            method: "POST",
-            headers: { ...this.getHeaders(), "Content-Type": "application/json" },
-            body: body ? JSON.stringify(body) : undefined,
-        });
-        return res.json();
+        try {
+            const res = await fetch(`${this.baseUrl}${path}`, {
+                method: "POST",
+                headers: { ...this.getHeaders(), "Content-Type": "application/json" },
+                body: body ? JSON.stringify(body) : undefined,
+            });
+            return safeJson<T>(res);
+        } catch (err) {
+            return { success: false, message: `Cannot reach server. (${(err as Error).message})` };
+        }
     }
 
-    // Accepts a pre-built FormData (handles single, multi-file, and extra fields)
     async uploadFile<T>(path: string, formData: FormData): Promise<ApiResponse<T>> {
-        const res = await fetch(`${this.baseUrl}${path}`, {
-            method: "POST",
-            headers: {
-                Accept: "application/json",
-                ...(this.token ? { Authorization: `Bearer ${this.token}` } : {}),
-            },
-            body: formData,
-        });
-        return res.json();
+        try {
+            const res = await fetch(`${this.baseUrl}${path}`, {
+                method: "POST",
+                headers: {
+                    Accept: "application/json",
+                    ...(this.token ? { Authorization: `Bearer ${this.token}` } : {}),
+                },
+                body: formData,
+            });
+            return safeJson<T>(res);
+        } catch (err) {
+            return { success: false, message: `Cannot reach server. Check your connection. (${(err as Error).message})` };
+        }
     }
 
     // ── Auth ──
@@ -93,27 +126,18 @@ class ApiClient {
         return res;
     }
 
-    async getUser() {
-        return this.get("/api/v1/auth/user");
-    }
+    async getUser() { return this.get("/api/v1/auth/user"); }
 
     // ── Conversions ──
-    async getStatus(id: number) {
-        return this.get(`/api/v1/conversions/${id}/status`);
-    }
-
-    async getHistory(page = 1) {
-        return this.get(`/api/v1/conversions?page=${page}`);
-    }
+    async getStatus(id: number) { return this.get(`/api/v1/conversions/${id}/status`); }
+    async getHistory(page = 1) { return this.get(`/api/v1/conversions?page=${page}`); }
 
     getDownloadUrl(id: number): string {
         return `${this.baseUrl}/api/v1/download/${id}`;
     }
 
     // ── Tools ──
-    async getTools() {
-        return this.get("/api/v1/tools");
-    }
+    async getTools() { return this.get("/api/v1/tools"); }
 }
 
 export const api = new ApiClient(API_BASE);
