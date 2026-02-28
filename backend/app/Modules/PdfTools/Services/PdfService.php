@@ -204,16 +204,45 @@ PYTHON;
     }
 
     /**
-     * Add password protection to PDF using Ghostscript
+     * Add password protection to PDF using pypdf (pure Python, no Ghostscript dependency)
      */
     public function addPassword(string $inputPath, string $outputPath, string $password): string
     {
-        $escapedPassword = escapeshellarg($password);
+        $safeInput  = dirname($outputPath) . '/convert_in_'  . uniqid() . '.pdf';
+        $scriptFile = dirname($outputPath) . '/convert_'     . uniqid() . '.py';
+        copy($inputPath, $safeInput);
+
+        $safePassword = addslashes($password);
+
+        $pyScript = <<<'PYTHON'
+from pypdf import PdfReader, PdfWriter
+
+reader = PdfReader(r'INPUT_PATH')
+writer = PdfWriter()
+
+for page in reader.pages:
+    writer.add_page(page)
+
+writer.encrypt(r'PASSWORD')
+
+with open(r'OUTPUT_PATH', 'wb') as f:
+    writer.write(f)
+PYTHON;
+
+        $pyScript = str_replace('INPUT_PATH', $safeInput, $pyScript);
+        $pyScript = str_replace('OUTPUT_PATH', $outputPath, $pyScript);
+        $pyScript = str_replace('PASSWORD', $safePassword, $pyScript);
+
+        file_put_contents($scriptFile, $pyScript);
+
         $result = Process::run(
-            escapeshellarg($this->gs) . " -sDEVICE=pdfwrite -dNOPAUSE -dBATCH -dSAFER -sOwnerPassword={$escapedPassword} -sUserPassword={$escapedPassword} -dEncryptionR=3 -dKeyLength=128 -sOutputFile=" . escapeshellarg($outputPath) . " " . escapeshellarg($inputPath)
+            escapeshellarg($this->python) . ' ' . escapeshellarg($scriptFile)
         );
 
-        if ($result->failed()) {
+        @unlink($safeInput);
+        @unlink($scriptFile);
+
+        if ($result->failed() || !file_exists($outputPath)) {
             throw new \RuntimeException('PDF password protection failed: ' . $result->errorOutput());
         }
 
@@ -221,16 +250,45 @@ PYTHON;
     }
 
     /**
-     * Remove password from PDF using Ghostscript
+     * Remove password from PDF using pypdf (pure Python, no Ghostscript dependency)
      */
     public function removePassword(string $inputPath, string $outputPath, string $password): string
     {
-        $escapedPassword = escapeshellarg($password);
+        $safeInput  = dirname($outputPath) . '/convert_in_'  . uniqid() . '.pdf';
+        $scriptFile = dirname($outputPath) . '/convert_'     . uniqid() . '.py';
+        copy($inputPath, $safeInput);
+
+        $safePassword = addslashes($password);
+
+        $pyScript = <<<'PYTHON'
+from pypdf import PdfReader, PdfWriter
+
+reader = PdfReader(r'INPUT_PATH')
+if reader.is_encrypted:
+    reader.decrypt(r'PASSWORD')
+
+writer = PdfWriter()
+for page in reader.pages:
+    writer.add_page(page)
+
+with open(r'OUTPUT_PATH', 'wb') as f:
+    writer.write(f)
+PYTHON;
+
+        $pyScript = str_replace('INPUT_PATH', $safeInput, $pyScript);
+        $pyScript = str_replace('OUTPUT_PATH', $outputPath, $pyScript);
+        $pyScript = str_replace('PASSWORD', $safePassword, $pyScript);
+
+        file_put_contents($scriptFile, $pyScript);
+
         $result = Process::run(
-            escapeshellarg($this->gs) . " -sDEVICE=pdfwrite -dNOPAUSE -dBATCH -dSAFER -sPDFPassword={$escapedPassword} -sOutputFile=" . escapeshellarg($outputPath) . " " . escapeshellarg($inputPath)
+            escapeshellarg($this->python) . ' ' . escapeshellarg($scriptFile)
         );
 
-        if ($result->failed()) {
+        @unlink($safeInput);
+        @unlink($scriptFile);
+
+        if ($result->failed() || !file_exists($outputPath)) {
             throw new \RuntimeException('PDF password removal failed: ' . $result->errorOutput());
         }
 
