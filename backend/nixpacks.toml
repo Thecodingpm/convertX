@@ -1,3 +1,7 @@
+[variables]
+NIXPACKS_PHP_UPLOAD_MAX_FILESIZE = "100M"
+NIXPACKS_PHP_POST_MAX_SIZE = "100M"
+
 [phases.setup]
 nixPkgs = ["php84", "php84Packages.composer", "ffmpeg", "python312", "python312Packages.pip"]
 
