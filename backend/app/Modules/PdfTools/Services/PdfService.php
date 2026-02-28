@@ -87,16 +87,16 @@ PYTHON;
         copy($inputPath, $safeInput);
 
         // Write Python script — avoids all shell path-escaping issues
-        $pyScript = <<<PYTHON
+        $pyScript = <<<'PYTHON'
 import pdfplumber
 import openpyxl
 
 wb = openpyxl.Workbook()
 wb.remove(wb.active)  # remove default sheet
 
-with pdfplumber.open(r'{$safeInput}') as pdf:
+with pdfplumber.open(r'INPUT_PATH') as pdf:
     for page_num, page in enumerate(pdf.pages, start=1):
-        ws = wb.create_sheet(title=f'Page {page_num}')
+        ws = wb.create_sheet(title='Page ' + str(page_num))
         tables = page.extract_tables()
         if tables:
             row_idx = 1
@@ -108,11 +108,14 @@ with pdfplumber.open(r'{$safeInput}') as pdf:
         else:
             # No tables: dump raw text line by line
             text = page.extract_text() or ''
-            for line in text.split('\n'):
+            for line in text.split(chr(10)):
                 ws.append([line])
 
-wb.save(r'{$outputFile}')
+wb.save(r'OUTPUT_PATH')
 PYTHON;
+
+        $pyScript = str_replace('INPUT_PATH', $safeInput, $pyScript);
+        $pyScript = str_replace('OUTPUT_PATH', $outputFile, $pyScript);
 
         file_put_contents($scriptFile, $pyScript);
 
