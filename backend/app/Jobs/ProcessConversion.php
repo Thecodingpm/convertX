@@ -117,25 +117,25 @@ class ProcessConversion implements ShouldQueue
         return match ($this->action) {
             'jpg-to-png' => $service->jpgToPng($this->inputPath, $upload->getOutputPath('png')),
             'png-to-jpg' => $service->pngToJpg($this->inputPath, $upload->getOutputPath('jpg')),
-            'to-webp' => $service->toWebp($this->inputPath, $upload->getOutputPath('webp')),
-            'resize' => $service->resize(
+            'webp-to-jpg' => $service->toWebp($this->inputPath, $upload->getOutputPath('jpg')),
+            'resize-image' => $service->resize(
                 $this->inputPath, $upload->getOutputPath(pathinfo($this->inputPath, PATHINFO_EXTENSION)),
                 (int)$this->params['width'], (int)$this->params['height']
             ),
-            'compress' => $service->compress(
+            'compress-image' => $service->compress(
                 $this->inputPath, $upload->getOutputPath(pathinfo($this->inputPath, PATHINFO_EXTENSION)),
                 (int)($this->params['quality'] ?? 75)
             ),
-            'crop' => $service->crop(
+            'crop-image' => $service->crop(
                 $this->inputPath, $upload->getOutputPath(pathinfo($this->inputPath, PATHINFO_EXTENSION)),
                 (int)$this->params['width'], (int)$this->params['height'],
                 (int)($this->params['x'] ?? 0), (int)($this->params['y'] ?? 0)
             ),
-            'rotate' => $service->rotate(
+            'rotate-image' => $service->rotate(
                 $this->inputPath, $upload->getOutputPath(pathinfo($this->inputPath, PATHINFO_EXTENSION)),
                 (int)$this->params['degrees']
             ),
-            'to-pdf' => $service->toPdf($this->inputPath, $upload->getOutputPath('pdf')),
+            'image-to-pdf' => $service->toPdf($this->inputPath, $upload->getOutputPath('pdf')),
             'remove-background' => $service->removeBackground($this->inputPath, $upload->getOutputPath('png')),
             'flip'   => $service->flip(
                 $this->inputPath,
@@ -173,6 +173,10 @@ class ProcessConversion implements ShouldQueue
                 $this->params['start'], $this->params['duration']
             ),
             'video-to-gif' => $service->videoToGif(
+                $this->inputPath, $upload->getOutputPath('gif'),
+                (int)($this->params['fps'] ?? 10), (int)($this->params['width'] ?? 480)
+            ),
+            'mp4-to-gif' => $service->videoToGif(
                 $this->inputPath, $upload->getOutputPath('gif'),
                 (int)($this->params['fps'] ?? 10), (int)($this->params['width'] ?? 480)
             ),
