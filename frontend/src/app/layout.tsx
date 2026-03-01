@@ -35,6 +35,9 @@ export const metadata: Metadata = {
   authors: [{ name: "smartconvertx" }],
   creator: "smartconvertx",
   publisher: "smartconvertx",
+  verification: {
+    google: "LD-gC1W9-hFwjHuit-njbPZrPu-lgrgqZAaY8MlTPg0",
+  },
   robots: {
     index: true,
     follow: true,
