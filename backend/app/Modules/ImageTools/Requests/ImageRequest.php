@@ -15,12 +15,12 @@ class ImageRequest extends FormRequest
     {
         $action = $this->route('action');
 
-        // Use mimes: (extension-based) instead of mimetypes: (finfo content check)
-        // finfo-based MIME checking can fail on valid files uploaded from macOS/mobile
-        $anyImage = 'mimes:jpg,jpeg,png,gif,bmp,webp,tiff,tif';
+        // Minimal validation — downstream tools (Clipdrop, ImageMagick) validate format.
+        // Avoiding MIME-type checks entirely as they cause false 422s on Railway + macOS browsers.
+        $maxKb = $action === 'remove-background' ? 20480 : 51200; // 20MB for clip drop, 50MB for others
 
         $rules = [
-            'file' => ['required', 'file', 'max:102400', $anyImage],
+            'file' => ['required', 'file', "max:{$maxKb}"],
         ];
 
         switch ($action) {
