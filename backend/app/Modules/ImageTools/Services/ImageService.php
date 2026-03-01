@@ -106,39 +106,36 @@ class ImageService
 
     public function removeBackground(string $inputPath, string $outputPath): string
     {
-        $serviceUrl = rtrim(config('services.bg_remover.url', env('BG_REMOVER_URL', '')), '/');
+        $apiKey = config('services.clipdrop.key', env('CLIPDROP_API_KEY', ''));
 
-        if (empty($serviceUrl)) {
-            // No AI service configured – fall back to simple ImageMagick (limited quality)
-            Log::warning('BG_REMOVER_URL not set. Falling back to ImageMagick transparent-white method.');
+        if (empty($apiKey)) {
+            // No API key – fall back to basic ImageMagick (limited quality)
+            Log::warning('CLIPDROP_API_KEY not set. Falling back to ImageMagick.');
             $this->run(escapeshellarg($inputPath) . ' -fuzz 15% -transparent white ' . escapeshellarg($outputPath));
             return $outputPath;
         }
 
         try {
-            Log::info('Sending image to AI bg-remover service', ['url' => $serviceUrl]);
-
-            $response = Http::timeout(120)  // AI can take up to 30s for large images
-                ->attach('file', file_get_contents($inputPath), basename($inputPath))
-                ->post($serviceUrl . '/remove-bg');
+            $response = Http::withHeaders(['x-api-key' => $apiKey])
+                ->timeout(60)
+                ->attach('image_file', file_get_contents($inputPath), basename($inputPath))
+                ->post('https://clipdrop-api.co/remove-background/v1');
 
             if ($response->successful()) {
                 file_put_contents($outputPath, $response->body());
-                Log::info('AI background removal successful', ['output' => $outputPath]);
+                Log::info('Clipdrop background removal successful.');
                 return $outputPath;
             }
 
-            Log::error('AI bg-remover returned error', [
-                'status' => $response->status(),
-                'body'   => $response->body(),
-            ]);
-            throw new \RuntimeException('AI background removal service returned HTTP ' . $response->status());
+            Log::error('Clipdrop API error', ['status' => $response->status(), 'body' => $response->body()]);
+            throw new \RuntimeException('Background removal failed (HTTP ' . $response->status() . '): ' . $response->body());
 
         } catch (ConnectionException $e) {
-            Log::error('Could not connect to AI bg-remover service', ['error' => $e->getMessage()]);
-            throw new \RuntimeException('Background removal service is unavailable. Please try again later.');
+            Log::error('Clipdrop connection failed', ['error' => $e->getMessage()]);
+            throw new \RuntimeException('Background removal service unreachable. Please try again.');
         }
     }
+
 
     public function getMetadata(string $inputPath): array
     {

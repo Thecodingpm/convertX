@@ -35,9 +35,10 @@ return [
         ],
     ],
 
-    // AI Background Removal microservice (Python FastAPI + BiRefNet)
-    'bg_remover' => [
-        'url' => env('BG_REMOVER_URL', ''),
+    // Clipdrop AI Background Removal API (https://clipdrop.co/apis)
+    // 100 free removals/day on free tier
+    'clipdrop' => [
+        'key' => env('CLIPDROP_API_KEY', ''),
     ],
 
 ];
