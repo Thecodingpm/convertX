@@ -35,4 +35,9 @@ return [
         ],
     ],
 
+    // AI Background Removal microservice (Python FastAPI + BiRefNet)
+    'bg_remover' => [
+        'url' => env('BG_REMOVER_URL', ''),
+    ],
+
 ];

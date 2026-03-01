@@ -2,6 +2,8 @@
 
 namespace App\Modules\ImageTools\Services;
 
+use Illuminate\Http\Client\ConnectionException;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Process;
 
@@ -104,8 +106,38 @@ class ImageService
 
     public function removeBackground(string $inputPath, string $outputPath): string
     {
-        $this->run(escapeshellarg($inputPath) . ' -fuzz 15% -transparent white ' . escapeshellarg($outputPath));
-        return $outputPath;
+        $serviceUrl = rtrim(config('services.bg_remover.url', env('BG_REMOVER_URL', '')), '/');
+
+        if (empty($serviceUrl)) {
+            // No AI service configured – fall back to simple ImageMagick (limited quality)
+            Log::warning('BG_REMOVER_URL not set. Falling back to ImageMagick transparent-white method.');
+            $this->run(escapeshellarg($inputPath) . ' -fuzz 15% -transparent white ' . escapeshellarg($outputPath));
+            return $outputPath;
+        }
+
+        try {
+            Log::info('Sending image to AI bg-remover service', ['url' => $serviceUrl]);
+
+            $response = Http::timeout(120)  // AI can take up to 30s for large images
+                ->attach('file', file_get_contents($inputPath), basename($inputPath))
+                ->post($serviceUrl . '/remove-bg');
+
+            if ($response->successful()) {
+                file_put_contents($outputPath, $response->body());
+                Log::info('AI background removal successful', ['output' => $outputPath]);
+                return $outputPath;
+            }
+
+            Log::error('AI bg-remover returned error', [
+                'status' => $response->status(),
+                'body'   => $response->body(),
+            ]);
+            throw new \RuntimeException('AI background removal service returned HTTP ' . $response->status());
+
+        } catch (ConnectionException $e) {
+            Log::error('Could not connect to AI bg-remover service', ['error' => $e->getMessage()]);
+            throw new \RuntimeException('Background removal service is unavailable. Please try again later.');
+        }
     }
 
     public function getMetadata(string $inputPath): array
