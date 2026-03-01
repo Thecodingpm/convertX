@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Zap } from "lucide-react";
+import { GooglePlayIcon } from "./icons/GooglePlayIcon";
 import styles from "./Footer.module.css";
 
 export default function Footer() {
@@ -18,6 +19,18 @@ export default function Footer() {
                         <p className={styles.copyright}>
                             © {new Date().getFullYear()} Smartconvertx. All rights reserved.
                         </p>
+                        <div className="mt-6">
+                            <Link
+                                href="/coming-soon"
+                                className="inline-flex items-center gap-2 px-3 py-2 bg-gray-900 hover:bg-gray-800 text-white rounded-lg transition-colors border border-gray-700 w-fit"
+                            >
+                                <GooglePlayIcon className="w-6 h-6" />
+                                <div className="flex flex-col items-start leading-none">
+                                    <span className="text-[10px] text-gray-400 font-medium">GET IT ON</span>
+                                    <span className="text-sm font-semibold tracking-wide">Google Play</span>
+                                </div>
+                            </Link>
+                        </div>
                     </div>
 
                     <div className={styles.column}>
