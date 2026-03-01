@@ -28,20 +28,20 @@ const toolContent: Record<string, ToolContent> = {
             },
             {
                 heading: "How to Convert PDF to Word – Step by Step",
-                body: "Using pdfconvertx to convert your PDF to Word is quick and simple. First, visit this page and click the upload area or drag and drop your PDF file. The tool accepts any standard PDF file up to 50MB. Once your file appears in the upload area, click the 'Convert File' button. Our server will process your PDF immediately and extract all content with formatting preserved. When the conversion is complete (usually within a few seconds to a minute for large files), a download button will appear. Click it to save your new .docx file to your device. You can then open this file in any word processor.",
+                body: "Using smartconvertx to convert your PDF to Word is quick and simple. First, visit this page and click the upload area or drag and drop your PDF file. The tool accepts any standard PDF file up to 50MB. Once your file appears in the upload area, click the 'Convert File' button. Our server will process your PDF immediately and extract all content with formatting preserved. When the conversion is complete (usually within a few seconds to a minute for large files), a download button will appear. Click it to save your new .docx file to your device. You can then open this file in any word processor.",
             },
             {
-                heading: "Benefits of Using pdfconvertx for PDF to Word",
-                body: "pdfconvertx offers several key advantages over other conversion tools. It is completely free to use — there is no subscription, no credit card required, and no hidden charges. You do not need to create an account to use any tool on our platform. Your privacy is protected: all uploaded files are permanently deleted from our servers within one hour. The converter works in any browser on any device, including smartphones and tablets — no software installation needed. Our conversion engine preserves the original formatting, including fonts, tables, images, and paragraph structure, giving you a cleaner, more accurate output than many competing tools.",
+                heading: "Benefits of Using smartconvertx for PDF to Word",
+                body: "smartconvertx offers several key advantages over other conversion tools. It is completely free to use — there is no subscription, no credit card required, and no hidden charges. You do not need to create an account to use any tool on our platform. Your privacy is protected: all uploaded files are permanently deleted from our servers within one hour. The converter works in any browser on any device, including smartphones and tablets — no software installation needed. Our conversion engine preserves the original formatting, including fonts, tables, images, and paragraph structure, giving you a cleaner, more accurate output than many competing tools.",
             },
         ],
         faqs: [
-            { question: "Is the PDF to Word converter completely free?", answer: "Yes, pdfconvertx PDF to Word conversion is 100% free. There are no hidden charges, no subscription fees, and no limits on how many times you can use the tool. Simply upload your PDF and download the converted Word file." },
+            { question: "Is the PDF to Word converter completely free?", answer: "Yes, smartconvertx PDF to Word conversion is 100% free. There are no hidden charges, no subscription fees, and no limits on how many times you can use the tool. Simply upload your PDF and download the converted Word file." },
             { question: "Will my PDF formatting be preserved in Word?", answer: "In most cases, yes. Our converter preserves text, fonts, tables, images, and paragraph structure. Complex PDFs with intricate layouts may have minor formatting differences, but the content will be complete and editable." },
-            { question: "Is it safe to upload my PDF to pdfconvertx?", answer: "Absolutely. All uploaded files are processed over a secure HTTPS connection and are permanently and automatically deleted from our servers within 1 hour of upload. We do not read, share, or retain your files." },
+            { question: "Is it safe to upload my PDF to smartconvertx?", answer: "Absolutely. All uploaded files are processed over a secure HTTPS connection and are permanently and automatically deleted from our servers within 1 hour of upload. We do not read, share, or retain your files." },
             { question: "What is the maximum PDF file size I can upload?", answer: "You can upload PDF files up to 50MB in size. For most documents — including textbooks, reports, and application forms — this is more than sufficient." },
             { question: "Can I convert a scanned PDF to Word?", answer: "Standard PDF to Word conversion works best on text-based PDFs. Scanned PDFs (which are essentially images) require OCR (Optical Character Recognition). Our OCR tool is coming soon. For now, this tool works best on digital PDFs." },
-            { question: "Do I need to install any software?", answer: "No. pdfconvertx works entirely in your browser. There is nothing to download or install. It works on Windows, Mac, Linux, Android, and iOS devices." },
+            { question: "Do I need to install any software?", answer: "No. smartconvertx works entirely in your browser. There is nothing to download or install. It works on Windows, Mac, Linux, Android, and iOS devices." },
         ],
         relatedSlugs: ["pdf-to-excel", "pdf-to-jpg", "compress-pdf", "merge-pdfs"],
         breadcrumbCategory: "PDF Tools",
@@ -65,12 +65,12 @@ const toolContent: Record<string, ToolContent> = {
                 body: "Students compressing thesis documents and assignments for upload to university learning management systems (LMS). Job applicants reducing the size of their CV, certificates, and testimonials for online applications. Medical professionals compressing patient records and reports for email transmission. Teachers preparing compressed PDF worksheets that are quick to download on mobile data. Businesses sending large PDF catalogues, proposals, or contracts to clients via email. Government employees preparing compressed tender documents and official correspondence.",
             },
             {
-                heading: "How to Compress a PDF with pdfconvertx",
-                body: "Compressing your PDF with pdfconvertx takes just a few clicks. Open the tool on this page, then drag and drop your PDF into the upload zone or click to browse your files. Once the file is uploaded, click 'Convert File' to start compression. Our server will optimise the PDF by reducing image resolution and stripping unnecessary data while preserving text clarity. When complete, download your compressed PDF. You can compare the original and compressed file sizes to see how much space you saved.",
+                heading: "How to Compress a PDF with smartconvertx",
+                body: "Compressing your PDF with smartconvertx takes just a few clicks. Open the tool on this page, then drag and drop your PDF into the upload zone or click to browse your files. Once the file is uploaded, click 'Convert File' to start compression. Our server will optimise the PDF by reducing image resolution and stripping unnecessary data while preserving text clarity. When complete, download your compressed PDF. You can compare the original and compressed file sizes to see how much space you saved.",
             },
             {
-                heading: "Benefits of Using pdfconvertx PDF Compressor",
-                body: "Unlike desktop tools like Adobe Acrobat (which requires an expensive subscription), pdfconvertx is completely free. You get professional-grade compression in your browser without installing any software. Your files are processed on secure servers and automatically deleted after one hour. The tool works on all platforms including mobile — perfect for students compressing PDFs on their smartphones before submitting assignments on the go.",
+                heading: "Benefits of Using smartconvertx PDF Compressor",
+                body: "Unlike desktop tools like Adobe Acrobat (which requires an expensive subscription), smartconvertx is completely free. You get professional-grade compression in your browser without installing any software. Your files are processed on secure servers and automatically deleted after one hour. The tool works on all platforms including mobile — perfect for students compressing PDFs on their smartphones before submitting assignments on the go.",
             },
         ],
         faqs: [
@@ -99,16 +99,16 @@ const toolContent: Record<string, ToolContent> = {
                 body: "Many professional and academic situations require submitting documents as a single PDF. University admission portals in Pakistan and India often require all supporting documents — photo ID, degree certificates, transcripts, and recommendation letters — uploaded as one combined PDF. Government job portals require all application materials in a single PDF. Visa applications typically need passport copies, bank statements, photographs, and supporting letters as one document. Legal submissions, project reports, and tender documents often need to be a single file.",
             },
             {
-                heading: "How to Merge PDFs with pdfconvertx",
-                body: "Merging PDFs with pdfconvertx is straightforward. Click the upload area or drag and drop all the PDF files you want to merge. You can add multiple PDFs at once. The files will be merged in the order they are uploaded, so arrange them carefully. After uploading all files, click 'Merge Files'. pdfconvertx will combine them into one PDF and notify you when the merged file is ready. Click the download button to save your combined PDF.",
+                heading: "How to Merge PDFs with smartconvertx",
+                body: "Merging PDFs with smartconvertx is straightforward. Click the upload area or drag and drop all the PDF files you want to merge. You can add multiple PDFs at once. The files will be merged in the order they are uploaded, so arrange them carefully. After uploading all files, click 'Merge Files'. smartconvertx will combine them into one PDF and notify you when the merged file is ready. Click the download button to save your combined PDF.",
             },
             {
                 heading: "Use Cases Across Professions and Countries",
                 body: "Pakistani university students compiling their portfolio for university admissions. Indian job applicants combining qualification certificates for government service applications. Freelancers compiling project deliverables into one PDF for clients. Medical professionals combining patient test reports. Business owners merging multiple invoices or quotations into one document for client review. Lawyers combining supporting legal documents for court submissions.",
             },
             {
-                heading: "Advantages of pdfconvertx PDF Merge",
-                body: "pdfconvertx lets you merge unlimited PDFs in a single session — no per-merge charge, no credit system, no daily limits. Files are handled securely over HTTPS and are permanently deleted within one hour. Works perfectly on mobile devices, making it easy to combine PDFs stored in your phone's document folder before submitting forms online.",
+                heading: "Advantages of smartconvertx PDF Merge",
+                body: "smartconvertx lets you merge unlimited PDFs in a single session — no per-merge charge, no credit system, no daily limits. Files are handled securely over HTTPS and are permanently deleted within one hour. Works perfectly on mobile devices, making it easy to combine PDFs stored in your phone's document folder before submitting forms online.",
             },
         ],
         faqs: [
@@ -138,15 +138,15 @@ const toolContent: Record<string, ToolContent> = {
             },
             {
                 heading: "How to Split a PDF – Step by Step",
-                body: "Upload your PDF using the upload area on this page. Next, enter the 'From Page' and 'To Page' values — for example, enter 3 and 7 to extract pages 3 through 7. Then click 'Convert File'. pdfconvertx will extract the specified pages and create a new PDF containing only those pages. Download the resulting file when the conversion is complete.",
+                body: "Upload your PDF using the upload area on this page. Next, enter the 'From Page' and 'To Page' values — for example, enter 3 and 7 to extract pages 3 through 7. Then click 'Convert File'. smartconvertx will extract the specified pages and create a new PDF containing only those pages. Download the resulting file when the conversion is complete.",
             },
             {
                 heading: "Practical Applications of PDF Splitting",
                 body: "Students splitting downloaded textbook PDFs to share only the relevant chapter with classmates. PhD and Master's students isolating their literature review chapter from a dissertation for supervisor review. Government employees distributing specific sections of policy documents. Lawyers sharing only the relevant clauses from a lengthy contract. Teachers extracting exam questions from a question bank PDF. Small business owners separating individual invoices from a combined monthly statement.",
             },
             {
-                heading: "Why Choose pdfconvertx to Split PDFs",
-                body: "pdfconvertx is the fastest way to split a PDF without installing software. The process takes under a minute for most documents and is completely free. Your original file is never permanently modified — the split creates a new document, leaving your original intact. All files are deleted from our servers within one hour, keeping your documents private.",
+                heading: "Why Choose smartconvertx to Split PDFs",
+                body: "smartconvertx is the fastest way to split a PDF without installing software. The process takes under a minute for most documents and is completely free. Your original file is never permanently modified — the split creates a new document, leaving your original intact. All files are deleted from our servers within one hour, keeping your documents private.",
             },
         ],
         faqs: [
@@ -179,18 +179,18 @@ const toolContent: Record<string, ToolContent> = {
                 body: "Compressing a passport-size photo from 3MB down to under 20KB for a government job application. Reducing a product photo from 5MB to under 200KB for an online product listing. Compressing a batch of event photos to share in a WhatsApp group without exhausting mobile data. Reducing university ID photo size for student portal upload. Shrinking real estate property photos for email to potential buyers. Compressing scanned document images for online submission. Reducing background images on a website to improve page load speed.",
             },
             {
-                heading: "How to Compress an Image with pdfconvertx",
-                body: "Using pdfconvertx's image compressor is quick and easy. First, upload your image by dragging it onto the upload area or clicking to browse. You can compress JPG, PNG, and WebP images. Optionally, set a quality percentage (default is 75%, which gives excellent results for most images). Click 'Convert File' to start compression. Our server will compress your image instantly. When done, click the download button to save your compressed image. You can always compress again at a lower quality level if you need to reduce the file size further.",
+                heading: "How to Compress an Image with smartconvertx",
+                body: "Using smartconvertx's image compressor is quick and easy. First, upload your image by dragging it onto the upload area or clicking to browse. You can compress JPG, PNG, and WebP images. Optionally, set a quality percentage (default is 75%, which gives excellent results for most images). Click 'Convert File' to start compression. Our server will compress your image instantly. When done, click the download button to save your compressed image. You can always compress again at a lower quality level if you need to reduce the file size further.",
             },
             {
-                heading: "Benefits of Using pdfconvertx Image Compressor",
+                heading: "Benefits of Using smartconvertx Image Compressor",
                 body: "Completely free, no watermarks, no account required. Works on all devices including smartphones. Handles large images efficiently. Quality control slider lets you choose between smaller size or better quality. Your original image is never modified — compression always produces a new file. All files are automatically deleted after one hour. No software to install — works directly in your browser.",
             },
         ],
         faqs: [
             { question: "How do I compress an image to under 20KB for a government portal?", answer: "Upload your image, set the quality to 50% or lower, and click Convert. If the result is still over 20KB, try setting quality to 30%. You can also use the Resize Image tool first to reduce the pixel dimensions before compressing." },
             { question: "Will compression reduce my image's visual quality?", answer: "At quality settings of 70–85%, most people cannot see any difference. For very small file size targets (under 30KB), some quality reduction may be visible, especially in highly detailed images." },
-            { question: "What image formats does pdfconvertx support for compression?", answer: "We support JPG/JPEG, PNG, and WebP input formats. Output is in the same format as the original." },
+            { question: "What image formats does smartconvertx support for compression?", answer: "We support JPG/JPEG, PNG, and WebP input formats. Output is in the same format as the original." },
             { question: "Can I compress multiple images at once?", answer: "Currently the tool processes one image at a time. For bulk compression, use the tool multiple times or contact us about batch processing needs." },
             { question: "How do I compress a passport photo for FPSC, NTS, or university portals in Pakistan?", answer: "Upload your passport photo, set quality to 50–60%, and click Convert. Most portals require images under 50KB–200KB. If still too large, use the Resize Image tool to reduce dimensions to 300x400 pixels first, then compress." },
             { question: "Is my image kept private?", answer: "Yes. Your image is processed on a secure server and automatically deleted within 1 hour of upload. We never store, view, or share your images." },
@@ -213,20 +213,20 @@ const toolContent: Record<string, ToolContent> = {
                 body: "Pakistan and India have millions of students and job applicants who frequently need to resize images for specific portal requirements. FPSC and NTS job applications typically require a passport photograph of exactly 200x200 pixels or 300x400 pixels within a maximum of 50KB. University admission portals such as NUST, IBA, COMSATS, and HEC online systems require specific dimensions for uploaded photos. LinkedIn recommends a profile photo of at least 400x400 pixels. Many social media platforms and blogs have specific ideal dimensions for images. E-commerce listing images often need to be square (e.g., 800x800 pixels). Presentation slide background images are typically needed at 1920x1080 pixels.",
             },
             {
-                heading: "How to Resize an Image with pdfconvertx",
-                body: "Resizing an image with pdfconvertx takes just a few seconds. Upload your image file (JPG, PNG, WebP, BMP, or GIF) by dragging it into the upload area or clicking to browse. Enter the desired Width and Height in pixels in the fields provided. Click 'Convert File' to apply the resize. Your resized image will be ready in seconds. Download the resized file to your device. If you also need to reduce the file size, use our Compress Image tool on the resized output.",
+                heading: "How to Resize an Image with smartconvertx",
+                body: "Resizing an image with smartconvertx takes just a few seconds. Upload your image file (JPG, PNG, WebP, BMP, or GIF) by dragging it into the upload area or clicking to browse. Enter the desired Width and Height in pixels in the fields provided. Click 'Convert File' to apply the resize. Your resized image will be ready in seconds. Download the resized file to your device. If you also need to reduce the file size, use our Compress Image tool on the resized output.",
             },
             {
                 heading: "Tips for Best Resizing Results",
                 body: "To avoid distorting your image (stretching it), try to maintain the original aspect ratio. For example, if your original image is 1200x900 pixels (4:3 ratio) and you want it 800 pixels wide, set height to 600 pixels. If you are unsure of the aspect ratio, use only the width field and let the height adjust proportionally — or set both values to what the destination requires and accept a slight crop or stretch if necessary. For passport photos, always resize to the exact dimensions specified by the government or institution.",
             },
             {
-                heading: "Why Use pdfconvertx to Resize Images",
-                body: "Unlike Photoshop or other desktop software, pdfconvertx requires no installation, no learning curve, and no subscription. Students in rural areas with older computers can use pdfconvertx from any browser. The tool handles files up to 50MB and produces output in the same format as the input. All files are deleted within one hour — your personal photos remain private.",
+                heading: "Why Use smartconvertx to Resize Images",
+                body: "Unlike Photoshop or other desktop software, smartconvertx requires no installation, no learning curve, and no subscription. Students in rural areas with older computers can use smartconvertx from any browser. The tool handles files up to 50MB and produces output in the same format as the input. All files are deleted within one hour — your personal photos remain private.",
             },
         ],
         faqs: [
-            { question: "Can I resize an image to exact pixel dimensions?", answer: "Yes. Enter the exact width and height in pixels that you need. pdfconvertx will resize the image precisely to those dimensions." },
+            { question: "Can I resize an image to exact pixel dimensions?", answer: "Yes. Enter the exact width and height in pixels that you need. smartconvertx will resize the image precisely to those dimensions." },
             { question: "Will resizing change the format of my image?", answer: "No. The output format will be the same as the input. If you upload a JPG, you will receive a resized JPG. If you want to change the format as well, use our JPG to PNG or WebP Converter tools." },
             { question: "What image formats can I resize?", answer: "You can resize JPG, JPEG, PNG, GIF, BMP, and WebP images." },
             { question: "What dimensions should I use for a passport photo for government jobs in Pakistan?", answer: "FPSC and most government portals in Pakistan require passport photos of 35x45mm or in pixels: 300x400 at 200 DPI. In pixels at screen resolution (96 DPI), this is approximately 140x170 to 200x250 pixels. Always check the specific portal's requirements." },
@@ -251,15 +251,15 @@ const toolContent: Record<string, ToolContent> = {
                 body: "The most common reason to convert JPG to PNG is to work with the transparency feature. If you have a logo or graphic in JPG format with a white background and want to place it on a coloured or patterned background, you need the PNG format (ideally combined with our Remove Background tool to eliminate the white background). PNG is also preferred for screenshots, UI designs, and any image that will be edited and re-saved multiple times, since PNG does not lose quality with each save. Graphic designers, web developers, and digital marketers frequently convert JPG images to PNG for use in presentations, websites, and social media graphics.",
             },
             {
-                heading: "How to Convert JPG to PNG with pdfconvertx",
-                body: "Converting your JPG to PNG using pdfconvertx is extremely simple. Open this page, click the upload area, and select your JPG or JPEG file. You can also drag and drop the file directly. Once uploaded, click 'Convert File'. The conversion is near-instant. Download the resulting PNG file. You now have the same image in PNG format, ready for use in editors, websites, or presentations.",
+                heading: "How to Convert JPG to PNG with smartconvertx",
+                body: "Converting your JPG to PNG using smartconvertx is extremely simple. Open this page, click the upload area, and select your JPG or JPEG file. You can also drag and drop the file directly. Once uploaded, click 'Convert File'. The conversion is near-instant. Download the resulting PNG file. You now have the same image in PNG format, ready for use in editors, websites, or presentations.",
             },
             {
                 heading: "Use Cases for JPG to PNG Conversion",
                 body: "Graphic designers converting product photographs to PNG for placement on website backgrounds. Students converting scanned signature or photo images to PNG for use in academic documents or presentations. Developers needing PNG format for app icons or UI elements. Business owners converting brand asset JPGs to PNG for use on marketing materials. Photographers wanting a lossless copy of their images for editing without generation loss. Teachers creating transparent-background diagrams for educational materials.",
             },
             {
-                heading: "Benefits of pdfconvertx JPG to PNG",
+                heading: "Benefits of smartconvertx JPG to PNG",
                 body: "Instant conversion with no quality loss in the PNG output. No software required — works in any browser. Completely free and no account required. Files are deleted from servers within one hour. The PNG output preserves the full resolution and detail of your original JPG. Works on mobile devices — perfect for on-the-go conversions.",
             },
         ],
@@ -269,7 +269,7 @@ const toolContent: Record<string, ToolContent> = {
             { question: "Does the PNG output have a transparent background?", answer: "JPG images do not contain transparency, so the converted PNG will have a white (or coloured) background matching the original JPG. To remove the background and make it transparent, use our Remove Background tool after conversion." },
             { question: "What is the maximum file size for JPG to PNG conversion?", answer: "You can convert JPG files up to 50MB in size." },
             { question: "Can I convert multiple JPG files to PNG at once?", answer: "Currently, the tool converts one image at a time. For batch conversion needs, process each file separately." },
-            { question: "Is pdfconvertx JPG to PNG free?", answer: "Yes, 100% free. No registration required, no limits, no watermarks on output." },
+            { question: "Is smartconvertx JPG to PNG free?", answer: "Yes, 100% free. No registration required, no limits, no watermarks on output." },
         ],
         relatedSlugs: ["png-to-jpg", "webp-converter", "compress-image", "remove-background"],
         breadcrumbCategory: "Image Tools",
@@ -289,15 +289,15 @@ const toolContent: Record<string, ToolContent> = {
                 body: "Background removal is one of the most in-demand image editing tasks across many professions. E-commerce sellers on platforms like Daraz, Amazon, Flipkart, and Shopify need clean, white-background product photos to meet marketplace requirements. Photographers create passport-size portraits with specific plain coloured backgrounds for clients. Job applicants in Pakistan and India frequently need to change their photograph background from a scene to a plain white or light blue background for CNIC, passport, NTS, FPSC, or university application forms. Graphic designers create transparent-background logos and assets for use across different backgrounds. Marketing teams create promotional materials with subjects placed on brand-coloured backgrounds.",
             },
             {
-                heading: "How to Remove a Background with pdfconvertx",
-                body: "Removing a background from your image with pdfconvertx is as simple as it gets. Upload your JPG or PNG image using the upload area — drag and drop it or click to browse. Our AI model will automatically detect the main subject of the image and remove the surrounding background. In a matter of seconds, you will have a PNG file with a transparent background. Click the download button to save your image. You can then place the subject on any new background in an image editor or presentation software.",
+                heading: "How to Remove a Background with smartconvertx",
+                body: "Removing a background from your image with smartconvertx is as simple as it gets. Upload your JPG or PNG image using the upload area — drag and drop it or click to browse. Our AI model will automatically detect the main subject of the image and remove the surrounding background. In a matter of seconds, you will have a PNG file with a transparent background. Click the download button to save your image. You can then place the subject on any new background in an image editor or presentation software.",
             },
             {
                 heading: "Use Cases Across Different Sectors",
                 body: "Students producing academic ID card photos with clean backgrounds. Job applicants creating application photos with the required plain background colour. Small business owners photographing products in natural settings and removing the background for a professional catalogue look. Social media influencers creating stylised profile photos by swapping backgrounds. Graphic designers producing assets for websites, ads, and marketing materials. Fashion brands creating clean product photos against white backgrounds for e-commerce listings.",
             },
             {
-                heading: "Benefits of Using pdfconvertx Background Remover",
+                heading: "Benefits of Using smartconvertx Background Remover",
                 body: "Professional AI-powered removal with no manual selection or masking. Completely free to use — no credit system, no monthly limits. Output is always high-quality PNG with true transparency. Fast processing — most images are done in under 10 seconds. Works on smartphones through the browser — no app needed. Files auto-deleted within one hour for complete privacy.",
             },
         ],
@@ -327,7 +327,7 @@ const toolContent: Record<string, ToolContent> = {
                 body: "There are many practical reasons to convert images to PDF. Students who photograph handwritten notes, study materials, or question papers with their phone cameras often need to submit these as a PDF to their college or university portal. Job applicants need to combine scanned documents — certificates, CNIC copies, degree transcripts — into a single PDF for submission. Medical professionals convert medical reports, X-ray images, or prescription photos into PDF for sharing with other doctors or patients. Legal professionals convert photo evidence into PDF for court submissions. Businesses convert product photographs or scanned receipts into organised PDF reports.",
             },
             {
-                heading: "How to Convert Images to PDF with pdfconvertx",
+                heading: "How to Convert Images to PDF with smartconvertx",
                 body: "Open this page and upload your image file — JPG, PNG, GIF, BMP, WebP, or TIFF are all supported. Click 'Convert File'. The image will be embedded in a PDF document. Download the resulting PDF when conversion is complete. The PDF will contain your image as a full page. For the best results with portrait images, ensure your image dimensions match the standard A4 or letter page ratio.",
             },
             {
@@ -335,17 +335,17 @@ const toolContent: Record<string, ToolContent> = {
                 body: "Thousands of students across Pakistan and India use image-to-PDF tools every semester. HEC (Higher Education Commission) scholarship applications in Pakistan require supporting documents as PDFs, but students often only have photos of their certificates. Converting those photos to PDF and then merging them gives a professional, submittable document. Similarly, IBPS, SSC, and railway job applications in India require all documents uploaded as a single PDF, making image-to-PDF conversion an essential step for millions of applicants.",
             },
             {
-                heading: "Why pdfconvertx Is the Right Choice",
+                heading: "Why smartconvertx Is the Right Choice",
                 body: "Works on all phones, tablets, and computers without any app installation. Completely free with no sign-up. Multiple image formats supported. Files auto-deleted within one hour. Use it alongside our Merge PDFs tool to combine multiple image-to-PDF conversions into a single comprehensive document.",
             },
         ],
         faqs: [
-            { question: "What image formats can I convert to PDF?", answer: "pdfconvertx supports JPG, JPEG, PNG, GIF, BMP, WebP, and TIFF image formats for conversion to PDF." },
+            { question: "What image formats can I convert to PDF?", answer: "smartconvertx supports JPG, JPEG, PNG, GIF, BMP, WebP, and TIFF image formats for conversion to PDF." },
             { question: "Can I convert multiple images to a single PDF?", answer: "Currently each conversion produces a single-page PDF. To combine multiple images into one PDF, convert each image separately then use our Merge PDFs tool to combine them." },
             { question: "Will the image quality be preserved in the PDF?", answer: "Yes. The image is embedded in the PDF at its original quality. No additional compression is applied during conversion." },
             { question: "What is the maximum image size I can convert?", answer: "You can upload images up to 50MB. For very large images, consider using our Compress Image tool first to reduce file size before converting." },
             { question: "Is this tool free?", answer: "Yes, 100% free. No watermarks on the output PDF, no account needed." },
-            { question: "Can I use this on my phone?", answer: "Yes. pdfconvertx works in any mobile browser. Simply visit the page, upload your image from your phone's gallery, and download the converted PDF." },
+            { question: "Can I use this on my phone?", answer: "Yes. smartconvertx works in any mobile browser. Simply visit the page, upload your image from your phone's gallery, and download the converted PDF." },
         ],
         relatedSlugs: ["merge-pdfs", "compress-image", "resize-image", "jpg-to-png"],
         breadcrumbCategory: "Image Tools",
@@ -365,7 +365,7 @@ const toolContent: Record<string, ToolContent> = {
                 body: "There are many creative, academic, and professional reasons to extract audio from a video. Students studying foreign languages use this to extract dialogue from films or lectures to listen to on-the-go. Podcasters extract audio from recorded video interviews to publish as podcast episodes. Musicians and content creators extract music or sound effects from video files for remixing, sampling, or archiving. Researchers extract interview audio from recorded video sessions for transcription. Teachers extract lecture audio from recorded class videos so students can listen without needing video bandwidth. Professionals convert recorded video meetings to audio-only files for note-taking or review.",
             },
             {
-                heading: "How to Extract Audio from Video with pdfconvertx",
+                heading: "How to Extract Audio from Video with smartconvertx",
                 body: "Using our audio extractor is quick and easy. Upload your video file (MP4, AVI, MKV, MOV, WMV, FLV, or WebM are all supported). Select your desired output format: MP3 for a smaller, widely compatible file, or WAV for a lossless, uncompressed audio file. Click 'Convert File'. Our server will strip the audio track from your video and produce the audio file. Download your extracted audio when complete.",
             },
             {
@@ -373,13 +373,13 @@ const toolContent: Record<string, ToolContent> = {
                 body: "Video bloggers (vloggers) extracting the audio from their videos to create podcast versions. Students in Pakistan extracting audio from downloaded lecture videos to study while commuting. Content creators saving the music or narration from their video projects as standalone audio files. Event organisers extracting speech audio from recorded event videos for transcription. Journalists extracting interview audio from recorded video calls for archiving. Gamers extracting in-game music or sound effects for personal enjoyment.",
             },
             {
-                heading: "Why Use pdfconvertx for Audio Extraction",
-                body: "pdfconvertx supports the most common video formats and outputs high-quality audio. The extraction process preserves the original audio quality from the video — no re-encoding quality loss when outputting to WAV. For MP3, a high-quality codec is used to maintain excellent auditory quality at a reasonable file size. The tool is free, works in-browser, and requires no software installation.",
+                heading: "Why Use smartconvertx for Audio Extraction",
+                body: "smartconvertx supports the most common video formats and outputs high-quality audio. The extraction process preserves the original audio quality from the video — no re-encoding quality loss when outputting to WAV. For MP3, a high-quality codec is used to maintain excellent auditory quality at a reasonable file size. The tool is free, works in-browser, and requires no software installation.",
             },
         ],
         faqs: [
             { question: "What output audio formats are available?", answer: "You can extract audio as MP3 (compressed, widely compatible, smaller file) or WAV (uncompressed, highest quality, larger file)." },
-            { question: "What video formats are supported?", answer: "pdfconvertx supports MP4, AVI, MKV, MOV, WMV, FLV, and WebM input video formats." },
+            { question: "What video formats are supported?", answer: "smartconvertx supports MP4, AVI, MKV, MOV, WMV, FLV, and WebM input video formats." },
             { question: "Can I extract specific parts of the audio, not the whole track?", answer: "To extract a specific portion, first use our Trim Video tool to cut the video to the segment you want, then use this Extract Audio tool on the trimmed video." },
             { question: "What is the maximum video file size I can upload?", answer: "You can upload video files up to 50MB. For larger videos, consider compressing the video first." },
             { question: "Is the audio quality affected during extraction?", answer: "When outputting to WAV, the audio quality is identical to the source video. For MP3, very slight quality reduction occurs due to compression, but at 192kbps the result is excellent and indistinguishable to most listeners." },
@@ -403,7 +403,7 @@ const toolContent: Record<string, ToolContent> = {
                 body: "Video file sizes are a constant challenge. WhatsApp limits video messages to 16MB (and 64MB for some accounts). Many email services have a 25MB attachment limit. Online course platforms and university portals restrict uploaded video sizes. Video platforms like YouTube accept large files, but uploading smaller files is much faster. Sharing video clips in messaging apps, on social media, or through cloud storage services is much easier with smaller file sizes. Students recording presentations or project demonstrations may need to compress their video before submitting to their university's learning management system.",
             },
             {
-                heading: "How to Compress a Video with pdfconvertx",
+                heading: "How to Compress a Video with smartconvertx",
                 body: "Upload your video file using the upload area on this page. Supported formats include MP4, AVI, MKV, MOV, WMV, FLV, and WebM. Select your desired quality level: Low (smallest file size), Medium (balanced), or High (best quality). Click 'Convert File'. Our system will compress the video using efficient encoding settings. Download the compressed video when processing is complete.",
             },
             {
@@ -411,7 +411,7 @@ const toolContent: Record<string, ToolContent> = {
                 body: "The Low quality preset produces the smallest file size and is suitable for sharing previews or low-resolution copies. Details may be noticeably reduced, but the video remains watchable. Medium quality is the recommended setting for most use cases — it provides a good balance between size and quality, suitable for sharing on social media and messaging apps. High quality applies moderate compression while preserving as much visual fidelity as possible — ideal for archiving or professional sharing where quality matters.",
             },
             {
-                heading: "Advantages of pdfconvertx Video Compressor",
+                heading: "Advantages of smartconvertx Video Compressor",
                 body: "No software installation required. Works on all platforms and devices including mobile phones. The output is always MP4, the most widely supported video format. Handles multiple common input formats. Completely free with no usage limits. Files are automatically deleted from servers within one hour, ensuring your private videos remain private.",
             },
         ],
@@ -441,22 +441,22 @@ const toolContent: Record<string, ToolContent> = {
                 body: "QR codes have become one of the most practical digital tools of the decade. Businesses use them on flyers, posters, and product labels to let customers quickly access their website, menu, or promotional offer — eliminating the need to type a long URL. Teachers share QR codes with students to link to course materials, videos, or assignment forms. Event organisers use QR codes for digital check-in and ticketing. Payment systems like PayFast and EasyPaisa in Pakistan, or Paytm and UPI in India, use QR codes for cashless transactions. Job applicants include a QR code linking to their LinkedIn profile or online portfolio on their CV.",
             },
             {
-                heading: "How to Generate a QR Code with pdfconvertx",
-                body: "Creating a QR code with pdfconvertx is completely browser-based and requires no upload. Enter your URL or text in the text field at the top of this page. Optionally customise the size (128px to 1024px), QR colour, and background colour to match your branding. Click 'Generate QR Code'. Your QR code is generated instantly in your browser — no server upload takes place. Click the download button to save your QR code as a PNG file, ready for use in print or digital materials.",
+                heading: "How to Generate a QR Code with smartconvertx",
+                body: "Creating a QR code with smartconvertx is completely browser-based and requires no upload. Enter your URL or text in the text field at the top of this page. Optionally customise the size (128px to 1024px), QR colour, and background colour to match your branding. Click 'Generate QR Code'. Your QR code is generated instantly in your browser — no server upload takes place. Click the download button to save your QR code as a PNG file, ready for use in print or digital materials.",
             },
             {
                 heading: "Practical Uses for QR Codes",
                 body: "Restaurant menus: replace printed menus with a QR code linking to an online menu PDF. Business cards: add a QR code linking to your LinkedIn profile, portfolio, or website. Product packaging: link customers to manuals, warranty registration, or promotional offers. Event invitations: scan to add event details to a calendar, or for entry check-in. Classroom: link students to reading materials, videos, or Google Forms surveys. Social media: a QR code linking to your Instagram, YouTube, or TikTok profile for business cards or posters. Payment details: link to your payment account or payment page for quick transactions.",
             },
             {
-                heading: "Benefits of Using pdfconvertx QR Code Generator",
+                heading: "Benefits of Using smartconvertx QR Code Generator",
                 body: "100% free — no credits, no account required. Works entirely in your browser — no data is sent to a server. Customisable colours and sizes for professional-looking QR codes. High resolution PNG output (up to 1024x1024px) suitable for both print and digital use. Instant generation with no waiting time. Works on mobile — generate a QR code from your phone in seconds.",
             },
         ],
         faqs: [
-            { question: "Are QR codes generated by pdfconvertx static or dynamic?", answer: "pdfconvertx generates static QR codes. This means the data (URL or text) is encoded directly in the QR code and cannot be changed after generation. For dynamic QR codes that can be updated, specialist services are required." },
+            { question: "Are QR codes generated by smartconvertx static or dynamic?", answer: "smartconvertx generates static QR codes. This means the data (URL or text) is encoded directly in the QR code and cannot be changed after generation. For dynamic QR codes that can be updated, specialist services are required." },
             { question: "What can I encode in a QR code?", answer: "You can encode any URL, plain text, email address, phone number, or other text-based data. For best scanning results, keep URLs short or use a URL shortener for very long links." },
-            { question: "Will the QR code expire?", answer: "No. Static QR codes generated by pdfconvertx do not expire. They will work indefinitely as long as the URL you encoded remains active. If the URL changes or is deleted, the QR code will stop working." },
+            { question: "Will the QR code expire?", answer: "No. Static QR codes generated by smartconvertx do not expire. They will work indefinitely as long as the URL you encoded remains active. If the URL changes or is deleted, the QR code will stop working." },
             { question: "What resolution should I use for a printed QR code?", answer: "For small prints (business card or flyer), 512px is usually sufficient. For larger prints (poster, banner), use 1024px for crisp results." },
             { question: "Can I change the QR code colour?", answer: "Yes. Use the colour picker on this page to set both the QR code colour (foreground) and the background colour. Ensure sufficient contrast between the two colours for reliable scanning." },
             { question: "Is it free to generate QR codes?", answer: "Yes, 100% free. No account, no limit on how many QR codes you generate." },
@@ -479,21 +479,21 @@ const toolContent: Record<string, ToolContent> = {
                 body: "There are many practical reasons to convert PDFs to images. Social media platforms like Facebook, Instagram, Twitter, and WhatsApp Status cannot display PDFs directly — converting PDF pages to JPG allows you to share document content visually. Presentations in PowerPoint or Google Slides benefit from embedding PDF page content as images. E-commerce sellers need product catalogue pages as images for online listings. Students create study images from PDF notes for easy review on smartphones. Tenders, circulars, or notices in PDF format can be shared as image posts on institutional social media accounts. Publishers and designers often need page renders from PDF files for web previews.",
             },
             {
-                heading: "How to Convert PDF to JPG with pdfconvertx",
-                body: "Upload your PDF using the upload area on this page. Click 'Convert File'. pdfconvertx will render each page of your PDF as a separate JPG image and package them for download. The resulting images are high-resolution and faithfully reproduce the original PDF page layout. If only specific pages are needed, consider using our Split PDF tool first to extract only those pages before converting.",
+                heading: "How to Convert PDF to JPG with smartconvertx",
+                body: "Upload your PDF using the upload area on this page. Click 'Convert File'. smartconvertx will render each page of your PDF as a separate JPG image and package them for download. The resulting images are high-resolution and faithfully reproduce the original PDF page layout. If only specific pages are needed, consider using our Split PDF tool first to extract only those pages before converting.",
             },
             {
                 heading: "Use Cases in Pakistan, India, and Beyond",
                 body: "Teachers in Pakistan taking official circulars or notices (in PDF format) and converting them to image for sharing on school WhatsApp groups. University administrative staff converting PDF transcript pages to JPG for use on official websites. Students sharing assignment feedback PDFs as images on social media. Businesses sharing PDF product brochure pages on Instagram. Legal professionals sharing specific document pages as images when PDF sharing is not supported.",
             },
             {
-                heading: "Advantages of pdfconvertx PDF to JPG",
+                heading: "Advantages of smartconvertx PDF to JPG",
                 body: "High-quality image output at standard screen resolution. Handles multi-page PDFs and produces one image per page. Completely free, no account needed. Works on mobile browsers. Files auto-deleted after one hour for privacy.",
             },
         ],
         faqs: [
             { question: "What resolution are the output JPG images?", answer: "Output images are rendered at standard 150–200 DPI, sufficient for clear on-screen viewing and basic printing. For high-print-quality requirements, a desktop PDF tool may be needed." },
-            { question: "How many pages can I convert at once?", answer: "pdfconvertx converts all pages in your uploaded PDF in one operation. Each page becomes a separate JPG file." },
+            { question: "How many pages can I convert at once?", answer: "smartconvertx converts all pages in your uploaded PDF in one operation. Each page becomes a separate JPG file." },
             { question: "Can I convert a specific page only?", answer: "Use our Split PDF tool to extract the specific page you need, then upload that single-page PDF to this converter." },
             { question: "What is the maximum PDF size?", answer: "Files up to 50MB can be uploaded. Larger files may take slightly longer to process." },
             { question: "Can I convert a scanned PDF to JPG?", answer: "Yes. Since the PDF pages are rendered as images, scanned PDFs will also be converted — the output will be an image of the scanned page." },
@@ -517,7 +517,7 @@ const toolContent: Record<string, ToolContent> = {
                 body: "Animated GIFs are one of the most widely used formats in modern digital communication. Social media managers use GIFs to highlight product features or demonstrate workflows in an eye-catching, looping format. Content creators create reaction GIFs from their favourite film or video moments. Educators create animated explanatory GIFs from tutorial videos for embedding in course materials. Developers use GIFs to document and share software demos in GitHub readme files or issue reports. Mobile users share GIFs in WhatsApp, Telegram, and messaging apps as animated reactions. Marketers use short GIF previews of products instead of full videos to save loading time.",
             },
             {
-                heading: "How to Convert Video to GIF with pdfconvertx",
+                heading: "How to Convert Video to GIF with smartconvertx",
                 body: "Upload your video file on this page (MP4, AVI, MKV, MOV, and WebM are supported). Before converting, you can customise the output GIF: set the FPS (frames per second — lower FPS means smaller file size but choppier animation) and the width in pixels (smaller width means smaller file size). Click 'Convert File'. The server processes your video and creates an animated GIF. Download the GIF when complete and use it anywhere that supports animated images.",
             },
             {
@@ -525,7 +525,7 @@ const toolContent: Record<string, ToolContent> = {
                 body: "For the best results as animated GIFs, use short video clips (3–10 seconds). Longer clips produce very large GIF files that load slowly. Set FPS to 10 for a good balance between smoothness and file size — the default of 10fps is suitable for most content. Reduce the width to 480px or less for social media use. Trim your video first using our Trim Video tool to extract the specific moment you want as a GIF. Keep in mind that GIFs do not have audio — all sound from the original video is lost.",
             },
             {
-                heading: "Why Use pdfconvertx for GIF Creation",
+                heading: "Why Use smartconvertx for GIF Creation",
                 body: "Free and fast with no software installation. Customisable FPS and width for full control over output quality and file size. Works in the browser on any device. Files auto-deleted from servers after one hour. Use alongside our Trim Video tool for a complete GIF creation workflow.",
             },
         ],

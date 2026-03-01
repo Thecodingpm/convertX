@@ -9,14 +9,14 @@ export default function Footer() {
                 <div className={styles.grid}>
                     <div className={styles.brand}>
                         <div className={styles.logo}>
-                            <span className={styles.logoText}>pdfconvertx</span>
+                            <span className={styles.logoSmart}>Smart</span><span className={styles.logoConvert}>convertx</span>
                         </div>
                         <p className={styles.tagline}>
                             40+ free file tools — PDF, image, audio &amp; video.
                             No signup, no watermarks, files auto-deleted after 1 hour.
                         </p>
                         <p className={styles.copyright}>
-                            © {new Date().getFullYear()} pdfconvertx. All rights reserved.
+                            © {new Date().getFullYear()} Smartconvertx. All rights reserved.
                         </p>
                     </div>
 

@@ -17,7 +17,7 @@ export function generateStaticParams() {
 }
 
 function toolDesc(name: string, desc: string, category: string) {
-    return `${desc}. Use ${name} free online — no signup, no watermarks, files deleted automatically. Part of pdfconvertx's free ${category}.`;
+    return `${desc}. Use ${name} free online — no signup, no watermarks, files deleted automatically. Part of smartconvertx's free ${category}.`;
 }
 
 export async function generateMetadata({
@@ -27,14 +27,14 @@ export async function generateMetadata({
 }): Promise<Metadata> {
     const { slug } = await params;
     const tool = getToolBySlug(slug);
-    if (!tool) return { title: "Tool Not Found | pdfconvertx" };
+    if (!tool) return { title: "Tool Not Found | smartconvertx" };
 
     const content = getToolContent(slug);
     const title = content
         ? content.h1.slice(0, 60)
         : `${tool.name} – Free Online, No Signup Required`;
     const description = content
-        ? `${content.intro} Part of pdfconvertx's free ${tool.category}.`.slice(0, 160)
+        ? `${content.intro} Part of smartconvertx's free ${tool.category}.`.slice(0, 160)
         : toolDesc(tool.name, tool.description, tool.category);
     const canonical = `${BASE_URL}/${slug}`;
 
@@ -57,8 +57,8 @@ export async function generateMetadata({
             description,
             url: canonical,
             type: "website",
-            siteName: "pdfconvertx",
-            images: [{ url: "/og-image.png", width: 1200, height: 630, alt: `${tool.name} – pdfconvertx` }],
+            siteName: "smartconvertx",
+            images: [{ url: "/og-image.png", width: 1200, height: 630, alt: `${tool.name} – smartconvertx` }],
         },
         twitter: {
             card: "summary_large_image",

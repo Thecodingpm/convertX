@@ -10,8 +10,8 @@ const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://convertx.app";
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
   title: {
-    default: "pdfconvertx – Free Online File Converter | PDF, Image & Video Tools",
-    template: "%s | pdfconvertx",
+    default: "smartconvertx – Free Online File Converter | PDF, Image & Video Tools",
+    template: "%s | smartconvertx",
   },
   description:
     "Free online file converter with 40+ tools. Convert PDF to Word, compress images, resize photos, extract audio, create QR codes and more. No signup, no watermarks, instant results.",
@@ -30,11 +30,11 @@ export const metadata: Metadata = {
     "mp3 to wav",
     "pdf to excel",
     "no signup converter",
-    "pdfconvertx",
+    "smartconvertx",
   ],
-  authors: [{ name: "pdfconvertx" }],
-  creator: "pdfconvertx",
-  publisher: "pdfconvertx",
+  authors: [{ name: "smartconvertx" }],
+  creator: "smartconvertx",
+  publisher: "smartconvertx",
   robots: {
     index: true,
     follow: true,
@@ -48,8 +48,8 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: "website",
-    siteName: "pdfconvertx",
-    title: "pdfconvertx – Free Online File Converter",
+    siteName: "smartconvertx",
+    title: "smartconvertx – Free Online File Converter",
     description:
       "40+ free tools for PDF, image, audio & video conversion. No signup required. Files deleted after 1 hour.",
     url: BASE_URL,
@@ -58,13 +58,13 @@ export const metadata: Metadata = {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "pdfconvertx – Free Online File Converter",
+        alt: "smartconvertx – Free Online File Converter",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "pdfconvertx – Free Online File Converter",
+    title: "smartconvertx – Free Online File Converter",
     description:
       "40+ free tools. No signup. Convert PDF, images, audio & video instantly.",
     images: ["/og-image.png"],
@@ -87,7 +87,7 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "WebSite",
-              name: "pdfconvertx",
+              name: "smartconvertx",
               url: BASE_URL,
               description:
                 "Free online file converter with 40+ tools. Convert PDF, images, audio and video.",
@@ -109,11 +109,11 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "Organization",
-              name: "pdfconvertx",
+              name: "smartconvertx",
               url: BASE_URL,
               logo: `${BASE_URL}/icon.png`,
               description:
-                "pdfconvertx provides 40+ free online file conversion tools for PDF, images, audio and video.",
+                "smartconvertx provides 40+ free online file conversion tools for PDF, images, audio and video.",
               sameAs: [],
             }),
           }}

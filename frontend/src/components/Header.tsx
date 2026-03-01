@@ -11,7 +11,7 @@ export default function Header() {
         <header className={styles.header}>
             <div className={styles.container}>
                 <Link href="/" className={styles.logo}>
-                    <span className={styles.logoText}>pdfconvertx</span>
+                    <span className={styles.logoSmart}>Smart</span><span className={styles.logoConvert}>convertx</span>
                 </Link>
 
                 <nav className={styles.nav}>

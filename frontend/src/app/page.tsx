@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import HomeClient from "./HomeClient";
 
 export const metadata: Metadata = {
-  title: "pdfconvertx – Free Online File Converter | PDF, Image, Audio & Video",
+  title: "smartconvertx – Free Online File Converter | PDF, Image, Audio & Video",
   description:
     "Convert files free online with 40+ tools. PDF to Word, compress PDFs, resize images, extract audio from video, MP3 to WAV, QR code generator and more. No signup, no watermarks.",
   keywords: [
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     canonical: process.env.NEXT_PUBLIC_SITE_URL || "https://convertx.app",
   },
   openGraph: {
-    title: "pdfconvertx – Free Online File Converter",
+    title: "smartconvertx – Free Online File Converter",
     description: "40+ free tools for PDF, image, audio & video conversion. No signup required.",
     type: "website",
   },

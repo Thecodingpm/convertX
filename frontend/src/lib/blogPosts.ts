@@ -36,9 +36,9 @@ export const blogPosts: BlogPost[] = [
 <li><strong>Pakistan Railways / Wapda Jobs:</strong> Photo max 30KB–100KB</li>
 </ul>
 
-<h2>Step-by-Step: Compress Your Image with pdfconvertx</h2>
+<h2>Step-by-Step: Compress Your Image with smartconvertx</h2>
 <ol>
-<li>Visit <a href="/compress-image">pdfconvertx Compress Image</a> tool.</li>
+<li>Visit <a href="/compress-image">smartconvertx Compress Image</a> tool.</li>
 <li>Click the upload area and select your passport photo or document image.</li>
 <li>Set Quality to <strong>50–60%</strong> for photos needing to be under 50KB.</li>
 <li>Click <strong>Convert File</strong>.</li>
@@ -51,9 +51,9 @@ export const blogPosts: BlogPost[] = [
 
 <h2>Frequently Asked Questions</h2>
 <p><strong>Will compressing my photo make it blurry?</strong> At 50–60% quality, the difference is barely visible on screen. At 30–40%, some softness is visible, but the photo remains clear enough for identification purposes on government forms.</p>
-<p><strong>Can I compress a photo on my phone?</strong> Yes. pdfconvertx works in any mobile browser — open the page on your phone, upload from your gallery, and download the compressed image.</p>
+<p><strong>Can I compress a photo on my phone?</strong> Yes. smartconvertx works in any mobile browser — open the page on your phone, upload from your gallery, and download the compressed image.</p>
 
-<p>Stop wasting time struggling with portal upload errors. <a href="/compress-image">Compress your image now</a> with pdfconvertx — free, instant, no account needed.</p>`,
+<p>Stop wasting time struggling with portal upload errors. <a href="/compress-image">Compress your image now</a> with smartconvertx — free, instant, no account needed.</p>`,
     },
     {
         slug: "resize-image-for-job-application",
@@ -76,9 +76,9 @@ export const blogPosts: BlogPost[] = [
 <li><strong>SSC India:</strong> 20KB–50KB, 200×230 pixels</li>
 </ul>
 
-<h2>How to Resize Your Photo with pdfconvertx</h2>
+<h2>How to Resize Your Photo with smartconvertx</h2>
 <ol>
-<li>Open the <a href="/resize-image">Resize Image</a> tool on pdfconvertx.</li>
+<li>Open the <a href="/resize-image">Resize Image</a> tool on smartconvertx.</li>
 <li>Upload your photo (JPG or PNG).</li>
 <li>Enter the target width and height in pixels (e.g., 200 × 250).</li>
 <li>Click <strong>Convert File</strong>.</li>
@@ -112,7 +112,7 @@ export const blogPosts: BlogPost[] = [
 
 <h2>Step-by-Step PDF Compression</h2>
 <ol>
-<li>Go to the <a href="/compress-pdf">pdfconvertx Compress PDF</a> tool.</li>
+<li>Go to the <a href="/compress-pdf">smartconvertx Compress PDF</a> tool.</li>
 <li>Upload your PDF (up to 50MB).</li>
 <li>Click <strong>Convert File</strong> — compression is automatic.</li>
 <li>Download the compressed PDF and compare the file sizes.</li>
@@ -126,7 +126,7 @@ export const blogPosts: BlogPost[] = [
 <li><strong>Under 200KB:</strong> Very small limit — consider converting to PDF from a Word document instead of scanning, which produces much smaller files.</li>
 </ul>
 
-<p>Compress your PDF instantly with <a href="/compress-pdf">pdfconvertx PDF Compressor</a> — completely free, no signup required.</p>`,
+<p>Compress your PDF instantly with <a href="/compress-pdf">smartconvertx PDF Compressor</a> — completely free, no signup required.</p>`,
     },
     {
         slug: "merge-pdf-for-job-application",
@@ -150,7 +150,7 @@ export const blogPosts: BlogPost[] = [
 <li><strong>Scholarship Applications (HEC, Fulbright):</strong> Degree, CGPA transcript, English test scores, statement of purpose, references</li>
 </ul>
 
-<h2>How to Merge PDFs with pdfconvertx</h2>
+<h2>How to Merge PDFs with smartconvertx</h2>
 <ol>
 <li>Open the <a href="/merge-pdfs">Merge PDFs</a> tool.</li>
 <li>Click the upload area and select all your PDF files at once, or upload them one at a time.</li>
@@ -160,7 +160,7 @@ export const blogPosts: BlogPost[] = [
 <li>If the merged PDF is too large, run it through <a href="/compress-pdf">Compress PDF</a>.</li>
 </ol>
 
-<p>Merge your documents now with <a href="/merge-pdfs">pdfconvertx Merge PDFs</a> — free, instant, no account needed.</p>`,
+<p>Merge your documents now with <a href="/merge-pdfs">smartconvertx Merge PDFs</a> — free, instant, no account needed.</p>`,
     },
     {
         slug: "split-pdf-guide",
@@ -182,7 +182,7 @@ export const blogPosts: BlogPost[] = [
 <li>Sharing only relevant pages of a contract rather than the full document</li>
 </ul>
 
-<h2>How to Split a PDF with pdfconvertx</h2>
+<h2>How to Split a PDF with smartconvertx</h2>
 <ol>
 <li>Go to the <a href="/split-pdf">Split PDF</a> tool.</li>
 <li>Upload your PDF.</li>
@@ -194,7 +194,7 @@ export const blogPosts: BlogPost[] = [
 <h2>Pro Tip: Non-Consecutive Pages</h2>
 <p>Need pages 1–3 and then pages 10–12? Split twice to extract each range, then use <a href="/merge-pdfs">Merge PDFs</a> to combine the extracted sections in any order.</p>
 
-<p>Split your PDF now for free at <a href="/split-pdf">pdfconvertx Split PDF</a> — instant, no account needed.</p>`,
+<p>Split your PDF now for free at <a href="/split-pdf">smartconvertx Split PDF</a> — instant, no account needed.</p>`,
     },
     {
         slug: "webp-vs-jpg-vs-png-which-image-format-to-use",
@@ -228,7 +228,7 @@ export const blogPosts: BlogPost[] = [
 <li>Social media post → <strong>JPG</strong></li>
 </ul>
 
-<p>Convert between formats instantly with <a href="/webp-converter">pdfconvertx WebP Converter</a>, <a href="/jpg-to-png">JPG to PNG</a>, or <a href="/png-to-jpg">PNG to JPG</a> tools — all free.</p>`,
+<p>Convert between formats instantly with <a href="/webp-converter">smartconvertx WebP Converter</a>, <a href="/jpg-to-png">JPG to PNG</a>, or <a href="/png-to-jpg">PNG to JPG</a> tools — all free.</p>`,
     },
     {
         slug: "jpg-to-png-guide",
@@ -254,13 +254,13 @@ export const blogPosts: BlogPost[] = [
 
 <h2>How to Convert JPG to PNG</h2>
 <ol>
-<li>Open the <a href="/jpg-to-png">JPG to PNG</a> tool on pdfconvertx.</li>
+<li>Open the <a href="/jpg-to-png">JPG to PNG</a> tool on smartconvertx.</li>
 <li>Upload your JPG or JPEG file.</li>
 <li>Click <strong>Convert File</strong>.</li>
 <li>Download your PNG — done in seconds.</li>
 </ol>
 
-<p>Convert your image now with <a href="/jpg-to-png">pdfconvertx JPG to PNG</a> — free, instant, no watermarks.</p>`,
+<p>Convert your image now with <a href="/jpg-to-png">smartconvertx JPG to PNG</a> — free, instant, no watermarks.</p>`,
     },
     {
         slug: "remove-background-from-photo-free",
@@ -285,7 +285,7 @@ export const blogPosts: BlogPost[] = [
 <li><strong>Social media:</strong> Create cut-out graphics for Instagram Stories, YouTube thumbnails, or Facebook posts.</li>
 </ul>
 
-<h2>How to Use pdfconvertx Background Remover</h2>
+<h2>How to Use smartconvertx Background Remover</h2>
 <ol>
 <li>Visit the <a href="/remove-background">Remove Background</a> tool.</li>
 <li>Upload your image (JPG or PNG, up to 50MB).</li>
@@ -322,9 +322,9 @@ export const blogPosts: BlogPost[] = [
 <li><strong>WAV:</strong> Uncompressed lossless audio. Identical quality to the source video. Best for professional editing, music production, or archiving.</li>
 </ul>
 
-<h2>How to Extract Audio with pdfconvertx</h2>
+<h2>How to Extract Audio with smartconvertx</h2>
 <ol>
-<li>Open the <a href="/extract-audio">Extract Audio</a> tool on pdfconvertx.</li>
+<li>Open the <a href="/extract-audio">Extract Audio</a> tool on smartconvertx.</li>
 <li>Upload your video file (MP4, MKV, AVI, MOV, WebM supported).</li>
 <li>Select output format: <strong>MP3</strong> or <strong>WAV</strong>.</li>
 <li>Click <strong>Convert File</strong>.</li>
@@ -354,7 +354,7 @@ export const blogPosts: BlogPost[] = [
 <h2>What Happens When WhatsApp Compresses Your Video?</h2>
 <p>WhatsApp automatically compresses videos when they are slightly over the limit — but it does so aggressively, often reducing a sharp 1080p video to a blurry 360p version. Compressing the video yourself first gives you control over quality.</p>
 
-<h2>How to Compress Video with pdfconvertx</h2>
+<h2>How to Compress Video with smartconvertx</h2>
 <ol>
 <li>Open the <a href="/compress-video">Compress Video</a> tool.</li>
 <li>Upload your video (MP4, AVI, MKV, MOV supported, up to 50MB).</li>
@@ -393,7 +393,7 @@ export const blogPosts: BlogPost[] = [
 <li><strong>Duration:</strong> Shorter is always better. Trim your video to the exact moment first.</li>
 </ul>
 
-<h2>How to Create a GIF with pdfconvertx</h2>
+<h2>How to Create a GIF with smartconvertx</h2>
 <ol>
 <li>Use <a href="/trim-video">Trim Video</a> to cut your clip to 3–8 seconds first (optional but recommended).</li>
 <li>Open the <a href="/video-to-gif">Video to GIF</a> tool.</li>
@@ -406,7 +406,7 @@ export const blogPosts: BlogPost[] = [
 <h2>Best Platforms for Sharing GIFs</h2>
 <p>Twitter, Reddit, GitHub readme files, Slack, Telegram, Discord, Microsoft Teams, and most modern messaging apps all support animated GIFs. Upload the GIF directly — no link sharing needed.</p>
 
-<p>Create your GIF now with <a href="/video-to-gif">pdfconvertx Video to GIF</a> — free, instant, no signup.</p>`,
+<p>Create your GIF now with <a href="/video-to-gif">smartconvertx Video to GIF</a> — free, instant, no signup.</p>`,
     },
     {
         slug: "pdf-to-word-for-government-forms",
@@ -433,7 +433,7 @@ export const blogPosts: BlogPost[] = [
 <h2>How to Convert a PDF Form to Word</h2>
 <ol>
 <li>Download the form PDF to your device.</li>
-<li>Open the <a href="/pdf-to-word">PDF to Word</a> tool on pdfconvertx.</li>
+<li>Open the <a href="/pdf-to-word">PDF to Word</a> tool on smartconvertx.</li>
 <li>Upload the PDF.</li>
 <li>Click <strong>Convert File</strong> and download the Word (.docx) file.</li>
 <li>Open the .docx in Microsoft Word or Google Docs.</li>
@@ -476,7 +476,7 @@ export const blogPosts: BlogPost[] = [
 
 <h2>How to Create a QR Code for Free</h2>
 <ol>
-<li>Open the <a href="/qr-code">QR Code Generator</a> on pdfconvertx.</li>
+<li>Open the <a href="/qr-code">QR Code Generator</a> on smartconvertx.</li>
 <li>Enter your URL or text in the input field.</li>
 <li>Customise the QR colour and size (512px for business cards, 1024px for posters).</li>
 <li>Click <strong>Generate QR Code</strong> — instant, generated entirely in your browser.</li>
@@ -516,7 +516,7 @@ export const blogPosts: BlogPost[] = [
 <li>Photo evidence compiled for insurance claims or legal purposes</li>
 </ul>
 
-<h2>How to Convert Photos to PDF with pdfconvertx</h2>
+<h2>How to Convert Photos to PDF with smartconvertx</h2>
 <ol>
 <li>Open the <a href="/image-to-pdf">Image to PDF</a> tool.</li>
 <li>Upload your image file (JPG, PNG, BMP, WebP, TIFF supported).</li>
@@ -536,7 +536,7 @@ export const blogPosts: BlogPost[] = [
     },
     {
         slug: "batch-file-conversion-tips",
-        title: "5 Tips for Efficient File Conversion – Save Time with pdfconvertx",
+        title: "5 Tips for Efficient File Conversion – Save Time with smartconvertx",
         excerpt: "Work smarter with these productivity tips for converting, compressing, and transforming files quickly using free online tools.",
         date: "Feb 14, 2026",
         category: "Tips & Tricks",
@@ -557,9 +557,9 @@ export const blogPosts: BlogPost[] = [
 <p>Know which format each platform needs: government forms → JPG photo, PDF docs; university portals → PDF; social media → JPG or WebP; logos → PNG. This prevents unnecessary multiple conversions.</p>
 
 <h2>5. Use Browser Bookmarks for Your Most-Used Tools</h2>
-<p>If you regularly compress PDFs for work or resize images for applications, bookmark your most-used pdfconvertx tools for instant access. No searching, no navigating — directly to your tool.</p>
+<p>If you regularly compress PDFs for work or resize images for applications, bookmark your most-used smartconvertx tools for instant access. No searching, no navigating — directly to your tool.</p>
 
-<p>Explore all 40+ tools at <a href="/tools">pdfconvertx Tools</a> — all free, no signup.</p>`,
+<p>Explore all 40+ tools at <a href="/tools">smartconvertx Tools</a> — all free, no signup.</p>`,
     },
     {
         slug: "pdf-to-excel-data-extraction",
@@ -581,7 +581,7 @@ export const blogPosts: BlogPost[] = [
 <li>Supplier price lists sent as PDF — for comparison and calculations</li>
 </ul>
 
-<h2>How to Convert PDF to Excel with pdfconvertx</h2>
+<h2>How to Convert PDF to Excel with smartconvertx</h2>
 <ol>
 <li>Open the <a href="/pdf-to-excel">PDF to Excel</a> tool.</li>
 <li>Upload your PDF file.</li>
@@ -618,7 +618,7 @@ export const blogPosts: BlogPost[] = [
 <li><strong>Official documents:</strong> Add "ORIGINAL" or "COPY" to distinguish document versions</li>
 </ul>
 
-<h2>How to Watermark a PDF with pdfconvertx</h2>
+<h2>How to Watermark a PDF with smartconvertx</h2>
 <ol>
 <li>Open the <a href="/add-watermark">Add Watermark to PDF</a> tool.</li>
 <li>Upload your PDF.</li>
@@ -661,7 +661,7 @@ export const blogPosts: BlogPost[] = [
 
 <h2>How to Add a Password to a PDF</h2>
 <ol>
-<li>Open the <a href="/add-password">Add Password to PDF</a> tool on pdfconvertx.</li>
+<li>Open the <a href="/add-password">Add Password to PDF</a> tool on smartconvertx.</li>
 <li>Upload your PDF.</li>
 <li>Enter a strong password in the password field.</li>
 <li>Click <strong>Convert File</strong>.</li>
@@ -735,7 +735,7 @@ export const blogPosts: BlogPost[] = [
 
 <h2>How to Convert PPTX to PDF</h2>
 <ol>
-<li>Open the <a href="/pptx-to-pdf">PPTX to PDF</a> tool on pdfconvertx.</li>
+<li>Open the <a href="/pptx-to-pdf">PPTX to PDF</a> tool on smartconvertx.</li>
 <li>Upload your .pptx or .ppt file.</li>
 <li>Click <strong>Convert File</strong>.</li>
 <li>Download your PDF — each slide becomes a page.</li>

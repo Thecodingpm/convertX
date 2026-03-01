@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-    title: "About pdfconvertx – Free Online File Conversion Tools",
-    description: "Learn about pdfconvertx, the free online file conversion platform with 40+ tools for PDF, image, audio and video — no signup, no watermarks.",
+    title: "About smartconvertx – Free Online File Conversion Tools",
+    description: "Learn about smartconvertx, the free online file conversion platform with 40+ tools for PDF, image, audio and video — no signup, no watermarks.",
     alternates: { canonical: "https://convertx.app/about" },
 };
 
@@ -16,26 +16,26 @@ export default function AboutPage() {
             </nav>
 
             <h1 style={{ fontSize: "2.25rem", fontWeight: 800, marginBottom: "0.75rem", letterSpacing: "-0.02em" }}>
-                About pdfconvertx
+                About smartconvertx
             </h1>
             <p style={{ fontSize: "1.125rem", color: "var(--color-text-secondary)", marginBottom: "2.5rem", lineHeight: 1.7 }}>
-                pdfconvertx is a free, browser-based file conversion suite built for students, professionals, and everyday users who need fast, reliable file tools —
+                smartconvertx is a free, browser-based file conversion suite built for students, professionals, and everyday users who need fast, reliable file tools —
                 without sign-ups, fees, or complicated software.
             </p>
 
             <section style={{ marginBottom: "2.5rem" }}>
                 <h2 style={{ fontSize: "1.375rem", fontWeight: 700, marginBottom: "0.75rem" }}>Our Mission</h2>
                 <p style={{ lineHeight: 1.8, color: "var(--color-text-secondary)" }}>
-                    We built pdfconvertx because we believe powerful file tools should be accessible to everyone — not just those who can afford expensive desktop software.
+                    We built smartconvertx because we believe powerful file tools should be accessible to everyone — not just those who can afford expensive desktop software.
                     Whether you are a student submitting an assignment, a job applicant resizing a portrait photo, or a professional preparing a report,
-                    pdfconvertx gives you the tools you need instantly, for free.
+                    smartconvertx gives you the tools you need instantly, for free.
                 </p>
             </section>
 
             <section style={{ marginBottom: "2.5rem" }}>
                 <h2 style={{ fontSize: "1.375rem", fontWeight: 700, marginBottom: "0.75rem" }}>What We Offer</h2>
                 <p style={{ lineHeight: 1.8, color: "var(--color-text-secondary)", marginBottom: "1rem" }}>
-                    pdfconvertx offers 40+ free online tools across four major categories:
+                    smartconvertx offers 40+ free online tools across four major categories:
                 </p>
                 <ul style={{ lineHeight: 2, color: "var(--color-text-secondary)", paddingLeft: "1.5rem" }}>
                     <li><strong>PDF Tools</strong> — Convert, compress, merge, split, watermark, password-protect PDFs and more</li>
@@ -52,7 +52,7 @@ export default function AboutPage() {
             <section style={{ marginBottom: "2.5rem" }}>
                 <h2 style={{ fontSize: "1.375rem", fontWeight: 700, marginBottom: "0.75rem" }}>Your Privacy Matters</h2>
                 <p style={{ lineHeight: 1.8, color: "var(--color-text-secondary)" }}>
-                    We take file privacy seriously. Every file you upload to pdfconvertx is automatically and permanently deleted from our servers within one hour of upload.
+                    We take file privacy seriously. Every file you upload to smartconvertx is automatically and permanently deleted from our servers within one hour of upload.
                     We do not read, share, analyse, or retain your files in any way. You can use our tools with complete confidence that your documents are handled safely.
                     No account is required, which means we collect the minimum possible information about you.
                     For full details, please read our{" "}
@@ -61,7 +61,7 @@ export default function AboutPage() {
             </section>
 
             <section style={{ marginBottom: "2.5rem" }}>
-                <h2 style={{ fontSize: "1.375rem", fontWeight: 700, marginBottom: "0.75rem" }}>Who Uses pdfconvertx?</h2>
+                <h2 style={{ fontSize: "1.375rem", fontWeight: 700, marginBottom: "0.75rem" }}>Who Uses smartconvertx?</h2>
                 <p style={{ lineHeight: 1.8, color: "var(--color-text-secondary)" }}>
                     Our users include:
                 </p>
@@ -77,7 +77,7 @@ export default function AboutPage() {
             <section style={{ marginBottom: "2.5rem" }}>
                 <h2 style={{ fontSize: "1.375rem", fontWeight: 700, marginBottom: "0.75rem" }}>Always Free</h2>
                 <p style={{ lineHeight: 1.8, color: "var(--color-text-secondary)" }}>
-                    pdfconvertx is, and will always be, free to use for the core conversion tools.
+                    smartconvertx is, and will always be, free to use for the core conversion tools.
                     No credit card, no subscription, no watermarks on your output files.
                     We are able to offer this service free of charge through responsible, non-intrusive advertising.
                 </p>
