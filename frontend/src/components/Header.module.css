@@ -21,10 +21,21 @@
 
 .logo {
     display: flex;
-    align-items: baseline;
+    align-items: center;
     text-decoration: none;
-    gap: 0;
+    gap: 0.5rem;
     line-height: 1;
+}
+
+.logoImage {
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.logoTextWrapper {
+    display: flex;
+    align-items: baseline;
+    gap: 0;
 }
 
 .logoSmart {

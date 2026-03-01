@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import Image from "next/image";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
 import styles from "./Header.module.css";
@@ -11,7 +12,10 @@ export default function Header() {
         <header className={styles.header}>
             <div className={styles.container}>
                 <Link href="/" className={styles.logo}>
-                    <span className={styles.logoSmart}>Smart</span><span className={styles.logoConvert}>convertx</span>
+                    <Image src="/logo.png" alt="SmartConvertX Logo" width={32} height={32} className={styles.logoImage} />
+                    <span className={styles.logoTextWrapper}>
+                        <span className={styles.logoSmart}>Smart</span><span className={styles.logoConvert}>convertx</span>
+                    </span>
                 </Link>
 
                 <nav className={styles.nav}>
