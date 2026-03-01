@@ -12,7 +12,6 @@ export default function Header() {
         <header className={styles.header}>
             <div className={styles.container}>
                 <Link href="/" className={styles.logo}>
-                    <Image src="/logo.png" alt="SmartConvertX Logo" width={32} height={32} className={styles.logoImage} />
                     <span className={styles.logoTextWrapper}>
                         <span className={styles.logoSmart}>Smart</span><span className={styles.logoConvert}>convertx</span>
                     </span>
@@ -24,9 +23,6 @@ export default function Header() {
                 </nav>
 
                 <div className={styles.actions}>
-                    <Link href="/tools" className="btn btn-primary btn-sm">
-                        Get Started
-                    </Link>
                     <button
                         className={styles.mobileToggle}
                         onClick={() => setMobileOpen(o => !o)}
