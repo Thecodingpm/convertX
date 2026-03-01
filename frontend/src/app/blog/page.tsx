@@ -6,7 +6,7 @@ import styles from "./page.module.css";
 export const metadata: Metadata = {
     title: "Blog – File Conversion Tips, Guides & Tutorials | smartconvertx",
     description: "Free guides on compressing PDFs, resizing images for government portals, converting videos to GIF, and more. Tips for students and professionals in Pakistan and India.",
-    alternates: { canonical: "https://convertx.app/blog" },
+    alternates: { canonical: "https://smartconvertx.online/blog" },
 };
 
 const categoryColors: Record<string, string> = {

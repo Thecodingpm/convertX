@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 import { tools } from "@/lib/tools";
 import { blogPosts } from "@/lib/blogPosts";
 
-const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://convertx.app";
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://smartconvertx.online";
 
 export default function sitemap(): MetadataRoute.Sitemap {
     const staticPages: MetadataRoute.Sitemap = [

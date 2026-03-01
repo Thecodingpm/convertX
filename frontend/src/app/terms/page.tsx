@@ -4,7 +4,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
     title: "Terms & Conditions – smartconvertx",
     description: "Read the Terms and Conditions for using smartconvertx's free online file conversion tools. Includes acceptable use, limitations, and user responsibilities.",
-    alternates: { canonical: "https://convertx.app/terms" },
+    alternates: { canonical: "https://smartconvertx.online/terms" },
 };
 
 export default function TermsPage() {
@@ -24,7 +24,7 @@ export default function TermsPage() {
             </p>
 
             <p style={{ lineHeight: 1.8, color: "var(--color-text-secondary)", marginBottom: "2rem" }}>
-                Please read these Terms and Conditions carefully before using the smartconvertx website located at <strong>convertx.app</strong>.
+                Please read these Terms and Conditions carefully before using the smartconvertx website located at <strong>smartconvertx.online</strong>.
                 By accessing or using our services, you agree to be bound by these terms.
                 If you do not agree with any part of these terms, you may not use our services.
             </p>
@@ -133,8 +133,8 @@ export default function TermsPage() {
                     If you have any questions about these Terms and Conditions, please contact us:
                 </p>
                 <ul>
-                    <li>Email: <a href="mailto:support@convertx.app" style={{ color: "var(--color-primary)" }}>support@convertx.app</a></li>
-                    <li>Contact form: <Link href="/contact" style={{ color: "var(--color-primary)" }}>convertx.app/contact</Link></li>
+                    <li>Email: <a href="mailto:support@smartconvertx.online" style={{ color: "var(--color-primary)" }}>support@smartconvertx.online</a></li>
+                    <li>Contact form: <Link href="/contact" style={{ color: "var(--color-primary)" }}>smartconvertx.online/contact</Link></li>
                 </ul>
             </Section>
         </div>

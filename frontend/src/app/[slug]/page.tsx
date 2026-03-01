@@ -7,7 +7,7 @@ import { getToolBySlug, tools } from "@/lib/tools";
 import { getToolContent } from "@/lib/toolContent";
 import ToolPageClient from "@/components/ToolPageClient";
 
-const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://convertx.app";
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://smartconvertx.online";
 
 // Static params for all non-comingSoon tools (pre-renders at build time)
 export function generateStaticParams() {

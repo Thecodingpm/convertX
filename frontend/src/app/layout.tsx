@@ -5,7 +5,7 @@ import { AuthProvider } from "@/components/AuthProvider";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
-const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://convertx.app";
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://smartconvertx.online";
 
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),

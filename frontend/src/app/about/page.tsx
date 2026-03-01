@@ -4,7 +4,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
     title: "About smartconvertx – Free Online File Conversion Tools",
     description: "Learn about smartconvertx, the free online file conversion platform with 40+ tools for PDF, image, audio and video — no signup, no watermarks.",
-    alternates: { canonical: "https://convertx.app/about" },
+    alternates: { canonical: "https://smartconvertx.online/about" },
 };
 
 export default function AboutPage() {

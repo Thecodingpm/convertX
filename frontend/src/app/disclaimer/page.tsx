@@ -4,7 +4,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
     title: "Disclaimer – smartconvertx",
     description: "Read the smartconvertx Disclaimer. Information about the accuracy of conversion results, affiliate relationships, external links, and professional advice.",
-    alternates: { canonical: "https://convertx.app/disclaimer" },
+    alternates: { canonical: "https://smartconvertx.online/disclaimer" },
 };
 
 export default function DisclaimerPage() {
@@ -22,7 +22,7 @@ export default function DisclaimerPage() {
             </p>
 
             <p style={{ lineHeight: 1.8, color: "var(--color-text-secondary)", marginBottom: "2rem" }}>
-                The information and services provided on smartconvertx (convertx.app) are for general informational and utility purposes only.
+                The information and services provided on smartconvertx (smartconvertx.online) are for general informational and utility purposes only.
                 By using our services, you accept this disclaimer in full. If you disagree with any part of this disclaimer, please do not use smartconvertx.
             </p>
 
@@ -96,8 +96,8 @@ export default function DisclaimerPage() {
             <Section title="Contact">
                 <p>If you have any questions about this Disclaimer, please contact us:</p>
                 <ul>
-                    <li>Email: <a href="mailto:support@convertx.app" style={{ color: "var(--color-primary)" }}>support@convertx.app</a></li>
-                    <li>Contact form: <Link href="/contact" style={{ color: "var(--color-primary)" }}>convertx.app/contact</Link></li>
+                    <li>Email: <a href="mailto:support@smartconvertx.online" style={{ color: "var(--color-primary)" }}>support@smartconvertx.online</a></li>
+                    <li>Contact form: <Link href="/contact" style={{ color: "var(--color-primary)" }}>smartconvertx.online/contact</Link></li>
                 </ul>
             </Section>
         </div>

@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     "image compressor", "no signup converter", "convertx",
   ],
   alternates: {
-    canonical: process.env.NEXT_PUBLIC_SITE_URL || "https://convertx.app",
+    canonical: process.env.NEXT_PUBLIC_SITE_URL || "https://smartconvertx.online",
   },
   openGraph: {
     title: "smartconvertx – Free Online File Converter",

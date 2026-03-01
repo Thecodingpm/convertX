@@ -11,12 +11,12 @@ export const metadata: Metadata = {
         "compress pdf", "resize image", "merge pdf", "no signup"
     ],
     alternates: {
-        canonical: `${process.env.NEXT_PUBLIC_SITE_URL || "https://fileforge.app"}/tools`,
+        canonical: `${process.env.NEXT_PUBLIC_SITE_URL || "https://smartconvertx.online"}/tools`,
     },
     openGraph: {
         title: "All Free File Converter Tools | FileForge",
         description: "40+ free tools for PDF, image, audio & video. No account needed.",
-        url: `${process.env.NEXT_PUBLIC_SITE_URL || "https://fileforge.app"}/tools`,
+        url: `${process.env.NEXT_PUBLIC_SITE_URL || "https://smartconvertx.online"}/tools`,
         type: "website",
     },
 };

@@ -1,7 +1,7 @@
 import { MetadataRoute } from "next";
 
 export default function robots(): MetadataRoute.Robots {
-    const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://convertx.app";
+    const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://smartconvertx.online";
     return {
         rules: [
             {

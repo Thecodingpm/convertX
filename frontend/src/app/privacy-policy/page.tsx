@@ -4,7 +4,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
     title: "Privacy Policy – smartconvertx",
     description: "Read smartconvertx's Privacy Policy. Learn how we handle your files, what data we collect, and how we protect your privacy when using our free online tools.",
-    alternates: { canonical: "https://convertx.app/privacy-policy" },
+    alternates: { canonical: "https://smartconvertx.online/privacy-policy" },
 };
 
 export default function PrivacyPolicyPage() {
@@ -24,7 +24,7 @@ export default function PrivacyPolicyPage() {
             </p>
 
             <p style={{ lineHeight: 1.8, color: "var(--color-text-secondary)", marginBottom: "2rem" }}>
-                smartconvertx (&quot;we&quot;, &quot;us&quot;, or &quot;our&quot;) operates the website at <strong>convertx.app</strong>.
+                smartconvertx (&quot;we&quot;, &quot;us&quot;, or &quot;our&quot;) operates the website at <strong>smartconvertx.online</strong>.
                 This Privacy Policy explains how we collect, use, and protect information when you use our free online file conversion services.
                 By using smartconvertx, you agree to the practices described in this policy.
             </p>
@@ -98,7 +98,7 @@ export default function PrivacyPolicyPage() {
                     <li>The right to request deletion of your data</li>
                     <li>The right to opt out of marketing communications</li>
                 </ul>
-                <p>To exercise these rights, please contact us at <a href="mailto:support@convertx.app" style={{ color: "var(--color-primary)" }}>support@convertx.app</a>.</p>
+                <p>To exercise these rights, please contact us at <a href="mailto:support@smartconvertx.online" style={{ color: "var(--color-primary)" }}>support@smartconvertx.online</a>.</p>
             </Section>
 
             <Section title="9. Changes to This Policy">
@@ -114,8 +114,8 @@ export default function PrivacyPolicyPage() {
                     If you have any questions about this Privacy Policy, please contact us:
                 </p>
                 <ul>
-                    <li>Email: <a href="mailto:support@convertx.app" style={{ color: "var(--color-primary)" }}>support@convertx.app</a></li>
-                    <li>Contact form: <Link href="/contact" style={{ color: "var(--color-primary)" }}>convertx.app/contact</Link></li>
+                    <li>Email: <a href="mailto:support@smartconvertx.online" style={{ color: "var(--color-primary)" }}>support@smartconvertx.online</a></li>
+                    <li>Contact form: <Link href="/contact" style={{ color: "var(--color-primary)" }}>smartconvertx.online/contact</Link></li>
                 </ul>
             </Section>
         </div>

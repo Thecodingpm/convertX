@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 import { blogPosts, getBlogPost, getRelatedPosts } from "@/lib/blogPosts";
 import styles from "../page.module.css";
 
-const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://convertx.app";
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://smartconvertx.online";
 
 export function generateStaticParams() {
     return blogPosts.map((p) => ({ slug: p.slug }));

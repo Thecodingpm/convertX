@@ -49,7 +49,7 @@ export default function ContactPage() {
             ) : (
                 <form
                     onSubmit={handleSubmit}
-                    action={`mailto:support@convertx.app`}
+                    action={`mailto:support@smartconvertx.online`}
                     method="post"
                     encType="text/plain"
                     style={{ display: "flex", flexDirection: "column", gap: "1.25rem" }}
@@ -148,8 +148,8 @@ export default function ContactPage() {
                     <p style={{ fontWeight: 600, marginBottom: "0.25rem" }}>Email Us Directly</p>
                     <p style={{ color: "var(--color-text-secondary)", fontSize: "0.9375rem" }}>
                         You can also reach us at{" "}
-                        <a href="mailto:support@convertx.app" style={{ color: "var(--color-primary)" }}>
-                            support@convertx.app
+                        <a href="mailto:support@smartconvertx.online" style={{ color: "var(--color-primary)" }}>
+                            support@smartconvertx.online
                         </a>
                         . We respond within 24–48 hours on weekdays.
                     </p>
