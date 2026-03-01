@@ -83,6 +83,12 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        {/* Google AdSense */}
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8087069235637059"
+          crossOrigin="anonymous"
+        ></script>
         {/* JSON-LD: WebSite Schema for Google Sitelinks Searchbox */}
         <script
           type="application/ld+json"
