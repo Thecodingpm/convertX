@@ -15,9 +15,9 @@ class ImageRequest extends FormRequest
     {
         $action = $this->route('action');
 
-        // Accept all common image types — browsers report inconsistent MIME types
-        // (e.g. macOS reports PNG as image/x-png, which strict mimes:png rejects)
-        $anyImage = 'mimetypes:image/jpeg,image/jpg,image/pjpeg,image/png,image/x-png,image/gif,image/bmp,image/x-bmp,image/webp,image/tiff,image/x-tiff';
+        // Use mimes: (extension-based) instead of mimetypes: (finfo content check)
+        // finfo-based MIME checking can fail on valid files uploaded from macOS/mobile
+        $anyImage = 'mimes:jpg,jpeg,png,gif,bmp,webp,tiff,tif';
 
         $rules = [
             'file' => ['required', 'file', 'max:102400', $anyImage],
