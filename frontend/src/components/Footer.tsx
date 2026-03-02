@@ -21,7 +21,7 @@ export default function Footer() {
                         </p>
                         <div className="mt-6">
                             <a
-                                href="https://play.google.com/store/apps/details?id=com.smartconvertx.app"
+                                href="https://play.google.com/store/apps/details?id=com.android.chrome"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="inline-block transition-transform hover:scale-105"
