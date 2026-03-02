@@ -20,16 +20,18 @@ export default function Footer() {
                             © {new Date().getFullYear()} Smartconvertx. All rights reserved.
                         </p>
                         <div className="mt-6">
-                            <Link
-                                href="/coming-soon"
-                                className="inline-flex items-center gap-2 px-3 py-2 bg-gray-900 hover:bg-gray-800 text-white rounded-lg transition-colors border border-gray-700 w-fit"
+                            <a
+                                href="https://play.google.com/store/apps/details?id=com.smartconvertx.app"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-block transition-transform hover:scale-105"
                             >
-                                <GooglePlayIcon className="w-6 h-6" />
-                                <div className="flex flex-col items-start leading-none">
-                                    <span className="text-[10px] text-gray-400 font-medium">GET IT ON</span>
-                                    <span className="text-sm font-semibold tracking-wide">Google Play</span>
-                                </div>
-                            </Link>
+                                <img
+                                    src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"
+                                    alt="Get it on Google Play"
+                                    style={{ height: "48px", width: "auto" }}
+                                />
+                            </a>
                         </div>
                     </div>
 
