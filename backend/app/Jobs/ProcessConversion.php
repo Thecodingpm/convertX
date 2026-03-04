@@ -144,11 +144,11 @@ class ProcessConversion implements ShouldQueue
             'png-to-jpg'        => $service->pngToJpg($this->inputPath, $upload->getOutputPath('jpg')),
             'to-webp'           => $service->toWebp($this->inputPath, $upload->getOutputPath('webp')),
             'webp-to-jpg'       => $service->webpToJpg($this->inputPath, $upload->getOutputPath('jpg')),
-            'resize-image'      => $service->resize(
+            'resize-image', 'resize' => $service->resize(
                 $this->inputPath, $upload->getOutputPath($ext),
                 (int)$this->params['width'], (int)$this->params['height']
             ),
-            'compress-image'    => $service->compress(
+            'compress-image', 'compress' => $service->compress(
                 $this->inputPath, $upload->getOutputPath($ext),
                 (int)($this->params['quality'] ?? 75)
             ),
