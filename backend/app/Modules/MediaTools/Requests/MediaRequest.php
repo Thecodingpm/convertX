@@ -23,6 +23,7 @@ class MediaRequest extends FormRequest
 
         switch ($action) {
             case 'wav-to-mp3':
+            case 'mov-to-mp3':
                 $rules['bitrate'] = ['sometimes', 'integer', 'in:128,192,256,320'];
                 break;
 

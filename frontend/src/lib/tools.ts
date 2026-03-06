@@ -232,6 +232,20 @@ export const tools: Tool[] = [
         slug: "mp4-to-mp3", name: "MP4 to MP3", module: "media", category: "Media Tools", description: "Extract MP3 audio from MP4 video", icon: Music, color: "#8b5cf6", endpoint: "/api/v1/media/mp4-to-mp3", acceptedTypes: ".mp4",
     },
     {
+        slug: "mov-to-mp3", name: "MOV to MP3", module: "media", category: "Media Tools", description: "Extract MP3 audio from MOV video files", icon: Music2, color: "#a855f7", endpoint: "/api/v1/media/mov-to-mp3", acceptedTypes: ".mov",
+        extraFields: [
+            {
+                name: "bitrate", label: "Bitrate", type: "select", options: [
+                    { value: "128", label: "128 kbps" }, { value: "192", label: "192 kbps (Default)" },
+                    { value: "256", label: "256 kbps" }, { value: "320", label: "320 kbps" },
+                ]
+            },
+        ],
+    },
+    {
+        slug: "mov-to-mp4", name: "MOV to MP4", module: "media", category: "Media Tools", description: "Convert MOV video to universally compatible MP4", icon: Film, color: "#10b981", endpoint: "/api/v1/media/mov-to-mp4", acceptedTypes: ".mov",
+    },
+    {
         slug: "change-audio-speed", name: "Change Audio Speed", module: "media", category: "Media Tools", description: "Speed up or slow down audio files", icon: Gauge, color: "#f97316", endpoint: "/api/v1/media/change-audio-speed", acceptedTypes: ".mp3,.wav,.ogg,.flac",
         extraFields: [
             {

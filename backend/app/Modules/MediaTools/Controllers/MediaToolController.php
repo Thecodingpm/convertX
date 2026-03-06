@@ -67,6 +67,8 @@ class MediaToolController extends Controller
             'video-to-gif' => 'Video to GIF',
             'mp4-to-gif' => 'MP4 to GIF',
             'mp4-to-mp3' => 'MP4 to MP3',
+            'mov-to-mp3' => 'MOV to MP3',
+            'mov-to-mp4' => 'MOV to MP4',
             default => ucfirst(str_replace('-', ' ', $action)),
         };
     }

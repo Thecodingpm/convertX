@@ -208,6 +208,8 @@ class ProcessConversion implements ShouldQueue
             'audio-to-mp4' => $service->audioToMp4($this->inputPath, $upload->getOutputPath('mp4')),
             'gif-to-mp4'   => $service->gifToMp4($this->inputPath, $upload->getOutputPath('mp4')),
             'mp4-to-mp3'   => $service->mp4ToMp3($this->inputPath, $upload->getOutputPath('mp3')),
+            'mov-to-mp3'   => $service->movToMp3($this->inputPath, $upload->getOutputPath('mp3'), (int)($this->params['bitrate'] ?? 192)),
+            'mov-to-mp4'   => $service->movToMp4($this->inputPath, $upload->getOutputPath('mp4')),
             'change-audio-speed' => $service->changeAudioSpeed(
                 $this->inputPath,
                 $upload->getOutputPath(pathinfo($this->inputPath, PATHINFO_EXTENSION)),

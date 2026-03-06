@@ -93,6 +93,16 @@ class MediaService
         return $this->run(['-i', $inputPath, '-vn', '-acodec', 'libmp3lame', '-q:a', '2', $outputPath], $outputPath, 'MP4 to MP3');
     }
 
+    public function movToMp3(string $inputPath, string $outputPath, int $bitrate = 192): string
+    {
+        return $this->run(['-i', $inputPath, '-vn', '-acodec', 'libmp3lame', '-b:a', "{$bitrate}k", $outputPath], $outputPath, 'MOV to MP3');
+    }
+
+    public function movToMp4(string $inputPath, string $outputPath): string
+    {
+        return $this->run(['-i', $inputPath, '-c:v', 'libx264', '-preset', 'medium', '-crf', '23', '-c:a', 'aac', '-b:a', '192k', '-movflags', '+faststart', $outputPath], $outputPath, 'MOV to MP4');
+    }
+
     public function changeAudioSpeed(string $inputPath, string $outputPath, float $speed = 1.5): string
     {
         if ($speed <= 2.0 && $speed >= 0.5) {
