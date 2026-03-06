@@ -3,12 +3,35 @@
 namespace App\Modules\MediaTools\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Exceptions\HttpResponseException;
 
 class MediaRequest extends FormRequest
 {
     public function authorize(): bool
     {
         return true;
+    }
+
+    /**
+     * Detect when PHP has silently rejected the upload (file too large for
+     * upload_max_filesize / post_max_size) before Laravel validation runs.
+     */
+    protected function prepareForValidation(): void
+    {
+        // When PHP's upload_max_filesize or post_max_size is exceeded the
+        // $_FILES superglobal is empty but the request body is non-zero.
+        // CONTENT_LENGTH > 0 but no file means PHP dropped it server-side.
+        $contentLength = (int) $this->server('CONTENT_LENGTH', 0);
+        $hasFile = $this->hasFile('file') || $this->hasFile('files');
+
+        if ($contentLength > 0 && !$hasFile) {
+            throw new HttpResponseException(
+                response()->json([
+                    'success' => false,
+                    'message' => 'File is too large for the server to accept. Please upload a smaller file (max 100MB).',
+                ], 413)
+            );
+        }
     }
 
     public function rules(): array
