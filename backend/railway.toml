@@ -1,8 +1,12 @@
 [build]
 builder = "nixpacks"
 
+[env]
+NIXPACKS_PHP_UPLOAD_MAX_FILESIZE = "500M"
+NIXPACKS_PHP_POST_MAX_SIZE = "500M"
+PHP_INI_SCAN_DIR = ":/app"
+
 [deploy]
-# We must use startCommand because the default Nixpacks web server doesn't boot Laravel properly without it.
 startCommand = "php artisan serve --host=0.0.0.0 --port=$PORT"
 restartPolicyType = "on_failure"
 restartPolicyMaxRetries = 3
