@@ -28,7 +28,7 @@ class MediaRequest extends FormRequest
             throw new HttpResponseException(
                 response()->json([
                     'success' => false,
-                    'message' => 'File is too large for the server to accept. Please upload a smaller file (max 100MB).',
+                    'message' => 'File is too large for the server to accept. Please upload a smaller file (max 500MB).',
                 ], 413)
             );
         }
