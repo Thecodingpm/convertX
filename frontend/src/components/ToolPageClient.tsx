@@ -214,7 +214,10 @@ export default function ToolPageClient({ slug: propSlug, content }: { slug?: str
     };
 
     const formatError = (raw: string) => {
-        if (raw.includes("too large") || raw.includes("413") || raw.includes("max:") || raw.includes("payload")) return `File is too large. Please upload a file smaller than ${tool.module === "media" ? "500MB" : "100MB"}.`;
+        // If the backend has sent a specific PHP ini limit message, show it directly
+        if (raw.includes("upload_max_filesize") || raw.includes("post_max_size")) return raw;
+        // Check for specific generic file size phrases
+        if (raw.includes("413") || raw.includes("payload")) return `File is too large. Please upload a file smaller than ${tool.module === "media" ? "500MB" : "100MB"}.`;
         if (raw.includes("mimes") || raw.includes("mimetypes") || raw.includes("file type")) return "Invalid file type. Please check accepted formats above.";
         if (raw.includes("required") || raw.includes("Please select")) return "No file received. If your file is very large, try a smaller one.";
         return raw || "Upload failed. Please try again.";

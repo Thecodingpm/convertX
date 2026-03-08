@@ -25,10 +25,23 @@ class MediaRequest extends FormRequest
         $hasFile = $this->hasFile('file') || $this->hasFile('files');
 
         if ($contentLength > 0 && !$hasFile) {
+            // Check if PHP actually received the upload but rejected it due to local upload_max_filesize
+            $file = $this->file('file') ?? (is_array($this->file('files')) ? $this->file('files')[0] : null);
+            if ($file && !$file->isValid() && $file->getError() === UPLOAD_ERR_INI_SIZE) {
+                $maxSize = ini_get('upload_max_filesize');
+                throw new HttpResponseException(
+                    response()->json([
+                        'success' => false,
+                        'message' => "Local PHP limit hit! Your server's upload_max_filesize is only {$maxSize}. Please increase it in your local php.ini to upload this file.",
+                    ], 413)
+                );
+            }
+
+            // Otherwise, it was dropped entirely (post_max_size exceeded or Nginx 413)
             throw new HttpResponseException(
                 response()->json([
                     'success' => false,
-                    'message' => 'File is too large for the server to accept. Please upload a smaller file (max 500MB).',
+                    'message' => 'File is too large for the server to accept (post_max_size exceeded). Please upload a smaller file.',
                 ], 413)
             );
         }
