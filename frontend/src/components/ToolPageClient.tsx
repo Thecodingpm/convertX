@@ -156,6 +156,17 @@ export default function ToolPageClient({ slug: propSlug, content }: { slug?: str
     const addFiles = (incoming: FileList | null) => {
         if (!incoming) return;
         const arr = Array.from(incoming);
+
+        // Client-side size check: 500MB for media tools, 100MB for all others
+        const maxBytes = tool.module === "media" ? 500 * 1024 * 1024 : 100 * 1024 * 1024;
+        const maxLabel = tool.module === "media" ? "500MB" : "100MB";
+        const oversized = arr.find(f => f.size > maxBytes);
+        if (oversized) {
+            setErrorMsg(`"${oversized.name}" is too large. Please upload a file smaller than ${maxLabel}.`);
+            setStatus("error");
+            return;
+        }
+
         setFiles(prev => tool.multiple ? [...prev, ...arr] : arr);
         setStatus("idle");
         setErrorMsg("");
@@ -203,7 +214,7 @@ export default function ToolPageClient({ slug: propSlug, content }: { slug?: str
     };
 
     const formatError = (raw: string) => {
-        if (raw.includes("too large") || raw.includes("413") || raw.includes("max:") || raw.includes("payload")) return "File is too large. Please upload a file smaller than 100MB.";
+        if (raw.includes("too large") || raw.includes("413") || raw.includes("max:") || raw.includes("payload")) return `File is too large. Please upload a file smaller than ${tool.module === "media" ? "500MB" : "100MB"}.`;
         if (raw.includes("mimes") || raw.includes("mimetypes") || raw.includes("file type")) return "Invalid file type. Please check accepted formats above.";
         if (raw.includes("required") || raw.includes("Please select")) return "No file received. If your file is very large, try a smaller one.";
         return raw || "Upload failed. Please try again.";

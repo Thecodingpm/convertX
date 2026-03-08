@@ -7,8 +7,8 @@ return [
     |--------------------------------------------------------------------------
     */
 
-    // Maximum file upload size in bytes (default: 100MB)
-    'max_file_size' => env('MAX_FILE_SIZE', 104857600),
+    // Maximum file upload size in bytes (default: 512MB)
+    'max_file_size' => env('MAX_FILE_SIZE', 536870912),
 
     // Temporary file lifetime in seconds (default: 1 hour)
     'temp_file_lifetime' => env('TEMP_FILE_LIFETIME', 3600),

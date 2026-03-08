@@ -53,7 +53,7 @@ class FileUploadService
      */
     protected function validateFile(UploadedFile $file): void
     {
-        $maxSize = config('fileforge.max_file_size', 104857600); // 100MB default
+        $maxSize = config('fileforge.max_file_size', 536870912); // 512MB default
 
         if ($file->getSize() > $maxSize) {
             throw new \InvalidArgumentException(
