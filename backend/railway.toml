@@ -6,7 +6,12 @@ NIXPACKS_PHP_UPLOAD_MAX_FILESIZE = "500M"
 NIXPACKS_PHP_POST_MAX_SIZE = "500M"
 PHP_INI_SCAN_DIR = ":/app"
 
+[phases.setup]
+nixPkgs = ["...", "nginx"]
+
+[phases.build]
+cmds = ["...", "cp nginx.template.conf /assets/nginx.template.conf"]
+
 [deploy]
-startCommand = "php artisan serve --host=0.0.0.0 --port=$PORT"
 restartPolicyType = "on_failure"
 restartPolicyMaxRetries = 3
