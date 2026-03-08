@@ -2,5 +2,9 @@
 builder = "nixpacks"
 
 [deploy]
+# We must use startCommand because the default Nixpacks web server doesn't boot Laravel properly without it.
+# We inject the PHP ini overrides directly into the artisan serve worker by using the PHP_CLI_SERVER_WORKERS env var trick 
+# or by explicitly configuring the PHP CLI options before artisan.
+startCommand = "php -d upload_max_filesize=536870912 -d post_max_size=536870912 artisan serve --host=0.0.0.0 --port=$PORT"
 restartPolicyType = "on_failure"
 restartPolicyMaxRetries = 3
