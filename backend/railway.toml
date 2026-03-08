@@ -4,13 +4,6 @@ builder = "nixpacks"
 [env]
 NIXPACKS_PHP_UPLOAD_MAX_FILESIZE = "500M"
 NIXPACKS_PHP_POST_MAX_SIZE = "500M"
-PHP_INI_SCAN_DIR = ":/app"
-
-[phases.setup]
-nixPkgs = ["...", "nginx"]
-
-[phases.build]
-cmds = ["...", "cp nginx.template.conf /assets/nginx.template.conf"]
 
 [deploy]
 restartPolicyType = "on_failure"
