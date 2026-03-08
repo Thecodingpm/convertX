@@ -33,6 +33,16 @@ Route::get('/v1/debug-logs', function () {
     ]);
 });
 
+Route::get('/v1/debug-php', function () {
+    return response()->json([
+        'upload_max_filesize' => ini_get('upload_max_filesize'),
+        'post_max_size' => ini_get('post_max_size'),
+        'memory_limit' => ini_get('memory_limit'),
+        'PHP_INI_SCAN_DIR' => env('PHP_INI_SCAN_DIR'),
+        'NIXPACKS_PHP_UPLOAD_MAX_FILESIZE' => env('NIXPACKS_PHP_UPLOAD_MAX_FILESIZE')
+    ]);
+});
+
 Route::prefix('v1')->group(function () {
 
     // ── Auth ─────────────────────────────────────────
